@@ -1,0 +1,3208 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="BDAutoloteModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Autolote">
+          <Key>
+            <PropertyRef Name="PK_Autolote" />
+          </Key>
+          <Property Name="PK_Autolote" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreAutolote" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CatalogoCiudad">
+          <Key>
+            <PropertyRef Name="PK_Ciudad" />
+          </Key>
+          <Property Name="PK_Ciudad" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreCiudad" Type="nvarchar" MaxLength="25" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CatalogoDepartamento">
+          <Key>
+            <PropertyRef Name="PK_Departamento" />
+          </Key>
+          <Property Name="PK_Departamento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreDepartamento" Type="nvarchar" MaxLength="25" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CatalogoPais">
+          <Key>
+            <PropertyRef Name="PK_Pais" />
+          </Key>
+          <Property Name="PK_Pais" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombrePais" Type="nvarchar" MaxLength="25" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CatalogoTipoMoneda">
+          <Key>
+            <PropertyRef Name="PK_TipoMoneda" />
+          </Key>
+          <Property Name="PK_TipoMoneda" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TipoMoneda" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Simbolo" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="CatalogoUnidadLongitud">
+          <Key>
+            <PropertyRef Name="PK_UnidadLongitud" />
+          </Key>
+          <Property Name="PK_UnidadLongitud" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TipoLongitud" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Abreviatura" Type="nvarchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cliente">
+          <Key>
+            <PropertyRef Name="PK_Cliente" />
+          </Key>
+          <Property Name="PK_Cliente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FK_TipoCliente" Type="int" />
+          <Property Name="PrimerNombre" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="PrimerApellido" Type="nvarchar" MaxLength="25" />
+          <Property Name="SegundoNombre" Type="nvarchar" MaxLength="25" />
+          <Property Name="SegundoApellido" Type="nvarchar" MaxLength="25" />
+          <Property Name="FechaNacimiento" Type="date" />
+          <Property Name="Sexo" Type="nvarchar" MaxLength="25" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ColorVehiculo">
+          <Key>
+            <PropertyRef Name="PK_ColorVehiculo" />
+          </Key>
+          <Property Name="PK_ColorVehiculo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreColor" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="RGB" Type="nvarchar" MaxLength="20" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CompraVehiculo">
+          <Key>
+            <PropertyRef Name="PK_CompraVehiculo" />
+          </Key>
+          <Property Name="PK_CompraVehiculo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FK_Proveedor" Type="int" />
+          <Property Name="FK_Empleado" Type="int" />
+          <Property Name="NumCompra" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="FechaCompra" Type="date" />
+          <Property Name="Anulada" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ContactoAutolote">
+          <Key>
+            <PropertyRef Name="PK_ContactoAutolote" />
+          </Key>
+          <Property Name="PK_ContactoAutolote" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FK_TipoContacto" Type="int" />
+          <Property Name="FK_Autolote" Type="int" />
+          <Property Name="DetalleContacto" Type="nvarchar" MaxLength="25" />
+          <Property Name="ACTIVE" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ContactoCliente">
+          <Key>
+            <PropertyRef Name="PK_ContactoCliente" />
+          </Key>
+          <Property Name="PK_ContactoCliente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FK_TipoContacto" Type="int" />
+          <Property Name="FK_Cliente" Type="int" />
+          <Property Name="DetalleContacto" Type="nvarchar" MaxLength="25" />
+          <Property Name="ACTIVE" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ContactoEmpleado">
+          <Key>
+            <PropertyRef Name="PK_ContactoEmpleado" />
+          </Key>
+          <Property Name="PK_ContactoEmpleado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FK_TipoContacto" Type="int" />
+          <Property Name="FK_Empleado" Type="int" />
+          <Property Name="DetalleContacto" Type="nvarchar" MaxLength="25" />
+          <Property Name="ACTIVE" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ContactoProveedor">
+          <Key>
+            <PropertyRef Name="PK_ContactoProveedor" />
+          </Key>
+          <Property Name="PK_ContactoProveedor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FK_TipoContacto" Type="int" />
+          <Property Name="FK_Proveedor" Type="int" />
+          <Property Name="DetalleContacto" Type="nvarchar" MaxLength="25" />
+          <Property Name="ACTIVE" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CuerpoVehiculo">
+          <Key>
+            <PropertyRef Name="PK_CuerpoVehiculo" />
+          </Key>
+          <Property Name="PK_CuerpoVehiculo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CuerpoVehiculo" Type="nvarchar" MaxLength="25" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DetalleCompraVehiculo">
+          <Key>
+            <PropertyRef Name="PK_DetalleCompraVehiculo" />
+          </Key>
+          <Property Name="PK_DetalleCompraVehiculo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FK_CompraVehiculo" Type="int" />
+          <Property Name="FK_Vehiculo" Type="int" />
+          <Property Name="Precio" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="Anulada" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DetalleVentaVehiculo">
+          <Key>
+            <PropertyRef Name="PK_DetalleVentaVehiculo" />
+          </Key>
+          <Property Name="PK_DetalleVentaVehiculo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FK_VentaVehiculo" Type="int" />
+          <Property Name="FK_Vehiculo" Type="int" />
+          <Property Name="Precio" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="Anulada" Type="bit" />
+        </EntityType>
+        <EntityType Name="DireccionAutolote">
+          <Key>
+            <PropertyRef Name="PK_DireccionAutolote" />
+          </Key>
+          <Property Name="PK_DireccionAutolote" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FK_Autolote" Type="int" />
+          <Property Name="FK_Pais" Type="int" />
+          <Property Name="FK_Departamento" Type="int" />
+          <Property Name="FK_Ciudad" Type="int" />
+          <Property Name="Direccion" Type="nvarchar" MaxLength="100" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DireccionCliente">
+          <Key>
+            <PropertyRef Name="PK_DireccionCliente" />
+          </Key>
+          <Property Name="PK_DireccionCliente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FK_Cliente" Type="int" />
+          <Property Name="FK_Pais" Type="int" />
+          <Property Name="FK_Departamento" Type="int" />
+          <Property Name="FK_Ciudad" Type="int" />
+          <Property Name="Direccion" Type="nvarchar" MaxLength="100" />
+          <Property Name="RentadaPropia" Type="bit" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DireccionEmpleado">
+          <Key>
+            <PropertyRef Name="PK_DireccionEmpleado" />
+          </Key>
+          <Property Name="PK_DireccionEmpleado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FK_Empleado" Type="int" />
+          <Property Name="FK_Pais" Type="int" />
+          <Property Name="FK_Ciudad" Type="int" />
+          <Property Name="FK_Departamento" Type="int" />
+          <Property Name="Direccion" Type="nvarchar" MaxLength="100" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DireccionProveedor">
+          <Key>
+            <PropertyRef Name="PK_DireccionProveedor" />
+          </Key>
+          <Property Name="PK_DireccionProveedor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FK_Proveedor" Type="int" />
+          <Property Name="FK_Pais" Type="int" />
+          <Property Name="FK_Departamento" Type="int" />
+          <Property Name="FK_Ciudad" Type="int" />
+          <Property Name="Direccion" Type="nvarchar" MaxLength="100" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Empleado">
+          <Key>
+            <PropertyRef Name="PK_Empleado" />
+          </Key>
+          <Property Name="PK_Empleado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FK_TipoEmpleado" Type="int" />
+          <Property Name="NumEmpleado" Type="nvarchar" MaxLength="25" />
+          <Property Name="PrimerNombre" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="PrimerApellido" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="SegundoNombre" Type="nvarchar" MaxLength="25" />
+          <Property Name="SegundoApellido" Type="nvarchar" MaxLength="25" />
+          <Property Name="FechaNacimiento" Type="date" />
+          <Property Name="Sexo" Type="nvarchar" MaxLength="25" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EstadoVehiculo">
+          <Key>
+            <PropertyRef Name="PK_EstadoVehiculo" />
+          </Key>
+          <Property Name="PK_EstadoVehiculo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Estado" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="DetallesAdicional" Type="nvarchar" MaxLength="100" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="IdentificacionCliente">
+          <Key>
+            <PropertyRef Name="PK_IdentificacionEmpleado" />
+          </Key>
+          <Property Name="PK_IdentificacionEmpleado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FK_TipoIdentificacion" Type="int" />
+          <Property Name="FK_Cliente" Type="int" />
+          <Property Name="NumIdentificacion" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="FechaEmision" Type="date" />
+          <Property Name="FechaExpiracion" Type="date" />
+          <Property Name="ACTIVE" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="IdentificacionEmpleado">
+          <Key>
+            <PropertyRef Name="PK_IdentificacionEmpleado" />
+          </Key>
+          <Property Name="PK_IdentificacionEmpleado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FK_TipoIdentificacion" Type="int" />
+          <Property Name="FK_Empleado" Type="int" />
+          <Property Name="NumIdentificacion" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="FechaEmision" Type="date" />
+          <Property Name="FechaExpiracion" Type="date" />
+          <Property Name="ACTIVE" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="IdentificacionProveedor">
+          <Key>
+            <PropertyRef Name="PK_IdentificacionProveedor" />
+          </Key>
+          <Property Name="PK_IdentificacionProveedor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FK_TipoIdentificacion" Type="int" />
+          <Property Name="FK_Proveedor" Type="int" />
+          <Property Name="NumIdentificacion" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="FechaEmision" Type="date" />
+          <Property Name="FechaExpiracion" Type="date" />
+          <Property Name="ACTIVE" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MarcaVehiculo">
+          <Key>
+            <PropertyRef Name="PK_MarcaVehiculo" />
+          </Key>
+          <Property Name="PK_MarcaVehiculo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FK_Pais" Type="int" />
+          <Property Name="MarcaVehiculo" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="AnioFundacion" Type="int" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ModeloVehiculo">
+          <Key>
+            <PropertyRef Name="PK_ModeloVehiculo" />
+          </Key>
+          <Property Name="PK_ModeloVehiculo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FK_MarcaVehiculo" Type="int" />
+          <Property Name="FK_CuerpoVehiculo" Type="int" />
+          <Property Name="ModeloVehiculo" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="ModeloAnio" Type="int" Nullable="false" />
+          <Property Name="ModeloAnioLanzamiento" Type="int" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Proveedor">
+          <Key>
+            <PropertyRef Name="PK_Proveedor" />
+          </Key>
+          <Property Name="PK_Proveedor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FK_TipoProveedor" Type="int" />
+          <Property Name="PrimerNombre" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="PrimerApellido" Type="nvarchar" MaxLength="25" />
+          <Property Name="SegundoNombre" Type="nvarchar" MaxLength="25" />
+          <Property Name="SegundoApellido" Type="nvarchar" MaxLength="25" />
+          <Property Name="FechaNacimiento" Type="date" />
+          <Property Name="Sexo" Type="nvarchar" MaxLength="25" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="TipoCliente">
+          <Key>
+            <PropertyRef Name="PK_TipoCliente" />
+          </Key>
+          <Property Name="PK_TipoCliente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TipoCliente" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TipoContacto">
+          <Key>
+            <PropertyRef Name="PK_TipoContacto" />
+          </Key>
+          <Property Name="PK_TipoContacto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TipoContacto" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TipoEmpleado">
+          <Key>
+            <PropertyRef Name="PK_TipoEmpleado" />
+          </Key>
+          <Property Name="PK_TipoEmpleado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmpleadoPuesto" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TipoIdentificacion">
+          <Key>
+            <PropertyRef Name="PK_TipoIdentificacion" />
+          </Key>
+          <Property Name="PK_TipoIdentificacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TipoIdentificacion" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TipoMotor">
+          <Key>
+            <PropertyRef Name="PK_TipoMotor" />
+          </Key>
+          <Property Name="PK_TipoMotor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TipoMotor" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="DetalleAdicional" Type="nvarchar" MaxLength="100" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TipoProveedor">
+          <Key>
+            <PropertyRef Name="PK_TipoProveedor" />
+          </Key>
+          <Property Name="PK_TipoProveedor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TipoProveedor" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TipoTransmision">
+          <Key>
+            <PropertyRef Name="PK_TipoTransmision" />
+          </Key>
+          <Property Name="PK_TipoTransmision" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TipoTransmision" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="DetalleAdicional" Type="nvarchar" MaxLength="100" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TipoVehiculo">
+          <Key>
+            <PropertyRef Name="PK_TipoVehiculo" />
+          </Key>
+          <Property Name="PK_TipoVehiculo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TipoVehiculo" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="DetallesAdicional" Type="nvarchar" MaxLength="100" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Vehiculo">
+          <Key>
+            <PropertyRef Name="PK_Vehiculo" />
+          </Key>
+          <Property Name="PK_Vehiculo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FK_ModeloVehiculo" Type="int" />
+          <Property Name="FK_CuerpoVehiculo" Type="int" />
+          <Property Name="FK_TipoTransmision" Type="int" />
+          <Property Name="FK_TipoMotor" Type="int" />
+          <Property Name="FK_ColorVehiculo" Type="int" />
+          <Property Name="FK_EstadoVehiculo" Type="int" />
+          <Property Name="FK_PrecioCompraMoneda" Type="int" />
+          <Property Name="FK_PrecioVentaMoneda" Type="int" />
+          <Property Name="FK_TipoKilometraje" Type="int" />
+          <Property Name="Kilometraje" Type="int" Nullable="false" />
+          <Property Name="VIN" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Placa" Type="nvarchar" MaxLength="20" />
+          <Property Name="PrecioCompra" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="PrecioVenta" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="Disponible" Type="bit" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="FK_TipoVehiculo" Type="int" />
+        </EntityType>
+        <EntityType Name="VentaVehiculo">
+          <Key>
+            <PropertyRef Name="PK_VentaVehiculo" />
+          </Key>
+          <Property Name="PK_VentaVehiculo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FK_Empleado" Type="int" />
+          <Property Name="FK_Cliente" Type="int" />
+          <Property Name="NumVenta" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="Cotizar" Type="bit" />
+          <Property Name="Anulada" Type="bit" />
+          <Property Name="FechaVenta" Type="date" />
+        </EntityType>
+        <Association Name="FK__Cliente__FK_Tipo__787EE5A0">
+          <End Role="TipoCliente" Type="Self.TipoCliente" Multiplicity="0..1" />
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoCliente">
+              <PropertyRef Name="PK_TipoCliente" />
+            </Principal>
+            <Dependent Role="Cliente">
+              <PropertyRef Name="FK_TipoCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CompraVeh__FK_Em__3A4CA8FD">
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="0..1" />
+          <End Role="CompraVehiculo" Type="Self.CompraVehiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleado">
+              <PropertyRef Name="PK_Empleado" />
+            </Principal>
+            <Dependent Role="CompraVehiculo">
+              <PropertyRef Name="FK_Empleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CompraVeh__FK_Pr__395884C4">
+          <End Role="Proveedor" Type="Self.Proveedor" Multiplicity="0..1" />
+          <End Role="CompraVehiculo" Type="Self.CompraVehiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proveedor">
+              <PropertyRef Name="PK_Proveedor" />
+            </Principal>
+            <Dependent Role="CompraVehiculo">
+              <PropertyRef Name="FK_Proveedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ContactoA__FK_Au__1BC821DD">
+          <End Role="Autolote" Type="Self.Autolote" Multiplicity="0..1" />
+          <End Role="ContactoAutolote" Type="Self.ContactoAutolote" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Autolote">
+              <PropertyRef Name="PK_Autolote" />
+            </Principal>
+            <Dependent Role="ContactoAutolote">
+              <PropertyRef Name="FK_Autolote" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ContactoA__FK_Ti__1AD3FDA4">
+          <End Role="TipoContacto" Type="Self.TipoContacto" Multiplicity="0..1" />
+          <End Role="ContactoAutolote" Type="Self.ContactoAutolote" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoContacto">
+              <PropertyRef Name="PK_TipoContacto" />
+            </Principal>
+            <Dependent Role="ContactoAutolote">
+              <PropertyRef Name="FK_TipoContacto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ContactoC__FK_Cl__14270015">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="0..1" />
+          <End Role="ContactoCliente" Type="Self.ContactoCliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="PK_Cliente" />
+            </Principal>
+            <Dependent Role="ContactoCliente">
+              <PropertyRef Name="FK_Cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ContactoC__FK_Ti__1332DBDC">
+          <End Role="TipoContacto" Type="Self.TipoContacto" Multiplicity="0..1" />
+          <End Role="ContactoCliente" Type="Self.ContactoCliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoContacto">
+              <PropertyRef Name="PK_TipoContacto" />
+            </Principal>
+            <Dependent Role="ContactoCliente">
+              <PropertyRef Name="FK_TipoContacto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ContactoE__FK_Em__10566F31">
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="0..1" />
+          <End Role="ContactoEmpleado" Type="Self.ContactoEmpleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleado">
+              <PropertyRef Name="PK_Empleado" />
+            </Principal>
+            <Dependent Role="ContactoEmpleado">
+              <PropertyRef Name="FK_Empleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ContactoE__FK_Ti__0F624AF8">
+          <End Role="TipoContacto" Type="Self.TipoContacto" Multiplicity="0..1" />
+          <End Role="ContactoEmpleado" Type="Self.ContactoEmpleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoContacto">
+              <PropertyRef Name="PK_TipoContacto" />
+            </Principal>
+            <Dependent Role="ContactoEmpleado">
+              <PropertyRef Name="FK_TipoContacto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ContactoP__FK_Pr__17F790F9">
+          <End Role="Proveedor" Type="Self.Proveedor" Multiplicity="0..1" />
+          <End Role="ContactoProveedor" Type="Self.ContactoProveedor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proveedor">
+              <PropertyRef Name="PK_Proveedor" />
+            </Principal>
+            <Dependent Role="ContactoProveedor">
+              <PropertyRef Name="FK_Proveedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ContactoP__FK_Ti__17036CC0">
+          <End Role="TipoContacto" Type="Self.TipoContacto" Multiplicity="0..1" />
+          <End Role="ContactoProveedor" Type="Self.ContactoProveedor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoContacto">
+              <PropertyRef Name="PK_TipoContacto" />
+            </Principal>
+            <Dependent Role="ContactoProveedor">
+              <PropertyRef Name="FK_TipoContacto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DetalleCo__FK_Co__3D2915A8">
+          <End Role="CompraVehiculo" Type="Self.CompraVehiculo" Multiplicity="0..1" />
+          <End Role="DetalleCompraVehiculo" Type="Self.DetalleCompraVehiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CompraVehiculo">
+              <PropertyRef Name="PK_CompraVehiculo" />
+            </Principal>
+            <Dependent Role="DetalleCompraVehiculo">
+              <PropertyRef Name="FK_CompraVehiculo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DetalleCo__FK_Ve__3E1D39E1">
+          <End Role="Vehiculo" Type="Self.Vehiculo" Multiplicity="0..1" />
+          <End Role="DetalleCompraVehiculo" Type="Self.DetalleCompraVehiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehiculo">
+              <PropertyRef Name="PK_Vehiculo" />
+            </Principal>
+            <Dependent Role="DetalleCompraVehiculo">
+              <PropertyRef Name="FK_Vehiculo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DetalleVe__FK_Ve__44CA3770">
+          <End Role="VentaVehiculo" Type="Self.VentaVehiculo" Multiplicity="0..1" />
+          <End Role="DetalleVentaVehiculo" Type="Self.DetalleVentaVehiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VentaVehiculo">
+              <PropertyRef Name="PK_VentaVehiculo" />
+            </Principal>
+            <Dependent Role="DetalleVentaVehiculo">
+              <PropertyRef Name="FK_VentaVehiculo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DetalleVe__FK_Ve__45BE5BA9">
+          <End Role="Vehiculo" Type="Self.Vehiculo" Multiplicity="0..1" />
+          <End Role="DetalleVentaVehiculo" Type="Self.DetalleVentaVehiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehiculo">
+              <PropertyRef Name="PK_Vehiculo" />
+            </Principal>
+            <Dependent Role="DetalleVentaVehiculo">
+              <PropertyRef Name="FK_Vehiculo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Direccion__FK_Au__339FAB6E">
+          <End Role="Autolote" Type="Self.Autolote" Multiplicity="0..1" />
+          <End Role="DireccionAutolote" Type="Self.DireccionAutolote" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Autolote">
+              <PropertyRef Name="PK_Autolote" />
+            </Principal>
+            <Dependent Role="DireccionAutolote">
+              <PropertyRef Name="FK_Autolote" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Direccion__FK_Ci__245D67DE">
+          <End Role="CatalogoCiudad" Type="Self.CatalogoCiudad" Multiplicity="0..1" />
+          <End Role="DireccionEmpleado" Type="Self.DireccionEmpleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CatalogoCiudad">
+              <PropertyRef Name="PK_Ciudad" />
+            </Principal>
+            <Dependent Role="DireccionEmpleado">
+              <PropertyRef Name="FK_Ciudad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Direccion__FK_Ci__2B0A656D">
+          <End Role="CatalogoCiudad" Type="Self.CatalogoCiudad" Multiplicity="0..1" />
+          <End Role="DireccionCliente" Type="Self.DireccionCliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CatalogoCiudad">
+              <PropertyRef Name="PK_Ciudad" />
+            </Principal>
+            <Dependent Role="DireccionCliente">
+              <PropertyRef Name="FK_Ciudad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Direccion__FK_Ci__30C33EC3">
+          <End Role="CatalogoCiudad" Type="Self.CatalogoCiudad" Multiplicity="0..1" />
+          <End Role="DireccionProveedor" Type="Self.DireccionProveedor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CatalogoCiudad">
+              <PropertyRef Name="PK_Ciudad" />
+            </Principal>
+            <Dependent Role="DireccionProveedor">
+              <PropertyRef Name="FK_Ciudad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Direccion__FK_Ci__367C1819">
+          <End Role="CatalogoCiudad" Type="Self.CatalogoCiudad" Multiplicity="0..1" />
+          <End Role="DireccionAutolote" Type="Self.DireccionAutolote" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CatalogoCiudad">
+              <PropertyRef Name="PK_Ciudad" />
+            </Principal>
+            <Dependent Role="DireccionAutolote">
+              <PropertyRef Name="FK_Ciudad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Direccion__FK_Cl__282DF8C2">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="0..1" />
+          <End Role="DireccionCliente" Type="Self.DireccionCliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="PK_Cliente" />
+            </Principal>
+            <Dependent Role="DireccionCliente">
+              <PropertyRef Name="FK_Cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Direccion__FK_De__25518C17">
+          <End Role="CatalogoDepartamento" Type="Self.CatalogoDepartamento" Multiplicity="0..1" />
+          <End Role="DireccionEmpleado" Type="Self.DireccionEmpleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CatalogoDepartamento">
+              <PropertyRef Name="PK_Departamento" />
+            </Principal>
+            <Dependent Role="DireccionEmpleado">
+              <PropertyRef Name="FK_Departamento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Direccion__FK_De__2A164134">
+          <End Role="CatalogoDepartamento" Type="Self.CatalogoDepartamento" Multiplicity="0..1" />
+          <End Role="DireccionCliente" Type="Self.DireccionCliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CatalogoDepartamento">
+              <PropertyRef Name="PK_Departamento" />
+            </Principal>
+            <Dependent Role="DireccionCliente">
+              <PropertyRef Name="FK_Departamento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Direccion__FK_De__2FCF1A8A">
+          <End Role="CatalogoDepartamento" Type="Self.CatalogoDepartamento" Multiplicity="0..1" />
+          <End Role="DireccionProveedor" Type="Self.DireccionProveedor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CatalogoDepartamento">
+              <PropertyRef Name="PK_Departamento" />
+            </Principal>
+            <Dependent Role="DireccionProveedor">
+              <PropertyRef Name="FK_Departamento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Direccion__FK_De__3587F3E0">
+          <End Role="CatalogoDepartamento" Type="Self.CatalogoDepartamento" Multiplicity="0..1" />
+          <End Role="DireccionAutolote" Type="Self.DireccionAutolote" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CatalogoDepartamento">
+              <PropertyRef Name="PK_Departamento" />
+            </Principal>
+            <Dependent Role="DireccionAutolote">
+              <PropertyRef Name="FK_Departamento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Direccion__FK_Em__22751F6C">
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="0..1" />
+          <End Role="DireccionEmpleado" Type="Self.DireccionEmpleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleado">
+              <PropertyRef Name="PK_Empleado" />
+            </Principal>
+            <Dependent Role="DireccionEmpleado">
+              <PropertyRef Name="FK_Empleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Direccion__FK_Pa__236943A5">
+          <End Role="CatalogoPais" Type="Self.CatalogoPais" Multiplicity="0..1" />
+          <End Role="DireccionEmpleado" Type="Self.DireccionEmpleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CatalogoPais">
+              <PropertyRef Name="PK_Pais" />
+            </Principal>
+            <Dependent Role="DireccionEmpleado">
+              <PropertyRef Name="FK_Pais" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Direccion__FK_Pa__29221CFB">
+          <End Role="CatalogoPais" Type="Self.CatalogoPais" Multiplicity="0..1" />
+          <End Role="DireccionCliente" Type="Self.DireccionCliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CatalogoPais">
+              <PropertyRef Name="PK_Pais" />
+            </Principal>
+            <Dependent Role="DireccionCliente">
+              <PropertyRef Name="FK_Pais" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Direccion__FK_Pa__2EDAF651">
+          <End Role="CatalogoPais" Type="Self.CatalogoPais" Multiplicity="0..1" />
+          <End Role="DireccionProveedor" Type="Self.DireccionProveedor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CatalogoPais">
+              <PropertyRef Name="PK_Pais" />
+            </Principal>
+            <Dependent Role="DireccionProveedor">
+              <PropertyRef Name="FK_Pais" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Direccion__FK_Pa__3493CFA7">
+          <End Role="CatalogoPais" Type="Self.CatalogoPais" Multiplicity="0..1" />
+          <End Role="DireccionAutolote" Type="Self.DireccionAutolote" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CatalogoPais">
+              <PropertyRef Name="PK_Pais" />
+            </Principal>
+            <Dependent Role="DireccionAutolote">
+              <PropertyRef Name="FK_Pais" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Direccion__FK_Pr__2DE6D218">
+          <End Role="Proveedor" Type="Self.Proveedor" Multiplicity="0..1" />
+          <End Role="DireccionProveedor" Type="Self.DireccionProveedor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proveedor">
+              <PropertyRef Name="PK_Proveedor" />
+            </Principal>
+            <Dependent Role="DireccionProveedor">
+              <PropertyRef Name="FK_Proveedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Empleado__FK_Tip__75A278F5">
+          <End Role="TipoEmpleado" Type="Self.TipoEmpleado" Multiplicity="0..1" />
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoEmpleado">
+              <PropertyRef Name="PK_TipoEmpleado" />
+            </Principal>
+            <Dependent Role="Empleado">
+              <PropertyRef Name="FK_TipoEmpleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Identific__FK_Cl__08B54D69">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="0..1" />
+          <End Role="IdentificacionCliente" Type="Self.IdentificacionCliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="PK_Cliente" />
+            </Principal>
+            <Dependent Role="IdentificacionCliente">
+              <PropertyRef Name="FK_Cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Identific__FK_Em__04E4BC85">
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="0..1" />
+          <End Role="IdentificacionEmpleado" Type="Self.IdentificacionEmpleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleado">
+              <PropertyRef Name="PK_Empleado" />
+            </Principal>
+            <Dependent Role="IdentificacionEmpleado">
+              <PropertyRef Name="FK_Empleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Identific__FK_Pr__0C85DE4D">
+          <End Role="Proveedor" Type="Self.Proveedor" Multiplicity="0..1" />
+          <End Role="IdentificacionProveedor" Type="Self.IdentificacionProveedor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proveedor">
+              <PropertyRef Name="PK_Proveedor" />
+            </Principal>
+            <Dependent Role="IdentificacionProveedor">
+              <PropertyRef Name="FK_Proveedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Identific__FK_Ti__03F0984C">
+          <End Role="TipoIdentificacion" Type="Self.TipoIdentificacion" Multiplicity="0..1" />
+          <End Role="IdentificacionEmpleado" Type="Self.IdentificacionEmpleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoIdentificacion">
+              <PropertyRef Name="PK_TipoIdentificacion" />
+            </Principal>
+            <Dependent Role="IdentificacionEmpleado">
+              <PropertyRef Name="FK_TipoIdentificacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Identific__FK_Ti__07C12930">
+          <End Role="TipoIdentificacion" Type="Self.TipoIdentificacion" Multiplicity="0..1" />
+          <End Role="IdentificacionCliente" Type="Self.IdentificacionCliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoIdentificacion">
+              <PropertyRef Name="PK_TipoIdentificacion" />
+            </Principal>
+            <Dependent Role="IdentificacionCliente">
+              <PropertyRef Name="FK_TipoIdentificacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Identific__FK_Ti__0B91BA14">
+          <End Role="TipoIdentificacion" Type="Self.TipoIdentificacion" Multiplicity="0..1" />
+          <End Role="IdentificacionProveedor" Type="Self.IdentificacionProveedor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoIdentificacion">
+              <PropertyRef Name="PK_TipoIdentificacion" />
+            </Principal>
+            <Dependent Role="IdentificacionProveedor">
+              <PropertyRef Name="FK_TipoIdentificacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MarcaVehi__FK_Pa__3F466844">
+          <End Role="CatalogoPais" Type="Self.CatalogoPais" Multiplicity="0..1" />
+          <End Role="MarcaVehiculo" Type="Self.MarcaVehiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CatalogoPais">
+              <PropertyRef Name="PK_Pais" />
+            </Principal>
+            <Dependent Role="MarcaVehiculo">
+              <PropertyRef Name="FK_Pais" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ModeloVeh__FK_Cu__44FF419A">
+          <End Role="CuerpoVehiculo" Type="Self.CuerpoVehiculo" Multiplicity="0..1" />
+          <End Role="ModeloVehiculo" Type="Self.ModeloVehiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CuerpoVehiculo">
+              <PropertyRef Name="PK_CuerpoVehiculo" />
+            </Principal>
+            <Dependent Role="ModeloVehiculo">
+              <PropertyRef Name="FK_CuerpoVehiculo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ModeloVeh__FK_Ma__440B1D61">
+          <End Role="MarcaVehiculo" Type="Self.MarcaVehiculo" Multiplicity="0..1" />
+          <End Role="ModeloVehiculo" Type="Self.ModeloVehiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MarcaVehiculo">
+              <PropertyRef Name="PK_MarcaVehiculo" />
+            </Principal>
+            <Dependent Role="ModeloVehiculo">
+              <PropertyRef Name="FK_MarcaVehiculo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Proveedor__FK_Ti__7B5B524B">
+          <End Role="TipoProveedor" Type="Self.TipoProveedor" Multiplicity="0..1" />
+          <End Role="Proveedor" Type="Self.Proveedor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoProveedor">
+              <PropertyRef Name="PK_TipoProveedor" />
+            </Principal>
+            <Dependent Role="Proveedor">
+              <PropertyRef Name="FK_TipoProveedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Vehiculo__FK_Col__5CD6CB2B">
+          <End Role="ColorVehiculo" Type="Self.ColorVehiculo" Multiplicity="0..1" />
+          <End Role="Vehiculo" Type="Self.Vehiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ColorVehiculo">
+              <PropertyRef Name="PK_ColorVehiculo" />
+            </Principal>
+            <Dependent Role="Vehiculo">
+              <PropertyRef Name="FK_ColorVehiculo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Vehiculo__FK_Cue__59FA5E80">
+          <End Role="CuerpoVehiculo" Type="Self.CuerpoVehiculo" Multiplicity="0..1" />
+          <End Role="Vehiculo" Type="Self.Vehiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CuerpoVehiculo">
+              <PropertyRef Name="PK_CuerpoVehiculo" />
+            </Principal>
+            <Dependent Role="Vehiculo">
+              <PropertyRef Name="FK_CuerpoVehiculo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Vehiculo__FK_Est__5DCAEF64">
+          <End Role="EstadoVehiculo" Type="Self.EstadoVehiculo" Multiplicity="0..1" />
+          <End Role="Vehiculo" Type="Self.Vehiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EstadoVehiculo">
+              <PropertyRef Name="PK_EstadoVehiculo" />
+            </Principal>
+            <Dependent Role="Vehiculo">
+              <PropertyRef Name="FK_EstadoVehiculo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Vehiculo__FK_Mod__59063A47">
+          <End Role="ModeloVehiculo" Type="Self.ModeloVehiculo" Multiplicity="0..1" />
+          <End Role="Vehiculo" Type="Self.Vehiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ModeloVehiculo">
+              <PropertyRef Name="PK_ModeloVehiculo" />
+            </Principal>
+            <Dependent Role="Vehiculo">
+              <PropertyRef Name="FK_ModeloVehiculo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Vehiculo__FK_Pre__5EBF139D">
+          <End Role="CatalogoTipoMoneda" Type="Self.CatalogoTipoMoneda" Multiplicity="0..1" />
+          <End Role="Vehiculo" Type="Self.Vehiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CatalogoTipoMoneda">
+              <PropertyRef Name="PK_TipoMoneda" />
+            </Principal>
+            <Dependent Role="Vehiculo">
+              <PropertyRef Name="FK_PrecioCompraMoneda" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Vehiculo__FK_Pre__5FB337D6">
+          <End Role="CatalogoTipoMoneda" Type="Self.CatalogoTipoMoneda" Multiplicity="0..1" />
+          <End Role="Vehiculo" Type="Self.Vehiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CatalogoTipoMoneda">
+              <PropertyRef Name="PK_TipoMoneda" />
+            </Principal>
+            <Dependent Role="Vehiculo">
+              <PropertyRef Name="FK_PrecioVentaMoneda" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Vehiculo__FK_Tip__5AEE82B9">
+          <End Role="TipoTransmision" Type="Self.TipoTransmision" Multiplicity="0..1" />
+          <End Role="Vehiculo" Type="Self.Vehiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoTransmision">
+              <PropertyRef Name="PK_TipoTransmision" />
+            </Principal>
+            <Dependent Role="Vehiculo">
+              <PropertyRef Name="FK_TipoTransmision" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Vehiculo__FK_Tip__5BE2A6F2">
+          <End Role="TipoMotor" Type="Self.TipoMotor" Multiplicity="0..1" />
+          <End Role="Vehiculo" Type="Self.Vehiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoMotor">
+              <PropertyRef Name="PK_TipoMotor" />
+            </Principal>
+            <Dependent Role="Vehiculo">
+              <PropertyRef Name="FK_TipoMotor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Vehiculo__FK_Tip__60A75C0F">
+          <End Role="CatalogoUnidadLongitud" Type="Self.CatalogoUnidadLongitud" Multiplicity="0..1" />
+          <End Role="Vehiculo" Type="Self.Vehiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CatalogoUnidadLongitud">
+              <PropertyRef Name="PK_UnidadLongitud" />
+            </Principal>
+            <Dependent Role="Vehiculo">
+              <PropertyRef Name="FK_TipoKilometraje" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Vehiculo__FK_Tip__6C190EBB">
+          <End Role="TipoVehiculo" Type="Self.TipoVehiculo" Multiplicity="0..1" />
+          <End Role="Vehiculo" Type="Self.Vehiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoVehiculo">
+              <PropertyRef Name="PK_TipoVehiculo" />
+            </Principal>
+            <Dependent Role="Vehiculo">
+              <PropertyRef Name="FK_TipoVehiculo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__VentaVehi__FK_Cl__41EDCAC5">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="0..1" />
+          <End Role="VentaVehiculo" Type="Self.VentaVehiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="PK_Cliente" />
+            </Principal>
+            <Dependent Role="VentaVehiculo">
+              <PropertyRef Name="FK_Cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__VentaVehi__FK_Em__40F9A68C">
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="0..1" />
+          <End Role="VentaVehiculo" Type="Self.VentaVehiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleado">
+              <PropertyRef Name="PK_Empleado" />
+            </Principal>
+            <Dependent Role="VentaVehiculo">
+              <PropertyRef Name="FK_Empleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BDAutoloteModelStoreContainer">
+          <EntitySet Name="Autolote" EntityType="Self.Autolote" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CatalogoCiudad" EntityType="Self.CatalogoCiudad" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CatalogoDepartamento" EntityType="Self.CatalogoDepartamento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CatalogoPais" EntityType="Self.CatalogoPais" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CatalogoTipoMoneda" EntityType="Self.CatalogoTipoMoneda" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CatalogoUnidadLongitud" EntityType="Self.CatalogoUnidadLongitud" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cliente" EntityType="Self.Cliente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ColorVehiculo" EntityType="Self.ColorVehiculo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CompraVehiculo" EntityType="Self.CompraVehiculo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ContactoAutolote" EntityType="Self.ContactoAutolote" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ContactoCliente" EntityType="Self.ContactoCliente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ContactoEmpleado" EntityType="Self.ContactoEmpleado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ContactoProveedor" EntityType="Self.ContactoProveedor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CuerpoVehiculo" EntityType="Self.CuerpoVehiculo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DetalleCompraVehiculo" EntityType="Self.DetalleCompraVehiculo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DetalleVentaVehiculo" EntityType="Self.DetalleVentaVehiculo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DireccionAutolote" EntityType="Self.DireccionAutolote" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DireccionCliente" EntityType="Self.DireccionCliente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DireccionEmpleado" EntityType="Self.DireccionEmpleado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DireccionProveedor" EntityType="Self.DireccionProveedor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Empleado" EntityType="Self.Empleado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EstadoVehiculo" EntityType="Self.EstadoVehiculo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IdentificacionCliente" EntityType="Self.IdentificacionCliente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IdentificacionEmpleado" EntityType="Self.IdentificacionEmpleado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IdentificacionProveedor" EntityType="Self.IdentificacionProveedor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MarcaVehiculo" EntityType="Self.MarcaVehiculo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ModeloVehiculo" EntityType="Self.ModeloVehiculo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Proveedor" EntityType="Self.Proveedor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoCliente" EntityType="Self.TipoCliente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoContacto" EntityType="Self.TipoContacto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoEmpleado" EntityType="Self.TipoEmpleado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoIdentificacion" EntityType="Self.TipoIdentificacion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoMotor" EntityType="Self.TipoMotor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoProveedor" EntityType="Self.TipoProveedor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoTransmision" EntityType="Self.TipoTransmision" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoVehiculo" EntityType="Self.TipoVehiculo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vehiculo" EntityType="Self.Vehiculo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VentaVehiculo" EntityType="Self.VentaVehiculo" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Cliente__FK_Tipo__787EE5A0" Association="Self.FK__Cliente__FK_Tipo__787EE5A0">
+            <End Role="TipoCliente" EntitySet="TipoCliente" />
+            <End Role="Cliente" EntitySet="Cliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CompraVeh__FK_Em__3A4CA8FD" Association="Self.FK__CompraVeh__FK_Em__3A4CA8FD">
+            <End Role="Empleado" EntitySet="Empleado" />
+            <End Role="CompraVehiculo" EntitySet="CompraVehiculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CompraVeh__FK_Pr__395884C4" Association="Self.FK__CompraVeh__FK_Pr__395884C4">
+            <End Role="Proveedor" EntitySet="Proveedor" />
+            <End Role="CompraVehiculo" EntitySet="CompraVehiculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ContactoA__FK_Au__1BC821DD" Association="Self.FK__ContactoA__FK_Au__1BC821DD">
+            <End Role="Autolote" EntitySet="Autolote" />
+            <End Role="ContactoAutolote" EntitySet="ContactoAutolote" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ContactoA__FK_Ti__1AD3FDA4" Association="Self.FK__ContactoA__FK_Ti__1AD3FDA4">
+            <End Role="TipoContacto" EntitySet="TipoContacto" />
+            <End Role="ContactoAutolote" EntitySet="ContactoAutolote" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ContactoC__FK_Cl__14270015" Association="Self.FK__ContactoC__FK_Cl__14270015">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="ContactoCliente" EntitySet="ContactoCliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ContactoC__FK_Ti__1332DBDC" Association="Self.FK__ContactoC__FK_Ti__1332DBDC">
+            <End Role="TipoContacto" EntitySet="TipoContacto" />
+            <End Role="ContactoCliente" EntitySet="ContactoCliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ContactoE__FK_Em__10566F31" Association="Self.FK__ContactoE__FK_Em__10566F31">
+            <End Role="Empleado" EntitySet="Empleado" />
+            <End Role="ContactoEmpleado" EntitySet="ContactoEmpleado" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ContactoE__FK_Ti__0F624AF8" Association="Self.FK__ContactoE__FK_Ti__0F624AF8">
+            <End Role="TipoContacto" EntitySet="TipoContacto" />
+            <End Role="ContactoEmpleado" EntitySet="ContactoEmpleado" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ContactoP__FK_Pr__17F790F9" Association="Self.FK__ContactoP__FK_Pr__17F790F9">
+            <End Role="Proveedor" EntitySet="Proveedor" />
+            <End Role="ContactoProveedor" EntitySet="ContactoProveedor" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ContactoP__FK_Ti__17036CC0" Association="Self.FK__ContactoP__FK_Ti__17036CC0">
+            <End Role="TipoContacto" EntitySet="TipoContacto" />
+            <End Role="ContactoProveedor" EntitySet="ContactoProveedor" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DetalleCo__FK_Co__3D2915A8" Association="Self.FK__DetalleCo__FK_Co__3D2915A8">
+            <End Role="CompraVehiculo" EntitySet="CompraVehiculo" />
+            <End Role="DetalleCompraVehiculo" EntitySet="DetalleCompraVehiculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DetalleCo__FK_Ve__3E1D39E1" Association="Self.FK__DetalleCo__FK_Ve__3E1D39E1">
+            <End Role="Vehiculo" EntitySet="Vehiculo" />
+            <End Role="DetalleCompraVehiculo" EntitySet="DetalleCompraVehiculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DetalleVe__FK_Ve__44CA3770" Association="Self.FK__DetalleVe__FK_Ve__44CA3770">
+            <End Role="VentaVehiculo" EntitySet="VentaVehiculo" />
+            <End Role="DetalleVentaVehiculo" EntitySet="DetalleVentaVehiculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DetalleVe__FK_Ve__45BE5BA9" Association="Self.FK__DetalleVe__FK_Ve__45BE5BA9">
+            <End Role="Vehiculo" EntitySet="Vehiculo" />
+            <End Role="DetalleVentaVehiculo" EntitySet="DetalleVentaVehiculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Direccion__FK_Au__339FAB6E" Association="Self.FK__Direccion__FK_Au__339FAB6E">
+            <End Role="Autolote" EntitySet="Autolote" />
+            <End Role="DireccionAutolote" EntitySet="DireccionAutolote" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Direccion__FK_Ci__245D67DE" Association="Self.FK__Direccion__FK_Ci__245D67DE">
+            <End Role="CatalogoCiudad" EntitySet="CatalogoCiudad" />
+            <End Role="DireccionEmpleado" EntitySet="DireccionEmpleado" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Direccion__FK_Ci__2B0A656D" Association="Self.FK__Direccion__FK_Ci__2B0A656D">
+            <End Role="CatalogoCiudad" EntitySet="CatalogoCiudad" />
+            <End Role="DireccionCliente" EntitySet="DireccionCliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Direccion__FK_Ci__30C33EC3" Association="Self.FK__Direccion__FK_Ci__30C33EC3">
+            <End Role="CatalogoCiudad" EntitySet="CatalogoCiudad" />
+            <End Role="DireccionProveedor" EntitySet="DireccionProveedor" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Direccion__FK_Ci__367C1819" Association="Self.FK__Direccion__FK_Ci__367C1819">
+            <End Role="CatalogoCiudad" EntitySet="CatalogoCiudad" />
+            <End Role="DireccionAutolote" EntitySet="DireccionAutolote" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Direccion__FK_Cl__282DF8C2" Association="Self.FK__Direccion__FK_Cl__282DF8C2">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="DireccionCliente" EntitySet="DireccionCliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Direccion__FK_De__25518C17" Association="Self.FK__Direccion__FK_De__25518C17">
+            <End Role="CatalogoDepartamento" EntitySet="CatalogoDepartamento" />
+            <End Role="DireccionEmpleado" EntitySet="DireccionEmpleado" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Direccion__FK_De__2A164134" Association="Self.FK__Direccion__FK_De__2A164134">
+            <End Role="CatalogoDepartamento" EntitySet="CatalogoDepartamento" />
+            <End Role="DireccionCliente" EntitySet="DireccionCliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Direccion__FK_De__2FCF1A8A" Association="Self.FK__Direccion__FK_De__2FCF1A8A">
+            <End Role="CatalogoDepartamento" EntitySet="CatalogoDepartamento" />
+            <End Role="DireccionProveedor" EntitySet="DireccionProveedor" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Direccion__FK_De__3587F3E0" Association="Self.FK__Direccion__FK_De__3587F3E0">
+            <End Role="CatalogoDepartamento" EntitySet="CatalogoDepartamento" />
+            <End Role="DireccionAutolote" EntitySet="DireccionAutolote" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Direccion__FK_Em__22751F6C" Association="Self.FK__Direccion__FK_Em__22751F6C">
+            <End Role="Empleado" EntitySet="Empleado" />
+            <End Role="DireccionEmpleado" EntitySet="DireccionEmpleado" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Direccion__FK_Pa__236943A5" Association="Self.FK__Direccion__FK_Pa__236943A5">
+            <End Role="CatalogoPais" EntitySet="CatalogoPais" />
+            <End Role="DireccionEmpleado" EntitySet="DireccionEmpleado" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Direccion__FK_Pa__29221CFB" Association="Self.FK__Direccion__FK_Pa__29221CFB">
+            <End Role="CatalogoPais" EntitySet="CatalogoPais" />
+            <End Role="DireccionCliente" EntitySet="DireccionCliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Direccion__FK_Pa__2EDAF651" Association="Self.FK__Direccion__FK_Pa__2EDAF651">
+            <End Role="CatalogoPais" EntitySet="CatalogoPais" />
+            <End Role="DireccionProveedor" EntitySet="DireccionProveedor" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Direccion__FK_Pa__3493CFA7" Association="Self.FK__Direccion__FK_Pa__3493CFA7">
+            <End Role="CatalogoPais" EntitySet="CatalogoPais" />
+            <End Role="DireccionAutolote" EntitySet="DireccionAutolote" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Direccion__FK_Pr__2DE6D218" Association="Self.FK__Direccion__FK_Pr__2DE6D218">
+            <End Role="Proveedor" EntitySet="Proveedor" />
+            <End Role="DireccionProveedor" EntitySet="DireccionProveedor" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Empleado__FK_Tip__75A278F5" Association="Self.FK__Empleado__FK_Tip__75A278F5">
+            <End Role="TipoEmpleado" EntitySet="TipoEmpleado" />
+            <End Role="Empleado" EntitySet="Empleado" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Identific__FK_Cl__08B54D69" Association="Self.FK__Identific__FK_Cl__08B54D69">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="IdentificacionCliente" EntitySet="IdentificacionCliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Identific__FK_Em__04E4BC85" Association="Self.FK__Identific__FK_Em__04E4BC85">
+            <End Role="Empleado" EntitySet="Empleado" />
+            <End Role="IdentificacionEmpleado" EntitySet="IdentificacionEmpleado" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Identific__FK_Pr__0C85DE4D" Association="Self.FK__Identific__FK_Pr__0C85DE4D">
+            <End Role="Proveedor" EntitySet="Proveedor" />
+            <End Role="IdentificacionProveedor" EntitySet="IdentificacionProveedor" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Identific__FK_Ti__03F0984C" Association="Self.FK__Identific__FK_Ti__03F0984C">
+            <End Role="TipoIdentificacion" EntitySet="TipoIdentificacion" />
+            <End Role="IdentificacionEmpleado" EntitySet="IdentificacionEmpleado" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Identific__FK_Ti__07C12930" Association="Self.FK__Identific__FK_Ti__07C12930">
+            <End Role="TipoIdentificacion" EntitySet="TipoIdentificacion" />
+            <End Role="IdentificacionCliente" EntitySet="IdentificacionCliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Identific__FK_Ti__0B91BA14" Association="Self.FK__Identific__FK_Ti__0B91BA14">
+            <End Role="TipoIdentificacion" EntitySet="TipoIdentificacion" />
+            <End Role="IdentificacionProveedor" EntitySet="IdentificacionProveedor" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MarcaVehi__FK_Pa__3F466844" Association="Self.FK__MarcaVehi__FK_Pa__3F466844">
+            <End Role="CatalogoPais" EntitySet="CatalogoPais" />
+            <End Role="MarcaVehiculo" EntitySet="MarcaVehiculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ModeloVeh__FK_Cu__44FF419A" Association="Self.FK__ModeloVeh__FK_Cu__44FF419A">
+            <End Role="CuerpoVehiculo" EntitySet="CuerpoVehiculo" />
+            <End Role="ModeloVehiculo" EntitySet="ModeloVehiculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ModeloVeh__FK_Ma__440B1D61" Association="Self.FK__ModeloVeh__FK_Ma__440B1D61">
+            <End Role="MarcaVehiculo" EntitySet="MarcaVehiculo" />
+            <End Role="ModeloVehiculo" EntitySet="ModeloVehiculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Proveedor__FK_Ti__7B5B524B" Association="Self.FK__Proveedor__FK_Ti__7B5B524B">
+            <End Role="TipoProveedor" EntitySet="TipoProveedor" />
+            <End Role="Proveedor" EntitySet="Proveedor" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Vehiculo__FK_Col__5CD6CB2B" Association="Self.FK__Vehiculo__FK_Col__5CD6CB2B">
+            <End Role="ColorVehiculo" EntitySet="ColorVehiculo" />
+            <End Role="Vehiculo" EntitySet="Vehiculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Vehiculo__FK_Cue__59FA5E80" Association="Self.FK__Vehiculo__FK_Cue__59FA5E80">
+            <End Role="CuerpoVehiculo" EntitySet="CuerpoVehiculo" />
+            <End Role="Vehiculo" EntitySet="Vehiculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Vehiculo__FK_Est__5DCAEF64" Association="Self.FK__Vehiculo__FK_Est__5DCAEF64">
+            <End Role="EstadoVehiculo" EntitySet="EstadoVehiculo" />
+            <End Role="Vehiculo" EntitySet="Vehiculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Vehiculo__FK_Mod__59063A47" Association="Self.FK__Vehiculo__FK_Mod__59063A47">
+            <End Role="ModeloVehiculo" EntitySet="ModeloVehiculo" />
+            <End Role="Vehiculo" EntitySet="Vehiculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Vehiculo__FK_Pre__5EBF139D" Association="Self.FK__Vehiculo__FK_Pre__5EBF139D">
+            <End Role="CatalogoTipoMoneda" EntitySet="CatalogoTipoMoneda" />
+            <End Role="Vehiculo" EntitySet="Vehiculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Vehiculo__FK_Pre__5FB337D6" Association="Self.FK__Vehiculo__FK_Pre__5FB337D6">
+            <End Role="CatalogoTipoMoneda" EntitySet="CatalogoTipoMoneda" />
+            <End Role="Vehiculo" EntitySet="Vehiculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Vehiculo__FK_Tip__5AEE82B9" Association="Self.FK__Vehiculo__FK_Tip__5AEE82B9">
+            <End Role="TipoTransmision" EntitySet="TipoTransmision" />
+            <End Role="Vehiculo" EntitySet="Vehiculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Vehiculo__FK_Tip__5BE2A6F2" Association="Self.FK__Vehiculo__FK_Tip__5BE2A6F2">
+            <End Role="TipoMotor" EntitySet="TipoMotor" />
+            <End Role="Vehiculo" EntitySet="Vehiculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Vehiculo__FK_Tip__60A75C0F" Association="Self.FK__Vehiculo__FK_Tip__60A75C0F">
+            <End Role="CatalogoUnidadLongitud" EntitySet="CatalogoUnidadLongitud" />
+            <End Role="Vehiculo" EntitySet="Vehiculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Vehiculo__FK_Tip__6C190EBB" Association="Self.FK__Vehiculo__FK_Tip__6C190EBB">
+            <End Role="TipoVehiculo" EntitySet="TipoVehiculo" />
+            <End Role="Vehiculo" EntitySet="Vehiculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__VentaVehi__FK_Cl__41EDCAC5" Association="Self.FK__VentaVehi__FK_Cl__41EDCAC5">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="VentaVehiculo" EntitySet="VentaVehiculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__VentaVehi__FK_Em__40F9A68C" Association="Self.FK__VentaVehi__FK_Em__40F9A68C">
+            <End Role="Empleado" EntitySet="Empleado" />
+            <End Role="VentaVehiculo" EntitySet="VentaVehiculo" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BDAutoloteModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Autolote">
+          <Key>
+            <PropertyRef Name="PK_Autolote" />
+          </Key>
+          <Property Name="PK_Autolote" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreAutolote" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="ContactoAutolote" Relationship="Self.FK__ContactoA__FK_Au__1BC821DD" FromRole="Autolote" ToRole="ContactoAutolote" />
+          <NavigationProperty Name="DireccionAutolote" Relationship="Self.FK__Direccion__FK_Au__339FAB6E" FromRole="Autolote" ToRole="DireccionAutolote" />
+        </EntityType>
+        <EntityType Name="CatalogoCiudad">
+          <Key>
+            <PropertyRef Name="PK_Ciudad" />
+          </Key>
+          <Property Name="PK_Ciudad" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreCiudad" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="DireccionEmpleado" Relationship="Self.FK__Direccion__FK_Ci__245D67DE" FromRole="CatalogoCiudad" ToRole="DireccionEmpleado" />
+          <NavigationProperty Name="DireccionCliente" Relationship="Self.FK__Direccion__FK_Ci__2B0A656D" FromRole="CatalogoCiudad" ToRole="DireccionCliente" />
+          <NavigationProperty Name="DireccionProveedor" Relationship="Self.FK__Direccion__FK_Ci__30C33EC3" FromRole="CatalogoCiudad" ToRole="DireccionProveedor" />
+          <NavigationProperty Name="DireccionAutolote" Relationship="Self.FK__Direccion__FK_Ci__367C1819" FromRole="CatalogoCiudad" ToRole="DireccionAutolote" />
+        </EntityType>
+        <EntityType Name="CatalogoDepartamento">
+          <Key>
+            <PropertyRef Name="PK_Departamento" />
+          </Key>
+          <Property Name="PK_Departamento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreDepartamento" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="DireccionEmpleado" Relationship="Self.FK__Direccion__FK_De__25518C17" FromRole="CatalogoDepartamento" ToRole="DireccionEmpleado" />
+          <NavigationProperty Name="DireccionCliente" Relationship="Self.FK__Direccion__FK_De__2A164134" FromRole="CatalogoDepartamento" ToRole="DireccionCliente" />
+          <NavigationProperty Name="DireccionProveedor" Relationship="Self.FK__Direccion__FK_De__2FCF1A8A" FromRole="CatalogoDepartamento" ToRole="DireccionProveedor" />
+          <NavigationProperty Name="DireccionAutolote" Relationship="Self.FK__Direccion__FK_De__3587F3E0" FromRole="CatalogoDepartamento" ToRole="DireccionAutolote" />
+        </EntityType>
+        <EntityType Name="CatalogoPais">
+          <Key>
+            <PropertyRef Name="PK_Pais" />
+          </Key>
+          <Property Name="PK_Pais" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombrePais" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="DireccionEmpleado" Relationship="Self.FK__Direccion__FK_Pa__236943A5" FromRole="CatalogoPais" ToRole="DireccionEmpleado" />
+          <NavigationProperty Name="DireccionCliente" Relationship="Self.FK__Direccion__FK_Pa__29221CFB" FromRole="CatalogoPais" ToRole="DireccionCliente" />
+          <NavigationProperty Name="DireccionProveedor" Relationship="Self.FK__Direccion__FK_Pa__2EDAF651" FromRole="CatalogoPais" ToRole="DireccionProveedor" />
+          <NavigationProperty Name="DireccionAutolote" Relationship="Self.FK__Direccion__FK_Pa__3493CFA7" FromRole="CatalogoPais" ToRole="DireccionAutolote" />
+          <NavigationProperty Name="MarcaVehiculo" Relationship="Self.FK__MarcaVehi__FK_Pa__3F466844" FromRole="CatalogoPais" ToRole="MarcaVehiculo" />
+        </EntityType>
+        <EntityType Name="CatalogoTipoMoneda">
+          <Key>
+            <PropertyRef Name="PK_TipoMoneda" />
+          </Key>
+          <Property Name="PK_TipoMoneda" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TipoMoneda" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Simbolo" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Vehiculo" Relationship="Self.FK__Vehiculo__FK_Pre__5EBF139D" FromRole="CatalogoTipoMoneda" ToRole="Vehiculo" />
+          <NavigationProperty Name="Vehiculo1" Relationship="Self.FK__Vehiculo__FK_Pre__5FB337D6" FromRole="CatalogoTipoMoneda" ToRole="Vehiculo" />
+        </EntityType>
+        <EntityType Name="CatalogoUnidadLongitud">
+          <Key>
+            <PropertyRef Name="PK_UnidadLongitud" />
+          </Key>
+          <Property Name="PK_UnidadLongitud" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TipoLongitud" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Abreviatura" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Vehiculo" Relationship="Self.FK__Vehiculo__FK_Tip__60A75C0F" FromRole="CatalogoUnidadLongitud" ToRole="Vehiculo" />
+        </EntityType>
+        <EntityType Name="Cliente">
+          <Key>
+            <PropertyRef Name="PK_Cliente" />
+          </Key>
+          <Property Name="PK_Cliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FK_TipoCliente" Type="Int32" />
+          <Property Name="PrimerNombre" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PrimerApellido" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="SegundoNombre" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="SegundoApellido" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="FechaNacimiento" Type="DateTime" Precision="0" />
+          <Property Name="Sexo" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="TipoCliente" Relationship="Self.FK__Cliente__FK_Tipo__787EE5A0" FromRole="Cliente" ToRole="TipoCliente" />
+          <NavigationProperty Name="ContactoCliente" Relationship="Self.FK__ContactoC__FK_Cl__14270015" FromRole="Cliente" ToRole="ContactoCliente" />
+          <NavigationProperty Name="DireccionCliente" Relationship="Self.FK__Direccion__FK_Cl__282DF8C2" FromRole="Cliente" ToRole="DireccionCliente" />
+          <NavigationProperty Name="IdentificacionCliente" Relationship="Self.FK__Identific__FK_Cl__08B54D69" FromRole="Cliente" ToRole="IdentificacionCliente" />
+          <NavigationProperty Name="VentaVehiculo" Relationship="Self.FK__VentaVehi__FK_Cl__41EDCAC5" FromRole="Cliente" ToRole="VentaVehiculo" />
+        </EntityType>
+        <EntityType Name="ColorVehiculo">
+          <Key>
+            <PropertyRef Name="PK_ColorVehiculo" />
+          </Key>
+          <Property Name="PK_ColorVehiculo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreColor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RGB" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Vehiculo" Relationship="Self.FK__Vehiculo__FK_Col__5CD6CB2B" FromRole="ColorVehiculo" ToRole="Vehiculo" />
+        </EntityType>
+        <EntityType Name="CompraVehiculo">
+          <Key>
+            <PropertyRef Name="PK_CompraVehiculo" />
+          </Key>
+          <Property Name="PK_CompraVehiculo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FK_Proveedor" Type="Int32" />
+          <Property Name="FK_Empleado" Type="Int32" />
+          <Property Name="NumCompra" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FechaCompra" Type="DateTime" Precision="0" />
+          <Property Name="Anulada" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Empleado" Relationship="Self.FK__CompraVeh__FK_Em__3A4CA8FD" FromRole="CompraVehiculo" ToRole="Empleado" />
+          <NavigationProperty Name="Proveedor" Relationship="Self.FK__CompraVeh__FK_Pr__395884C4" FromRole="CompraVehiculo" ToRole="Proveedor" />
+          <NavigationProperty Name="DetalleCompraVehiculo" Relationship="Self.FK__DetalleCo__FK_Co__3D2915A8" FromRole="CompraVehiculo" ToRole="DetalleCompraVehiculo" />
+        </EntityType>
+        <EntityType Name="ContactoAutolote">
+          <Key>
+            <PropertyRef Name="PK_ContactoAutolote" />
+          </Key>
+          <Property Name="PK_ContactoAutolote" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FK_TipoContacto" Type="Int32" />
+          <Property Name="FK_Autolote" Type="Int32" />
+          <Property Name="DetalleContacto" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="ACTIVE" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Autolote" Relationship="Self.FK__ContactoA__FK_Au__1BC821DD" FromRole="ContactoAutolote" ToRole="Autolote" />
+          <NavigationProperty Name="TipoContacto" Relationship="Self.FK__ContactoA__FK_Ti__1AD3FDA4" FromRole="ContactoAutolote" ToRole="TipoContacto" />
+        </EntityType>
+        <EntityType Name="ContactoCliente">
+          <Key>
+            <PropertyRef Name="PK_ContactoCliente" />
+          </Key>
+          <Property Name="PK_ContactoCliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FK_TipoContacto" Type="Int32" />
+          <Property Name="FK_Cliente" Type="Int32" />
+          <Property Name="DetalleContacto" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="ACTIVE" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Cliente" Relationship="Self.FK__ContactoC__FK_Cl__14270015" FromRole="ContactoCliente" ToRole="Cliente" />
+          <NavigationProperty Name="TipoContacto" Relationship="Self.FK__ContactoC__FK_Ti__1332DBDC" FromRole="ContactoCliente" ToRole="TipoContacto" />
+        </EntityType>
+        <EntityType Name="ContactoEmpleado">
+          <Key>
+            <PropertyRef Name="PK_ContactoEmpleado" />
+          </Key>
+          <Property Name="PK_ContactoEmpleado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FK_TipoContacto" Type="Int32" />
+          <Property Name="FK_Empleado" Type="Int32" />
+          <Property Name="DetalleContacto" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="ACTIVE" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Empleado" Relationship="Self.FK__ContactoE__FK_Em__10566F31" FromRole="ContactoEmpleado" ToRole="Empleado" />
+          <NavigationProperty Name="TipoContacto" Relationship="Self.FK__ContactoE__FK_Ti__0F624AF8" FromRole="ContactoEmpleado" ToRole="TipoContacto" />
+        </EntityType>
+        <EntityType Name="ContactoProveedor">
+          <Key>
+            <PropertyRef Name="PK_ContactoProveedor" />
+          </Key>
+          <Property Name="PK_ContactoProveedor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FK_TipoContacto" Type="Int32" />
+          <Property Name="FK_Proveedor" Type="Int32" />
+          <Property Name="DetalleContacto" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="ACTIVE" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Proveedor" Relationship="Self.FK__ContactoP__FK_Pr__17F790F9" FromRole="ContactoProveedor" ToRole="Proveedor" />
+          <NavigationProperty Name="TipoContacto" Relationship="Self.FK__ContactoP__FK_Ti__17036CC0" FromRole="ContactoProveedor" ToRole="TipoContacto" />
+        </EntityType>
+        <EntityType Name="CuerpoVehiculo">
+          <Key>
+            <PropertyRef Name="PK_CuerpoVehiculo" />
+          </Key>
+          <Property Name="PK_CuerpoVehiculo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CuerpoVehiculo1" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="ModeloVehiculo" Relationship="Self.FK__ModeloVeh__FK_Cu__44FF419A" FromRole="CuerpoVehiculo" ToRole="ModeloVehiculo" />
+          <NavigationProperty Name="Vehiculo" Relationship="Self.FK__Vehiculo__FK_Cue__59FA5E80" FromRole="CuerpoVehiculo" ToRole="Vehiculo" />
+        </EntityType>
+        <EntityType Name="DetalleCompraVehiculo">
+          <Key>
+            <PropertyRef Name="PK_DetalleCompraVehiculo" />
+          </Key>
+          <Property Name="PK_DetalleCompraVehiculo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FK_CompraVehiculo" Type="Int32" />
+          <Property Name="FK_Vehiculo" Type="Int32" />
+          <Property Name="Precio" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="Anulada" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="CompraVehiculo" Relationship="Self.FK__DetalleCo__FK_Co__3D2915A8" FromRole="DetalleCompraVehiculo" ToRole="CompraVehiculo" />
+          <NavigationProperty Name="Vehiculo" Relationship="Self.FK__DetalleCo__FK_Ve__3E1D39E1" FromRole="DetalleCompraVehiculo" ToRole="Vehiculo" />
+        </EntityType>
+        <EntityType Name="DetalleVentaVehiculo">
+          <Key>
+            <PropertyRef Name="PK_DetalleVentaVehiculo" />
+          </Key>
+          <Property Name="PK_DetalleVentaVehiculo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FK_VentaVehiculo" Type="Int32" />
+          <Property Name="FK_Vehiculo" Type="Int32" />
+          <Property Name="Precio" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="Anulada" Type="Boolean" />
+          <NavigationProperty Name="VentaVehiculo" Relationship="Self.FK__DetalleVe__FK_Ve__44CA3770" FromRole="DetalleVentaVehiculo" ToRole="VentaVehiculo" />
+          <NavigationProperty Name="Vehiculo" Relationship="Self.FK__DetalleVe__FK_Ve__45BE5BA9" FromRole="DetalleVentaVehiculo" ToRole="Vehiculo" />
+        </EntityType>
+        <EntityType Name="DireccionAutolote">
+          <Key>
+            <PropertyRef Name="PK_DireccionAutolote" />
+          </Key>
+          <Property Name="PK_DireccionAutolote" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FK_Autolote" Type="Int32" />
+          <Property Name="FK_Pais" Type="Int32" />
+          <Property Name="FK_Departamento" Type="Int32" />
+          <Property Name="FK_Ciudad" Type="Int32" />
+          <Property Name="Direccion" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Autolote" Relationship="Self.FK__Direccion__FK_Au__339FAB6E" FromRole="DireccionAutolote" ToRole="Autolote" />
+          <NavigationProperty Name="CatalogoCiudad" Relationship="Self.FK__Direccion__FK_Ci__367C1819" FromRole="DireccionAutolote" ToRole="CatalogoCiudad" />
+          <NavigationProperty Name="CatalogoDepartamento" Relationship="Self.FK__Direccion__FK_De__3587F3E0" FromRole="DireccionAutolote" ToRole="CatalogoDepartamento" />
+          <NavigationProperty Name="CatalogoPais" Relationship="Self.FK__Direccion__FK_Pa__3493CFA7" FromRole="DireccionAutolote" ToRole="CatalogoPais" />
+        </EntityType>
+        <EntityType Name="DireccionCliente">
+          <Key>
+            <PropertyRef Name="PK_DireccionCliente" />
+          </Key>
+          <Property Name="PK_DireccionCliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FK_Cliente" Type="Int32" />
+          <Property Name="FK_Pais" Type="Int32" />
+          <Property Name="FK_Departamento" Type="Int32" />
+          <Property Name="FK_Ciudad" Type="Int32" />
+          <Property Name="Direccion" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="RentadaPropia" Type="Boolean" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="CatalogoCiudad" Relationship="Self.FK__Direccion__FK_Ci__2B0A656D" FromRole="DireccionCliente" ToRole="CatalogoCiudad" />
+          <NavigationProperty Name="CatalogoDepartamento" Relationship="Self.FK__Direccion__FK_De__2A164134" FromRole="DireccionCliente" ToRole="CatalogoDepartamento" />
+          <NavigationProperty Name="CatalogoPais" Relationship="Self.FK__Direccion__FK_Pa__29221CFB" FromRole="DireccionCliente" ToRole="CatalogoPais" />
+          <NavigationProperty Name="Cliente" Relationship="Self.FK__Direccion__FK_Cl__282DF8C2" FromRole="DireccionCliente" ToRole="Cliente" />
+        </EntityType>
+        <EntityType Name="DireccionEmpleado">
+          <Key>
+            <PropertyRef Name="PK_DireccionEmpleado" />
+          </Key>
+          <Property Name="PK_DireccionEmpleado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FK_Empleado" Type="Int32" />
+          <Property Name="FK_Pais" Type="Int32" />
+          <Property Name="FK_Ciudad" Type="Int32" />
+          <Property Name="FK_Departamento" Type="Int32" />
+          <Property Name="Direccion" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="CatalogoCiudad" Relationship="Self.FK__Direccion__FK_Ci__245D67DE" FromRole="DireccionEmpleado" ToRole="CatalogoCiudad" />
+          <NavigationProperty Name="CatalogoDepartamento" Relationship="Self.FK__Direccion__FK_De__25518C17" FromRole="DireccionEmpleado" ToRole="CatalogoDepartamento" />
+          <NavigationProperty Name="CatalogoPais" Relationship="Self.FK__Direccion__FK_Pa__236943A5" FromRole="DireccionEmpleado" ToRole="CatalogoPais" />
+          <NavigationProperty Name="Empleado" Relationship="Self.FK__Direccion__FK_Em__22751F6C" FromRole="DireccionEmpleado" ToRole="Empleado" />
+        </EntityType>
+        <EntityType Name="DireccionProveedor">
+          <Key>
+            <PropertyRef Name="PK_DireccionProveedor" />
+          </Key>
+          <Property Name="PK_DireccionProveedor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FK_Proveedor" Type="Int32" />
+          <Property Name="FK_Pais" Type="Int32" />
+          <Property Name="FK_Departamento" Type="Int32" />
+          <Property Name="FK_Ciudad" Type="Int32" />
+          <Property Name="Direccion" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="CatalogoCiudad" Relationship="Self.FK__Direccion__FK_Ci__30C33EC3" FromRole="DireccionProveedor" ToRole="CatalogoCiudad" />
+          <NavigationProperty Name="CatalogoDepartamento" Relationship="Self.FK__Direccion__FK_De__2FCF1A8A" FromRole="DireccionProveedor" ToRole="CatalogoDepartamento" />
+          <NavigationProperty Name="CatalogoPais" Relationship="Self.FK__Direccion__FK_Pa__2EDAF651" FromRole="DireccionProveedor" ToRole="CatalogoPais" />
+          <NavigationProperty Name="Proveedor" Relationship="Self.FK__Direccion__FK_Pr__2DE6D218" FromRole="DireccionProveedor" ToRole="Proveedor" />
+        </EntityType>
+        <EntityType Name="Empleado">
+          <Key>
+            <PropertyRef Name="PK_Empleado" />
+          </Key>
+          <Property Name="PK_Empleado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FK_TipoEmpleado" Type="Int32" />
+          <Property Name="NumEmpleado" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="PrimerNombre" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PrimerApellido" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SegundoNombre" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="SegundoApellido" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="FechaNacimiento" Type="DateTime" Precision="0" />
+          <Property Name="Sexo" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="CompraVehiculo" Relationship="Self.FK__CompraVeh__FK_Em__3A4CA8FD" FromRole="Empleado" ToRole="CompraVehiculo" />
+          <NavigationProperty Name="ContactoEmpleado" Relationship="Self.FK__ContactoE__FK_Em__10566F31" FromRole="Empleado" ToRole="ContactoEmpleado" />
+          <NavigationProperty Name="DireccionEmpleado" Relationship="Self.FK__Direccion__FK_Em__22751F6C" FromRole="Empleado" ToRole="DireccionEmpleado" />
+          <NavigationProperty Name="TipoEmpleado" Relationship="Self.FK__Empleado__FK_Tip__75A278F5" FromRole="Empleado" ToRole="TipoEmpleado" />
+          <NavigationProperty Name="IdentificacionEmpleado" Relationship="Self.FK__Identific__FK_Em__04E4BC85" FromRole="Empleado" ToRole="IdentificacionEmpleado" />
+          <NavigationProperty Name="VentaVehiculo" Relationship="Self.FK__VentaVehi__FK_Em__40F9A68C" FromRole="Empleado" ToRole="VentaVehiculo" />
+        </EntityType>
+        <EntityType Name="EstadoVehiculo">
+          <Key>
+            <PropertyRef Name="PK_EstadoVehiculo" />
+          </Key>
+          <Property Name="PK_EstadoVehiculo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Estado" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DetallesAdicional" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Vehiculo" Relationship="Self.FK__Vehiculo__FK_Est__5DCAEF64" FromRole="EstadoVehiculo" ToRole="Vehiculo" />
+        </EntityType>
+        <EntityType Name="IdentificacionCliente">
+          <Key>
+            <PropertyRef Name="PK_IdentificacionEmpleado" />
+          </Key>
+          <Property Name="PK_IdentificacionEmpleado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FK_TipoIdentificacion" Type="Int32" />
+          <Property Name="FK_Cliente" Type="Int32" />
+          <Property Name="NumIdentificacion" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FechaEmision" Type="DateTime" Precision="0" />
+          <Property Name="FechaExpiracion" Type="DateTime" Precision="0" />
+          <Property Name="ACTIVE" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Cliente" Relationship="Self.FK__Identific__FK_Cl__08B54D69" FromRole="IdentificacionCliente" ToRole="Cliente" />
+          <NavigationProperty Name="TipoIdentificacion" Relationship="Self.FK__Identific__FK_Ti__07C12930" FromRole="IdentificacionCliente" ToRole="TipoIdentificacion" />
+        </EntityType>
+        <EntityType Name="IdentificacionEmpleado">
+          <Key>
+            <PropertyRef Name="PK_IdentificacionEmpleado" />
+          </Key>
+          <Property Name="PK_IdentificacionEmpleado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FK_TipoIdentificacion" Type="Int32" />
+          <Property Name="FK_Empleado" Type="Int32" />
+          <Property Name="NumIdentificacion" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FechaEmision" Type="DateTime" Precision="0" />
+          <Property Name="FechaExpiracion" Type="DateTime" Precision="0" />
+          <Property Name="ACTIVE" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Empleado" Relationship="Self.FK__Identific__FK_Em__04E4BC85" FromRole="IdentificacionEmpleado" ToRole="Empleado" />
+          <NavigationProperty Name="TipoIdentificacion" Relationship="Self.FK__Identific__FK_Ti__03F0984C" FromRole="IdentificacionEmpleado" ToRole="TipoIdentificacion" />
+        </EntityType>
+        <EntityType Name="IdentificacionProveedor">
+          <Key>
+            <PropertyRef Name="PK_IdentificacionProveedor" />
+          </Key>
+          <Property Name="PK_IdentificacionProveedor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FK_TipoIdentificacion" Type="Int32" />
+          <Property Name="FK_Proveedor" Type="Int32" />
+          <Property Name="NumIdentificacion" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FechaEmision" Type="DateTime" Precision="0" />
+          <Property Name="FechaExpiracion" Type="DateTime" Precision="0" />
+          <Property Name="ACTIVE" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Proveedor" Relationship="Self.FK__Identific__FK_Pr__0C85DE4D" FromRole="IdentificacionProveedor" ToRole="Proveedor" />
+          <NavigationProperty Name="TipoIdentificacion" Relationship="Self.FK__Identific__FK_Ti__0B91BA14" FromRole="IdentificacionProveedor" ToRole="TipoIdentificacion" />
+        </EntityType>
+        <EntityType Name="MarcaVehiculo">
+          <Key>
+            <PropertyRef Name="PK_MarcaVehiculo" />
+          </Key>
+          <Property Name="PK_MarcaVehiculo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FK_Pais" Type="Int32" />
+          <Property Name="MarcaVehiculo1" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AnioFundacion" Type="Int32" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="CatalogoPais" Relationship="Self.FK__MarcaVehi__FK_Pa__3F466844" FromRole="MarcaVehiculo" ToRole="CatalogoPais" />
+          <NavigationProperty Name="ModeloVehiculo" Relationship="Self.FK__ModeloVeh__FK_Ma__440B1D61" FromRole="MarcaVehiculo" ToRole="ModeloVehiculo" />
+        </EntityType>
+        <EntityType Name="ModeloVehiculo">
+          <Key>
+            <PropertyRef Name="PK_ModeloVehiculo" />
+          </Key>
+          <Property Name="PK_ModeloVehiculo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FK_MarcaVehiculo" Type="Int32" />
+          <Property Name="FK_CuerpoVehiculo" Type="Int32" />
+          <Property Name="ModeloVehiculo1" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ModeloAnio" Type="Int32" Nullable="false" />
+          <Property Name="ModeloAnioLanzamiento" Type="Int32" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="CuerpoVehiculo" Relationship="Self.FK__ModeloVeh__FK_Cu__44FF419A" FromRole="ModeloVehiculo" ToRole="CuerpoVehiculo" />
+          <NavigationProperty Name="MarcaVehiculo" Relationship="Self.FK__ModeloVeh__FK_Ma__440B1D61" FromRole="ModeloVehiculo" ToRole="MarcaVehiculo" />
+          <NavigationProperty Name="Vehiculo" Relationship="Self.FK__Vehiculo__FK_Mod__59063A47" FromRole="ModeloVehiculo" ToRole="Vehiculo" />
+        </EntityType>
+        <EntityType Name="Proveedor">
+          <Key>
+            <PropertyRef Name="PK_Proveedor" />
+          </Key>
+          <Property Name="PK_Proveedor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FK_TipoProveedor" Type="Int32" />
+          <Property Name="PrimerNombre" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PrimerApellido" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="SegundoNombre" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="SegundoApellido" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="FechaNacimiento" Type="DateTime" Precision="0" />
+          <Property Name="Sexo" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="CompraVehiculo" Relationship="Self.FK__CompraVeh__FK_Pr__395884C4" FromRole="Proveedor" ToRole="CompraVehiculo" />
+          <NavigationProperty Name="ContactoProveedor" Relationship="Self.FK__ContactoP__FK_Pr__17F790F9" FromRole="Proveedor" ToRole="ContactoProveedor" />
+          <NavigationProperty Name="DireccionProveedor" Relationship="Self.FK__Direccion__FK_Pr__2DE6D218" FromRole="Proveedor" ToRole="DireccionProveedor" />
+          <NavigationProperty Name="IdentificacionProveedor" Relationship="Self.FK__Identific__FK_Pr__0C85DE4D" FromRole="Proveedor" ToRole="IdentificacionProveedor" />
+          <NavigationProperty Name="TipoProveedor" Relationship="Self.FK__Proveedor__FK_Ti__7B5B524B" FromRole="Proveedor" ToRole="TipoProveedor" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TipoCliente">
+          <Key>
+            <PropertyRef Name="PK_TipoCliente" />
+          </Key>
+          <Property Name="PK_TipoCliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TipoCliente1" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Cliente" Relationship="Self.FK__Cliente__FK_Tipo__787EE5A0" FromRole="TipoCliente" ToRole="Cliente" />
+        </EntityType>
+        <EntityType Name="TipoContacto">
+          <Key>
+            <PropertyRef Name="PK_TipoContacto" />
+          </Key>
+          <Property Name="PK_TipoContacto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TipoContacto1" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="ContactoAutolote" Relationship="Self.FK__ContactoA__FK_Ti__1AD3FDA4" FromRole="TipoContacto" ToRole="ContactoAutolote" />
+          <NavigationProperty Name="ContactoCliente" Relationship="Self.FK__ContactoC__FK_Ti__1332DBDC" FromRole="TipoContacto" ToRole="ContactoCliente" />
+          <NavigationProperty Name="ContactoEmpleado" Relationship="Self.FK__ContactoE__FK_Ti__0F624AF8" FromRole="TipoContacto" ToRole="ContactoEmpleado" />
+          <NavigationProperty Name="ContactoProveedor" Relationship="Self.FK__ContactoP__FK_Ti__17036CC0" FromRole="TipoContacto" ToRole="ContactoProveedor" />
+        </EntityType>
+        <EntityType Name="TipoEmpleado">
+          <Key>
+            <PropertyRef Name="PK_TipoEmpleado" />
+          </Key>
+          <Property Name="PK_TipoEmpleado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmpleadoPuesto" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Empleado" Relationship="Self.FK__Empleado__FK_Tip__75A278F5" FromRole="TipoEmpleado" ToRole="Empleado" />
+        </EntityType>
+        <EntityType Name="TipoIdentificacion">
+          <Key>
+            <PropertyRef Name="PK_TipoIdentificacion" />
+          </Key>
+          <Property Name="PK_TipoIdentificacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TipoIdentificacion1" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="IdentificacionCliente" Relationship="Self.FK__Identific__FK_Ti__07C12930" FromRole="TipoIdentificacion" ToRole="IdentificacionCliente" />
+          <NavigationProperty Name="IdentificacionEmpleado" Relationship="Self.FK__Identific__FK_Ti__03F0984C" FromRole="TipoIdentificacion" ToRole="IdentificacionEmpleado" />
+          <NavigationProperty Name="IdentificacionProveedor" Relationship="Self.FK__Identific__FK_Ti__0B91BA14" FromRole="TipoIdentificacion" ToRole="IdentificacionProveedor" />
+        </EntityType>
+        <EntityType Name="TipoMotor">
+          <Key>
+            <PropertyRef Name="PK_TipoMotor" />
+          </Key>
+          <Property Name="PK_TipoMotor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TipoMotor1" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DetalleAdicional" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Vehiculo" Relationship="Self.FK__Vehiculo__FK_Tip__5BE2A6F2" FromRole="TipoMotor" ToRole="Vehiculo" />
+        </EntityType>
+        <EntityType Name="TipoProveedor">
+          <Key>
+            <PropertyRef Name="PK_TipoProveedor" />
+          </Key>
+          <Property Name="PK_TipoProveedor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TipoProveedor1" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Proveedor" Relationship="Self.FK__Proveedor__FK_Ti__7B5B524B" FromRole="TipoProveedor" ToRole="Proveedor" />
+        </EntityType>
+        <EntityType Name="TipoTransmision">
+          <Key>
+            <PropertyRef Name="PK_TipoTransmision" />
+          </Key>
+          <Property Name="PK_TipoTransmision" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TipoTransmision1" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DetalleAdicional" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Vehiculo" Relationship="Self.FK__Vehiculo__FK_Tip__5AEE82B9" FromRole="TipoTransmision" ToRole="Vehiculo" />
+        </EntityType>
+        <EntityType Name="TipoVehiculo">
+          <Key>
+            <PropertyRef Name="PK_TipoVehiculo" />
+          </Key>
+          <Property Name="PK_TipoVehiculo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TipoVehiculo1" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DetallesAdicional" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Vehiculo" Relationship="Self.FK__Vehiculo__FK_Tip__6C190EBB" FromRole="TipoVehiculo" ToRole="Vehiculo" />
+        </EntityType>
+        <EntityType Name="Vehiculo">
+          <Key>
+            <PropertyRef Name="PK_Vehiculo" />
+          </Key>
+          <Property Name="PK_Vehiculo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FK_ModeloVehiculo" Type="Int32" />
+          <Property Name="FK_CuerpoVehiculo" Type="Int32" />
+          <Property Name="FK_TipoTransmision" Type="Int32" />
+          <Property Name="FK_TipoMotor" Type="Int32" />
+          <Property Name="FK_ColorVehiculo" Type="Int32" />
+          <Property Name="FK_EstadoVehiculo" Type="Int32" />
+          <Property Name="FK_PrecioCompraMoneda" Type="Int32" />
+          <Property Name="FK_PrecioVentaMoneda" Type="Int32" />
+          <Property Name="FK_TipoKilometraje" Type="Int32" />
+          <Property Name="Kilometraje" Type="Int32" Nullable="false" />
+          <Property Name="VIN" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Placa" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="PrecioCompra" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="PrecioVenta" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="Disponible" Type="Boolean" Nullable="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="FK_TipoVehiculo" Type="Int32" />
+          <NavigationProperty Name="CatalogoTipoMoneda" Relationship="Self.FK__Vehiculo__FK_Pre__5EBF139D" FromRole="Vehiculo" ToRole="CatalogoTipoMoneda" />
+          <NavigationProperty Name="CatalogoTipoMoneda1" Relationship="Self.FK__Vehiculo__FK_Pre__5FB337D6" FromRole="Vehiculo" ToRole="CatalogoTipoMoneda" />
+          <NavigationProperty Name="CatalogoUnidadLongitud" Relationship="Self.FK__Vehiculo__FK_Tip__60A75C0F" FromRole="Vehiculo" ToRole="CatalogoUnidadLongitud" />
+          <NavigationProperty Name="ColorVehiculo" Relationship="Self.FK__Vehiculo__FK_Col__5CD6CB2B" FromRole="Vehiculo" ToRole="ColorVehiculo" />
+          <NavigationProperty Name="CuerpoVehiculo" Relationship="Self.FK__Vehiculo__FK_Cue__59FA5E80" FromRole="Vehiculo" ToRole="CuerpoVehiculo" />
+          <NavigationProperty Name="DetalleCompraVehiculo" Relationship="Self.FK__DetalleCo__FK_Ve__3E1D39E1" FromRole="Vehiculo" ToRole="DetalleCompraVehiculo" />
+          <NavigationProperty Name="DetalleVentaVehiculo" Relationship="Self.FK__DetalleVe__FK_Ve__45BE5BA9" FromRole="Vehiculo" ToRole="DetalleVentaVehiculo" />
+          <NavigationProperty Name="EstadoVehiculo" Relationship="Self.FK__Vehiculo__FK_Est__5DCAEF64" FromRole="Vehiculo" ToRole="EstadoVehiculo" />
+          <NavigationProperty Name="ModeloVehiculo" Relationship="Self.FK__Vehiculo__FK_Mod__59063A47" FromRole="Vehiculo" ToRole="ModeloVehiculo" />
+          <NavigationProperty Name="TipoMotor" Relationship="Self.FK__Vehiculo__FK_Tip__5BE2A6F2" FromRole="Vehiculo" ToRole="TipoMotor" />
+          <NavigationProperty Name="TipoTransmision" Relationship="Self.FK__Vehiculo__FK_Tip__5AEE82B9" FromRole="Vehiculo" ToRole="TipoTransmision" />
+          <NavigationProperty Name="TipoVehiculo" Relationship="Self.FK__Vehiculo__FK_Tip__6C190EBB" FromRole="Vehiculo" ToRole="TipoVehiculo" />
+        </EntityType>
+        <EntityType Name="VentaVehiculo">
+          <Key>
+            <PropertyRef Name="PK_VentaVehiculo" />
+          </Key>
+          <Property Name="PK_VentaVehiculo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FK_Empleado" Type="Int32" />
+          <Property Name="FK_Cliente" Type="Int32" />
+          <Property Name="NumVenta" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Cotizar" Type="Boolean" />
+          <Property Name="Anulada" Type="Boolean" />
+          <Property Name="FechaVenta" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Cliente" Relationship="Self.FK__VentaVehi__FK_Cl__41EDCAC5" FromRole="VentaVehiculo" ToRole="Cliente" />
+          <NavigationProperty Name="DetalleVentaVehiculo" Relationship="Self.FK__DetalleVe__FK_Ve__44CA3770" FromRole="VentaVehiculo" ToRole="DetalleVentaVehiculo" />
+          <NavigationProperty Name="Empleado" Relationship="Self.FK__VentaVehi__FK_Em__40F9A68C" FromRole="VentaVehiculo" ToRole="Empleado" />
+        </EntityType>
+        <Association Name="FK__ContactoA__FK_Au__1BC821DD">
+          <End Role="Autolote" Type="Self.Autolote" Multiplicity="0..1" />
+          <End Role="ContactoAutolote" Type="Self.ContactoAutolote" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Autolote">
+              <PropertyRef Name="PK_Autolote" />
+            </Principal>
+            <Dependent Role="ContactoAutolote">
+              <PropertyRef Name="FK_Autolote" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Direccion__FK_Au__339FAB6E">
+          <End Role="Autolote" Type="Self.Autolote" Multiplicity="0..1" />
+          <End Role="DireccionAutolote" Type="Self.DireccionAutolote" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Autolote">
+              <PropertyRef Name="PK_Autolote" />
+            </Principal>
+            <Dependent Role="DireccionAutolote">
+              <PropertyRef Name="FK_Autolote" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Direccion__FK_Ci__245D67DE">
+          <End Role="CatalogoCiudad" Type="Self.CatalogoCiudad" Multiplicity="0..1" />
+          <End Role="DireccionEmpleado" Type="Self.DireccionEmpleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CatalogoCiudad">
+              <PropertyRef Name="PK_Ciudad" />
+            </Principal>
+            <Dependent Role="DireccionEmpleado">
+              <PropertyRef Name="FK_Ciudad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Direccion__FK_Ci__2B0A656D">
+          <End Role="CatalogoCiudad" Type="Self.CatalogoCiudad" Multiplicity="0..1" />
+          <End Role="DireccionCliente" Type="Self.DireccionCliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CatalogoCiudad">
+              <PropertyRef Name="PK_Ciudad" />
+            </Principal>
+            <Dependent Role="DireccionCliente">
+              <PropertyRef Name="FK_Ciudad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Direccion__FK_Ci__30C33EC3">
+          <End Role="CatalogoCiudad" Type="Self.CatalogoCiudad" Multiplicity="0..1" />
+          <End Role="DireccionProveedor" Type="Self.DireccionProveedor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CatalogoCiudad">
+              <PropertyRef Name="PK_Ciudad" />
+            </Principal>
+            <Dependent Role="DireccionProveedor">
+              <PropertyRef Name="FK_Ciudad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Direccion__FK_Ci__367C1819">
+          <End Role="CatalogoCiudad" Type="Self.CatalogoCiudad" Multiplicity="0..1" />
+          <End Role="DireccionAutolote" Type="Self.DireccionAutolote" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CatalogoCiudad">
+              <PropertyRef Name="PK_Ciudad" />
+            </Principal>
+            <Dependent Role="DireccionAutolote">
+              <PropertyRef Name="FK_Ciudad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Direccion__FK_De__25518C17">
+          <End Role="CatalogoDepartamento" Type="Self.CatalogoDepartamento" Multiplicity="0..1" />
+          <End Role="DireccionEmpleado" Type="Self.DireccionEmpleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CatalogoDepartamento">
+              <PropertyRef Name="PK_Departamento" />
+            </Principal>
+            <Dependent Role="DireccionEmpleado">
+              <PropertyRef Name="FK_Departamento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Direccion__FK_De__2A164134">
+          <End Role="CatalogoDepartamento" Type="Self.CatalogoDepartamento" Multiplicity="0..1" />
+          <End Role="DireccionCliente" Type="Self.DireccionCliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CatalogoDepartamento">
+              <PropertyRef Name="PK_Departamento" />
+            </Principal>
+            <Dependent Role="DireccionCliente">
+              <PropertyRef Name="FK_Departamento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Direccion__FK_De__2FCF1A8A">
+          <End Role="CatalogoDepartamento" Type="Self.CatalogoDepartamento" Multiplicity="0..1" />
+          <End Role="DireccionProveedor" Type="Self.DireccionProveedor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CatalogoDepartamento">
+              <PropertyRef Name="PK_Departamento" />
+            </Principal>
+            <Dependent Role="DireccionProveedor">
+              <PropertyRef Name="FK_Departamento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Direccion__FK_De__3587F3E0">
+          <End Role="CatalogoDepartamento" Type="Self.CatalogoDepartamento" Multiplicity="0..1" />
+          <End Role="DireccionAutolote" Type="Self.DireccionAutolote" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CatalogoDepartamento">
+              <PropertyRef Name="PK_Departamento" />
+            </Principal>
+            <Dependent Role="DireccionAutolote">
+              <PropertyRef Name="FK_Departamento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Direccion__FK_Pa__236943A5">
+          <End Role="CatalogoPais" Type="Self.CatalogoPais" Multiplicity="0..1" />
+          <End Role="DireccionEmpleado" Type="Self.DireccionEmpleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CatalogoPais">
+              <PropertyRef Name="PK_Pais" />
+            </Principal>
+            <Dependent Role="DireccionEmpleado">
+              <PropertyRef Name="FK_Pais" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Direccion__FK_Pa__29221CFB">
+          <End Role="CatalogoPais" Type="Self.CatalogoPais" Multiplicity="0..1" />
+          <End Role="DireccionCliente" Type="Self.DireccionCliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CatalogoPais">
+              <PropertyRef Name="PK_Pais" />
+            </Principal>
+            <Dependent Role="DireccionCliente">
+              <PropertyRef Name="FK_Pais" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Direccion__FK_Pa__2EDAF651">
+          <End Role="CatalogoPais" Type="Self.CatalogoPais" Multiplicity="0..1" />
+          <End Role="DireccionProveedor" Type="Self.DireccionProveedor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CatalogoPais">
+              <PropertyRef Name="PK_Pais" />
+            </Principal>
+            <Dependent Role="DireccionProveedor">
+              <PropertyRef Name="FK_Pais" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Direccion__FK_Pa__3493CFA7">
+          <End Role="CatalogoPais" Type="Self.CatalogoPais" Multiplicity="0..1" />
+          <End Role="DireccionAutolote" Type="Self.DireccionAutolote" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CatalogoPais">
+              <PropertyRef Name="PK_Pais" />
+            </Principal>
+            <Dependent Role="DireccionAutolote">
+              <PropertyRef Name="FK_Pais" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MarcaVehi__FK_Pa__3F466844">
+          <End Role="CatalogoPais" Type="Self.CatalogoPais" Multiplicity="0..1" />
+          <End Role="MarcaVehiculo" Type="Self.MarcaVehiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CatalogoPais">
+              <PropertyRef Name="PK_Pais" />
+            </Principal>
+            <Dependent Role="MarcaVehiculo">
+              <PropertyRef Name="FK_Pais" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Vehiculo__FK_Pre__5EBF139D">
+          <End Role="CatalogoTipoMoneda" Type="Self.CatalogoTipoMoneda" Multiplicity="0..1" />
+          <End Role="Vehiculo" Type="Self.Vehiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CatalogoTipoMoneda">
+              <PropertyRef Name="PK_TipoMoneda" />
+            </Principal>
+            <Dependent Role="Vehiculo">
+              <PropertyRef Name="FK_PrecioCompraMoneda" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Vehiculo__FK_Pre__5FB337D6">
+          <End Role="CatalogoTipoMoneda" Type="Self.CatalogoTipoMoneda" Multiplicity="0..1" />
+          <End Role="Vehiculo" Type="Self.Vehiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CatalogoTipoMoneda">
+              <PropertyRef Name="PK_TipoMoneda" />
+            </Principal>
+            <Dependent Role="Vehiculo">
+              <PropertyRef Name="FK_PrecioVentaMoneda" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Vehiculo__FK_Tip__60A75C0F">
+          <End Role="CatalogoUnidadLongitud" Type="Self.CatalogoUnidadLongitud" Multiplicity="0..1" />
+          <End Role="Vehiculo" Type="Self.Vehiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CatalogoUnidadLongitud">
+              <PropertyRef Name="PK_UnidadLongitud" />
+            </Principal>
+            <Dependent Role="Vehiculo">
+              <PropertyRef Name="FK_TipoKilometraje" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cliente__FK_Tipo__787EE5A0">
+          <End Role="TipoCliente" Type="Self.TipoCliente" Multiplicity="0..1" />
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoCliente">
+              <PropertyRef Name="PK_TipoCliente" />
+            </Principal>
+            <Dependent Role="Cliente">
+              <PropertyRef Name="FK_TipoCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ContactoC__FK_Cl__14270015">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="0..1" />
+          <End Role="ContactoCliente" Type="Self.ContactoCliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="PK_Cliente" />
+            </Principal>
+            <Dependent Role="ContactoCliente">
+              <PropertyRef Name="FK_Cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Direccion__FK_Cl__282DF8C2">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="0..1" />
+          <End Role="DireccionCliente" Type="Self.DireccionCliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="PK_Cliente" />
+            </Principal>
+            <Dependent Role="DireccionCliente">
+              <PropertyRef Name="FK_Cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Identific__FK_Cl__08B54D69">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="0..1" />
+          <End Role="IdentificacionCliente" Type="Self.IdentificacionCliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="PK_Cliente" />
+            </Principal>
+            <Dependent Role="IdentificacionCliente">
+              <PropertyRef Name="FK_Cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__VentaVehi__FK_Cl__41EDCAC5">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="0..1" />
+          <End Role="VentaVehiculo" Type="Self.VentaVehiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="PK_Cliente" />
+            </Principal>
+            <Dependent Role="VentaVehiculo">
+              <PropertyRef Name="FK_Cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Vehiculo__FK_Col__5CD6CB2B">
+          <End Role="ColorVehiculo" Type="Self.ColorVehiculo" Multiplicity="0..1" />
+          <End Role="Vehiculo" Type="Self.Vehiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ColorVehiculo">
+              <PropertyRef Name="PK_ColorVehiculo" />
+            </Principal>
+            <Dependent Role="Vehiculo">
+              <PropertyRef Name="FK_ColorVehiculo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CompraVeh__FK_Em__3A4CA8FD">
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="0..1" />
+          <End Role="CompraVehiculo" Type="Self.CompraVehiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleado">
+              <PropertyRef Name="PK_Empleado" />
+            </Principal>
+            <Dependent Role="CompraVehiculo">
+              <PropertyRef Name="FK_Empleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CompraVeh__FK_Pr__395884C4">
+          <End Role="Proveedor" Type="Self.Proveedor" Multiplicity="0..1" />
+          <End Role="CompraVehiculo" Type="Self.CompraVehiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proveedor">
+              <PropertyRef Name="PK_Proveedor" />
+            </Principal>
+            <Dependent Role="CompraVehiculo">
+              <PropertyRef Name="FK_Proveedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DetalleCo__FK_Co__3D2915A8">
+          <End Role="CompraVehiculo" Type="Self.CompraVehiculo" Multiplicity="0..1" />
+          <End Role="DetalleCompraVehiculo" Type="Self.DetalleCompraVehiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CompraVehiculo">
+              <PropertyRef Name="PK_CompraVehiculo" />
+            </Principal>
+            <Dependent Role="DetalleCompraVehiculo">
+              <PropertyRef Name="FK_CompraVehiculo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ContactoA__FK_Ti__1AD3FDA4">
+          <End Role="TipoContacto" Type="Self.TipoContacto" Multiplicity="0..1" />
+          <End Role="ContactoAutolote" Type="Self.ContactoAutolote" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoContacto">
+              <PropertyRef Name="PK_TipoContacto" />
+            </Principal>
+            <Dependent Role="ContactoAutolote">
+              <PropertyRef Name="FK_TipoContacto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ContactoC__FK_Ti__1332DBDC">
+          <End Role="TipoContacto" Type="Self.TipoContacto" Multiplicity="0..1" />
+          <End Role="ContactoCliente" Type="Self.ContactoCliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoContacto">
+              <PropertyRef Name="PK_TipoContacto" />
+            </Principal>
+            <Dependent Role="ContactoCliente">
+              <PropertyRef Name="FK_TipoContacto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ContactoE__FK_Em__10566F31">
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="0..1" />
+          <End Role="ContactoEmpleado" Type="Self.ContactoEmpleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleado">
+              <PropertyRef Name="PK_Empleado" />
+            </Principal>
+            <Dependent Role="ContactoEmpleado">
+              <PropertyRef Name="FK_Empleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ContactoE__FK_Ti__0F624AF8">
+          <End Role="TipoContacto" Type="Self.TipoContacto" Multiplicity="0..1" />
+          <End Role="ContactoEmpleado" Type="Self.ContactoEmpleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoContacto">
+              <PropertyRef Name="PK_TipoContacto" />
+            </Principal>
+            <Dependent Role="ContactoEmpleado">
+              <PropertyRef Name="FK_TipoContacto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ContactoP__FK_Pr__17F790F9">
+          <End Role="Proveedor" Type="Self.Proveedor" Multiplicity="0..1" />
+          <End Role="ContactoProveedor" Type="Self.ContactoProveedor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proveedor">
+              <PropertyRef Name="PK_Proveedor" />
+            </Principal>
+            <Dependent Role="ContactoProveedor">
+              <PropertyRef Name="FK_Proveedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ContactoP__FK_Ti__17036CC0">
+          <End Role="TipoContacto" Type="Self.TipoContacto" Multiplicity="0..1" />
+          <End Role="ContactoProveedor" Type="Self.ContactoProveedor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoContacto">
+              <PropertyRef Name="PK_TipoContacto" />
+            </Principal>
+            <Dependent Role="ContactoProveedor">
+              <PropertyRef Name="FK_TipoContacto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ModeloVeh__FK_Cu__44FF419A">
+          <End Role="CuerpoVehiculo" Type="Self.CuerpoVehiculo" Multiplicity="0..1" />
+          <End Role="ModeloVehiculo" Type="Self.ModeloVehiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CuerpoVehiculo">
+              <PropertyRef Name="PK_CuerpoVehiculo" />
+            </Principal>
+            <Dependent Role="ModeloVehiculo">
+              <PropertyRef Name="FK_CuerpoVehiculo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Vehiculo__FK_Cue__59FA5E80">
+          <End Role="CuerpoVehiculo" Type="Self.CuerpoVehiculo" Multiplicity="0..1" />
+          <End Role="Vehiculo" Type="Self.Vehiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CuerpoVehiculo">
+              <PropertyRef Name="PK_CuerpoVehiculo" />
+            </Principal>
+            <Dependent Role="Vehiculo">
+              <PropertyRef Name="FK_CuerpoVehiculo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DetalleCo__FK_Ve__3E1D39E1">
+          <End Role="Vehiculo" Type="Self.Vehiculo" Multiplicity="0..1" />
+          <End Role="DetalleCompraVehiculo" Type="Self.DetalleCompraVehiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehiculo">
+              <PropertyRef Name="PK_Vehiculo" />
+            </Principal>
+            <Dependent Role="DetalleCompraVehiculo">
+              <PropertyRef Name="FK_Vehiculo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DetalleVe__FK_Ve__44CA3770">
+          <End Role="VentaVehiculo" Type="Self.VentaVehiculo" Multiplicity="0..1" />
+          <End Role="DetalleVentaVehiculo" Type="Self.DetalleVentaVehiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VentaVehiculo">
+              <PropertyRef Name="PK_VentaVehiculo" />
+            </Principal>
+            <Dependent Role="DetalleVentaVehiculo">
+              <PropertyRef Name="FK_VentaVehiculo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DetalleVe__FK_Ve__45BE5BA9">
+          <End Role="Vehiculo" Type="Self.Vehiculo" Multiplicity="0..1" />
+          <End Role="DetalleVentaVehiculo" Type="Self.DetalleVentaVehiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehiculo">
+              <PropertyRef Name="PK_Vehiculo" />
+            </Principal>
+            <Dependent Role="DetalleVentaVehiculo">
+              <PropertyRef Name="FK_Vehiculo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Direccion__FK_Em__22751F6C">
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="0..1" />
+          <End Role="DireccionEmpleado" Type="Self.DireccionEmpleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleado">
+              <PropertyRef Name="PK_Empleado" />
+            </Principal>
+            <Dependent Role="DireccionEmpleado">
+              <PropertyRef Name="FK_Empleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Direccion__FK_Pr__2DE6D218">
+          <End Role="Proveedor" Type="Self.Proveedor" Multiplicity="0..1" />
+          <End Role="DireccionProveedor" Type="Self.DireccionProveedor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proveedor">
+              <PropertyRef Name="PK_Proveedor" />
+            </Principal>
+            <Dependent Role="DireccionProveedor">
+              <PropertyRef Name="FK_Proveedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Empleado__FK_Tip__75A278F5">
+          <End Role="TipoEmpleado" Type="Self.TipoEmpleado" Multiplicity="0..1" />
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoEmpleado">
+              <PropertyRef Name="PK_TipoEmpleado" />
+            </Principal>
+            <Dependent Role="Empleado">
+              <PropertyRef Name="FK_TipoEmpleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Identific__FK_Em__04E4BC85">
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="0..1" />
+          <End Role="IdentificacionEmpleado" Type="Self.IdentificacionEmpleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleado">
+              <PropertyRef Name="PK_Empleado" />
+            </Principal>
+            <Dependent Role="IdentificacionEmpleado">
+              <PropertyRef Name="FK_Empleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__VentaVehi__FK_Em__40F9A68C">
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="0..1" />
+          <End Role="VentaVehiculo" Type="Self.VentaVehiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleado">
+              <PropertyRef Name="PK_Empleado" />
+            </Principal>
+            <Dependent Role="VentaVehiculo">
+              <PropertyRef Name="FK_Empleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Vehiculo__FK_Est__5DCAEF64">
+          <End Role="EstadoVehiculo" Type="Self.EstadoVehiculo" Multiplicity="0..1" />
+          <End Role="Vehiculo" Type="Self.Vehiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EstadoVehiculo">
+              <PropertyRef Name="PK_EstadoVehiculo" />
+            </Principal>
+            <Dependent Role="Vehiculo">
+              <PropertyRef Name="FK_EstadoVehiculo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Identific__FK_Ti__07C12930">
+          <End Role="TipoIdentificacion" Type="Self.TipoIdentificacion" Multiplicity="0..1" />
+          <End Role="IdentificacionCliente" Type="Self.IdentificacionCliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoIdentificacion">
+              <PropertyRef Name="PK_TipoIdentificacion" />
+            </Principal>
+            <Dependent Role="IdentificacionCliente">
+              <PropertyRef Name="FK_TipoIdentificacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Identific__FK_Ti__03F0984C">
+          <End Role="TipoIdentificacion" Type="Self.TipoIdentificacion" Multiplicity="0..1" />
+          <End Role="IdentificacionEmpleado" Type="Self.IdentificacionEmpleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoIdentificacion">
+              <PropertyRef Name="PK_TipoIdentificacion" />
+            </Principal>
+            <Dependent Role="IdentificacionEmpleado">
+              <PropertyRef Name="FK_TipoIdentificacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Identific__FK_Pr__0C85DE4D">
+          <End Role="Proveedor" Type="Self.Proveedor" Multiplicity="0..1" />
+          <End Role="IdentificacionProveedor" Type="Self.IdentificacionProveedor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proveedor">
+              <PropertyRef Name="PK_Proveedor" />
+            </Principal>
+            <Dependent Role="IdentificacionProveedor">
+              <PropertyRef Name="FK_Proveedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Identific__FK_Ti__0B91BA14">
+          <End Role="TipoIdentificacion" Type="Self.TipoIdentificacion" Multiplicity="0..1" />
+          <End Role="IdentificacionProveedor" Type="Self.IdentificacionProveedor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoIdentificacion">
+              <PropertyRef Name="PK_TipoIdentificacion" />
+            </Principal>
+            <Dependent Role="IdentificacionProveedor">
+              <PropertyRef Name="FK_TipoIdentificacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ModeloVeh__FK_Ma__440B1D61">
+          <End Role="MarcaVehiculo" Type="Self.MarcaVehiculo" Multiplicity="0..1" />
+          <End Role="ModeloVehiculo" Type="Self.ModeloVehiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MarcaVehiculo">
+              <PropertyRef Name="PK_MarcaVehiculo" />
+            </Principal>
+            <Dependent Role="ModeloVehiculo">
+              <PropertyRef Name="FK_MarcaVehiculo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Vehiculo__FK_Mod__59063A47">
+          <End Role="ModeloVehiculo" Type="Self.ModeloVehiculo" Multiplicity="0..1" />
+          <End Role="Vehiculo" Type="Self.Vehiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ModeloVehiculo">
+              <PropertyRef Name="PK_ModeloVehiculo" />
+            </Principal>
+            <Dependent Role="Vehiculo">
+              <PropertyRef Name="FK_ModeloVehiculo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Proveedor__FK_Ti__7B5B524B">
+          <End Role="TipoProveedor" Type="Self.TipoProveedor" Multiplicity="0..1" />
+          <End Role="Proveedor" Type="Self.Proveedor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoProveedor">
+              <PropertyRef Name="PK_TipoProveedor" />
+            </Principal>
+            <Dependent Role="Proveedor">
+              <PropertyRef Name="FK_TipoProveedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Vehiculo__FK_Tip__5BE2A6F2">
+          <End Role="TipoMotor" Type="Self.TipoMotor" Multiplicity="0..1" />
+          <End Role="Vehiculo" Type="Self.Vehiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoMotor">
+              <PropertyRef Name="PK_TipoMotor" />
+            </Principal>
+            <Dependent Role="Vehiculo">
+              <PropertyRef Name="FK_TipoMotor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Vehiculo__FK_Tip__5AEE82B9">
+          <End Role="TipoTransmision" Type="Self.TipoTransmision" Multiplicity="0..1" />
+          <End Role="Vehiculo" Type="Self.Vehiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoTransmision">
+              <PropertyRef Name="PK_TipoTransmision" />
+            </Principal>
+            <Dependent Role="Vehiculo">
+              <PropertyRef Name="FK_TipoTransmision" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Vehiculo__FK_Tip__6C190EBB">
+          <End Role="TipoVehiculo" Type="Self.TipoVehiculo" Multiplicity="0..1" />
+          <End Role="Vehiculo" Type="Self.Vehiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoVehiculo">
+              <PropertyRef Name="PK_TipoVehiculo" />
+            </Principal>
+            <Dependent Role="Vehiculo">
+              <PropertyRef Name="FK_TipoVehiculo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BDAutoloteEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Autolote" EntityType="Self.Autolote" />
+          <EntitySet Name="CatalogoCiudad" EntityType="Self.CatalogoCiudad" />
+          <EntitySet Name="CatalogoDepartamento" EntityType="Self.CatalogoDepartamento" />
+          <EntitySet Name="CatalogoPais" EntityType="Self.CatalogoPais" />
+          <EntitySet Name="CatalogoTipoMoneda" EntityType="Self.CatalogoTipoMoneda" />
+          <EntitySet Name="CatalogoUnidadLongitud" EntityType="Self.CatalogoUnidadLongitud" />
+          <EntitySet Name="Cliente" EntityType="Self.Cliente" />
+          <EntitySet Name="ColorVehiculo" EntityType="Self.ColorVehiculo" />
+          <EntitySet Name="CompraVehiculo" EntityType="Self.CompraVehiculo" />
+          <EntitySet Name="ContactoAutolote" EntityType="Self.ContactoAutolote" />
+          <EntitySet Name="ContactoCliente" EntityType="Self.ContactoCliente" />
+          <EntitySet Name="ContactoEmpleado" EntityType="Self.ContactoEmpleado" />
+          <EntitySet Name="ContactoProveedor" EntityType="Self.ContactoProveedor" />
+          <EntitySet Name="CuerpoVehiculo" EntityType="Self.CuerpoVehiculo" />
+          <EntitySet Name="DetalleCompraVehiculo" EntityType="Self.DetalleCompraVehiculo" />
+          <EntitySet Name="DetalleVentaVehiculo" EntityType="Self.DetalleVentaVehiculo" />
+          <EntitySet Name="DireccionAutolote" EntityType="Self.DireccionAutolote" />
+          <EntitySet Name="DireccionCliente" EntityType="Self.DireccionCliente" />
+          <EntitySet Name="DireccionEmpleado" EntityType="Self.DireccionEmpleado" />
+          <EntitySet Name="DireccionProveedor" EntityType="Self.DireccionProveedor" />
+          <EntitySet Name="Empleado" EntityType="Self.Empleado" />
+          <EntitySet Name="EstadoVehiculo" EntityType="Self.EstadoVehiculo" />
+          <EntitySet Name="IdentificacionCliente" EntityType="Self.IdentificacionCliente" />
+          <EntitySet Name="IdentificacionEmpleado" EntityType="Self.IdentificacionEmpleado" />
+          <EntitySet Name="IdentificacionProveedor" EntityType="Self.IdentificacionProveedor" />
+          <EntitySet Name="MarcaVehiculo" EntityType="Self.MarcaVehiculo" />
+          <EntitySet Name="ModeloVehiculo" EntityType="Self.ModeloVehiculo" />
+          <EntitySet Name="Proveedor" EntityType="Self.Proveedor" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="TipoCliente" EntityType="Self.TipoCliente" />
+          <EntitySet Name="TipoContacto" EntityType="Self.TipoContacto" />
+          <EntitySet Name="TipoEmpleado" EntityType="Self.TipoEmpleado" />
+          <EntitySet Name="TipoIdentificacion" EntityType="Self.TipoIdentificacion" />
+          <EntitySet Name="TipoMotor" EntityType="Self.TipoMotor" />
+          <EntitySet Name="TipoProveedor" EntityType="Self.TipoProveedor" />
+          <EntitySet Name="TipoTransmision" EntityType="Self.TipoTransmision" />
+          <EntitySet Name="TipoVehiculo" EntityType="Self.TipoVehiculo" />
+          <EntitySet Name="Vehiculo" EntityType="Self.Vehiculo" />
+          <EntitySet Name="VentaVehiculo" EntityType="Self.VentaVehiculo" />
+          <AssociationSet Name="FK__ContactoA__FK_Au__1BC821DD" Association="Self.FK__ContactoA__FK_Au__1BC821DD">
+            <End Role="Autolote" EntitySet="Autolote" />
+            <End Role="ContactoAutolote" EntitySet="ContactoAutolote" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Direccion__FK_Au__339FAB6E" Association="Self.FK__Direccion__FK_Au__339FAB6E">
+            <End Role="Autolote" EntitySet="Autolote" />
+            <End Role="DireccionAutolote" EntitySet="DireccionAutolote" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Direccion__FK_Ci__245D67DE" Association="Self.FK__Direccion__FK_Ci__245D67DE">
+            <End Role="CatalogoCiudad" EntitySet="CatalogoCiudad" />
+            <End Role="DireccionEmpleado" EntitySet="DireccionEmpleado" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Direccion__FK_Ci__2B0A656D" Association="Self.FK__Direccion__FK_Ci__2B0A656D">
+            <End Role="CatalogoCiudad" EntitySet="CatalogoCiudad" />
+            <End Role="DireccionCliente" EntitySet="DireccionCliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Direccion__FK_Ci__30C33EC3" Association="Self.FK__Direccion__FK_Ci__30C33EC3">
+            <End Role="CatalogoCiudad" EntitySet="CatalogoCiudad" />
+            <End Role="DireccionProveedor" EntitySet="DireccionProveedor" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Direccion__FK_Ci__367C1819" Association="Self.FK__Direccion__FK_Ci__367C1819">
+            <End Role="CatalogoCiudad" EntitySet="CatalogoCiudad" />
+            <End Role="DireccionAutolote" EntitySet="DireccionAutolote" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Direccion__FK_De__25518C17" Association="Self.FK__Direccion__FK_De__25518C17">
+            <End Role="CatalogoDepartamento" EntitySet="CatalogoDepartamento" />
+            <End Role="DireccionEmpleado" EntitySet="DireccionEmpleado" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Direccion__FK_De__2A164134" Association="Self.FK__Direccion__FK_De__2A164134">
+            <End Role="CatalogoDepartamento" EntitySet="CatalogoDepartamento" />
+            <End Role="DireccionCliente" EntitySet="DireccionCliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Direccion__FK_De__2FCF1A8A" Association="Self.FK__Direccion__FK_De__2FCF1A8A">
+            <End Role="CatalogoDepartamento" EntitySet="CatalogoDepartamento" />
+            <End Role="DireccionProveedor" EntitySet="DireccionProveedor" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Direccion__FK_De__3587F3E0" Association="Self.FK__Direccion__FK_De__3587F3E0">
+            <End Role="CatalogoDepartamento" EntitySet="CatalogoDepartamento" />
+            <End Role="DireccionAutolote" EntitySet="DireccionAutolote" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Direccion__FK_Pa__236943A5" Association="Self.FK__Direccion__FK_Pa__236943A5">
+            <End Role="CatalogoPais" EntitySet="CatalogoPais" />
+            <End Role="DireccionEmpleado" EntitySet="DireccionEmpleado" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Direccion__FK_Pa__29221CFB" Association="Self.FK__Direccion__FK_Pa__29221CFB">
+            <End Role="CatalogoPais" EntitySet="CatalogoPais" />
+            <End Role="DireccionCliente" EntitySet="DireccionCliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Direccion__FK_Pa__2EDAF651" Association="Self.FK__Direccion__FK_Pa__2EDAF651">
+            <End Role="CatalogoPais" EntitySet="CatalogoPais" />
+            <End Role="DireccionProveedor" EntitySet="DireccionProveedor" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Direccion__FK_Pa__3493CFA7" Association="Self.FK__Direccion__FK_Pa__3493CFA7">
+            <End Role="CatalogoPais" EntitySet="CatalogoPais" />
+            <End Role="DireccionAutolote" EntitySet="DireccionAutolote" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MarcaVehi__FK_Pa__3F466844" Association="Self.FK__MarcaVehi__FK_Pa__3F466844">
+            <End Role="CatalogoPais" EntitySet="CatalogoPais" />
+            <End Role="MarcaVehiculo" EntitySet="MarcaVehiculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Vehiculo__FK_Pre__5EBF139D" Association="Self.FK__Vehiculo__FK_Pre__5EBF139D">
+            <End Role="CatalogoTipoMoneda" EntitySet="CatalogoTipoMoneda" />
+            <End Role="Vehiculo" EntitySet="Vehiculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Vehiculo__FK_Pre__5FB337D6" Association="Self.FK__Vehiculo__FK_Pre__5FB337D6">
+            <End Role="CatalogoTipoMoneda" EntitySet="CatalogoTipoMoneda" />
+            <End Role="Vehiculo" EntitySet="Vehiculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Vehiculo__FK_Tip__60A75C0F" Association="Self.FK__Vehiculo__FK_Tip__60A75C0F">
+            <End Role="CatalogoUnidadLongitud" EntitySet="CatalogoUnidadLongitud" />
+            <End Role="Vehiculo" EntitySet="Vehiculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cliente__FK_Tipo__787EE5A0" Association="Self.FK__Cliente__FK_Tipo__787EE5A0">
+            <End Role="TipoCliente" EntitySet="TipoCliente" />
+            <End Role="Cliente" EntitySet="Cliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ContactoC__FK_Cl__14270015" Association="Self.FK__ContactoC__FK_Cl__14270015">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="ContactoCliente" EntitySet="ContactoCliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Direccion__FK_Cl__282DF8C2" Association="Self.FK__Direccion__FK_Cl__282DF8C2">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="DireccionCliente" EntitySet="DireccionCliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Identific__FK_Cl__08B54D69" Association="Self.FK__Identific__FK_Cl__08B54D69">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="IdentificacionCliente" EntitySet="IdentificacionCliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__VentaVehi__FK_Cl__41EDCAC5" Association="Self.FK__VentaVehi__FK_Cl__41EDCAC5">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="VentaVehiculo" EntitySet="VentaVehiculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Vehiculo__FK_Col__5CD6CB2B" Association="Self.FK__Vehiculo__FK_Col__5CD6CB2B">
+            <End Role="ColorVehiculo" EntitySet="ColorVehiculo" />
+            <End Role="Vehiculo" EntitySet="Vehiculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CompraVeh__FK_Em__3A4CA8FD" Association="Self.FK__CompraVeh__FK_Em__3A4CA8FD">
+            <End Role="Empleado" EntitySet="Empleado" />
+            <End Role="CompraVehiculo" EntitySet="CompraVehiculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CompraVeh__FK_Pr__395884C4" Association="Self.FK__CompraVeh__FK_Pr__395884C4">
+            <End Role="Proveedor" EntitySet="Proveedor" />
+            <End Role="CompraVehiculo" EntitySet="CompraVehiculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DetalleCo__FK_Co__3D2915A8" Association="Self.FK__DetalleCo__FK_Co__3D2915A8">
+            <End Role="CompraVehiculo" EntitySet="CompraVehiculo" />
+            <End Role="DetalleCompraVehiculo" EntitySet="DetalleCompraVehiculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ContactoA__FK_Ti__1AD3FDA4" Association="Self.FK__ContactoA__FK_Ti__1AD3FDA4">
+            <End Role="TipoContacto" EntitySet="TipoContacto" />
+            <End Role="ContactoAutolote" EntitySet="ContactoAutolote" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ContactoC__FK_Ti__1332DBDC" Association="Self.FK__ContactoC__FK_Ti__1332DBDC">
+            <End Role="TipoContacto" EntitySet="TipoContacto" />
+            <End Role="ContactoCliente" EntitySet="ContactoCliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ContactoE__FK_Em__10566F31" Association="Self.FK__ContactoE__FK_Em__10566F31">
+            <End Role="Empleado" EntitySet="Empleado" />
+            <End Role="ContactoEmpleado" EntitySet="ContactoEmpleado" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ContactoE__FK_Ti__0F624AF8" Association="Self.FK__ContactoE__FK_Ti__0F624AF8">
+            <End Role="TipoContacto" EntitySet="TipoContacto" />
+            <End Role="ContactoEmpleado" EntitySet="ContactoEmpleado" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ContactoP__FK_Pr__17F790F9" Association="Self.FK__ContactoP__FK_Pr__17F790F9">
+            <End Role="Proveedor" EntitySet="Proveedor" />
+            <End Role="ContactoProveedor" EntitySet="ContactoProveedor" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ContactoP__FK_Ti__17036CC0" Association="Self.FK__ContactoP__FK_Ti__17036CC0">
+            <End Role="TipoContacto" EntitySet="TipoContacto" />
+            <End Role="ContactoProveedor" EntitySet="ContactoProveedor" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ModeloVeh__FK_Cu__44FF419A" Association="Self.FK__ModeloVeh__FK_Cu__44FF419A">
+            <End Role="CuerpoVehiculo" EntitySet="CuerpoVehiculo" />
+            <End Role="ModeloVehiculo" EntitySet="ModeloVehiculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Vehiculo__FK_Cue__59FA5E80" Association="Self.FK__Vehiculo__FK_Cue__59FA5E80">
+            <End Role="CuerpoVehiculo" EntitySet="CuerpoVehiculo" />
+            <End Role="Vehiculo" EntitySet="Vehiculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DetalleCo__FK_Ve__3E1D39E1" Association="Self.FK__DetalleCo__FK_Ve__3E1D39E1">
+            <End Role="Vehiculo" EntitySet="Vehiculo" />
+            <End Role="DetalleCompraVehiculo" EntitySet="DetalleCompraVehiculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DetalleVe__FK_Ve__44CA3770" Association="Self.FK__DetalleVe__FK_Ve__44CA3770">
+            <End Role="VentaVehiculo" EntitySet="VentaVehiculo" />
+            <End Role="DetalleVentaVehiculo" EntitySet="DetalleVentaVehiculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DetalleVe__FK_Ve__45BE5BA9" Association="Self.FK__DetalleVe__FK_Ve__45BE5BA9">
+            <End Role="Vehiculo" EntitySet="Vehiculo" />
+            <End Role="DetalleVentaVehiculo" EntitySet="DetalleVentaVehiculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Direccion__FK_Em__22751F6C" Association="Self.FK__Direccion__FK_Em__22751F6C">
+            <End Role="Empleado" EntitySet="Empleado" />
+            <End Role="DireccionEmpleado" EntitySet="DireccionEmpleado" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Direccion__FK_Pr__2DE6D218" Association="Self.FK__Direccion__FK_Pr__2DE6D218">
+            <End Role="Proveedor" EntitySet="Proveedor" />
+            <End Role="DireccionProveedor" EntitySet="DireccionProveedor" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Empleado__FK_Tip__75A278F5" Association="Self.FK__Empleado__FK_Tip__75A278F5">
+            <End Role="TipoEmpleado" EntitySet="TipoEmpleado" />
+            <End Role="Empleado" EntitySet="Empleado" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Identific__FK_Em__04E4BC85" Association="Self.FK__Identific__FK_Em__04E4BC85">
+            <End Role="Empleado" EntitySet="Empleado" />
+            <End Role="IdentificacionEmpleado" EntitySet="IdentificacionEmpleado" />
+          </AssociationSet>
+          <AssociationSet Name="FK__VentaVehi__FK_Em__40F9A68C" Association="Self.FK__VentaVehi__FK_Em__40F9A68C">
+            <End Role="Empleado" EntitySet="Empleado" />
+            <End Role="VentaVehiculo" EntitySet="VentaVehiculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Vehiculo__FK_Est__5DCAEF64" Association="Self.FK__Vehiculo__FK_Est__5DCAEF64">
+            <End Role="EstadoVehiculo" EntitySet="EstadoVehiculo" />
+            <End Role="Vehiculo" EntitySet="Vehiculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Identific__FK_Ti__07C12930" Association="Self.FK__Identific__FK_Ti__07C12930">
+            <End Role="TipoIdentificacion" EntitySet="TipoIdentificacion" />
+            <End Role="IdentificacionCliente" EntitySet="IdentificacionCliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Identific__FK_Ti__03F0984C" Association="Self.FK__Identific__FK_Ti__03F0984C">
+            <End Role="TipoIdentificacion" EntitySet="TipoIdentificacion" />
+            <End Role="IdentificacionEmpleado" EntitySet="IdentificacionEmpleado" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Identific__FK_Pr__0C85DE4D" Association="Self.FK__Identific__FK_Pr__0C85DE4D">
+            <End Role="Proveedor" EntitySet="Proveedor" />
+            <End Role="IdentificacionProveedor" EntitySet="IdentificacionProveedor" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Identific__FK_Ti__0B91BA14" Association="Self.FK__Identific__FK_Ti__0B91BA14">
+            <End Role="TipoIdentificacion" EntitySet="TipoIdentificacion" />
+            <End Role="IdentificacionProveedor" EntitySet="IdentificacionProveedor" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ModeloVeh__FK_Ma__440B1D61" Association="Self.FK__ModeloVeh__FK_Ma__440B1D61">
+            <End Role="MarcaVehiculo" EntitySet="MarcaVehiculo" />
+            <End Role="ModeloVehiculo" EntitySet="ModeloVehiculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Vehiculo__FK_Mod__59063A47" Association="Self.FK__Vehiculo__FK_Mod__59063A47">
+            <End Role="ModeloVehiculo" EntitySet="ModeloVehiculo" />
+            <End Role="Vehiculo" EntitySet="Vehiculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Proveedor__FK_Ti__7B5B524B" Association="Self.FK__Proveedor__FK_Ti__7B5B524B">
+            <End Role="TipoProveedor" EntitySet="TipoProveedor" />
+            <End Role="Proveedor" EntitySet="Proveedor" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Vehiculo__FK_Tip__5BE2A6F2" Association="Self.FK__Vehiculo__FK_Tip__5BE2A6F2">
+            <End Role="TipoMotor" EntitySet="TipoMotor" />
+            <End Role="Vehiculo" EntitySet="Vehiculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Vehiculo__FK_Tip__5AEE82B9" Association="Self.FK__Vehiculo__FK_Tip__5AEE82B9">
+            <End Role="TipoTransmision" EntitySet="TipoTransmision" />
+            <End Role="Vehiculo" EntitySet="Vehiculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Vehiculo__FK_Tip__6C190EBB" Association="Self.FK__Vehiculo__FK_Tip__6C190EBB">
+            <End Role="TipoVehiculo" EntitySet="TipoVehiculo" />
+            <End Role="Vehiculo" EntitySet="Vehiculo" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BDAutoloteModelStoreContainer" CdmEntityContainer="BDAutoloteEntities">
+          <EntitySetMapping Name="Autolote">
+            <EntityTypeMapping TypeName="BDAutoloteModel.Autolote">
+              <MappingFragment StoreEntitySet="Autolote">
+                <ScalarProperty Name="PK_Autolote" ColumnName="PK_Autolote" />
+                <ScalarProperty Name="NombreAutolote" ColumnName="NombreAutolote" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CatalogoCiudad">
+            <EntityTypeMapping TypeName="BDAutoloteModel.CatalogoCiudad">
+              <MappingFragment StoreEntitySet="CatalogoCiudad">
+                <ScalarProperty Name="PK_Ciudad" ColumnName="PK_Ciudad" />
+                <ScalarProperty Name="NombreCiudad" ColumnName="NombreCiudad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CatalogoDepartamento">
+            <EntityTypeMapping TypeName="BDAutoloteModel.CatalogoDepartamento">
+              <MappingFragment StoreEntitySet="CatalogoDepartamento">
+                <ScalarProperty Name="PK_Departamento" ColumnName="PK_Departamento" />
+                <ScalarProperty Name="NombreDepartamento" ColumnName="NombreDepartamento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CatalogoPais">
+            <EntityTypeMapping TypeName="BDAutoloteModel.CatalogoPais">
+              <MappingFragment StoreEntitySet="CatalogoPais">
+                <ScalarProperty Name="PK_Pais" ColumnName="PK_Pais" />
+                <ScalarProperty Name="NombrePais" ColumnName="NombrePais" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CatalogoTipoMoneda">
+            <EntityTypeMapping TypeName="BDAutoloteModel.CatalogoTipoMoneda">
+              <MappingFragment StoreEntitySet="CatalogoTipoMoneda">
+                <ScalarProperty Name="PK_TipoMoneda" ColumnName="PK_TipoMoneda" />
+                <ScalarProperty Name="TipoMoneda" ColumnName="TipoMoneda" />
+                <ScalarProperty Name="Simbolo" ColumnName="Simbolo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CatalogoUnidadLongitud">
+            <EntityTypeMapping TypeName="BDAutoloteModel.CatalogoUnidadLongitud">
+              <MappingFragment StoreEntitySet="CatalogoUnidadLongitud">
+                <ScalarProperty Name="PK_UnidadLongitud" ColumnName="PK_UnidadLongitud" />
+                <ScalarProperty Name="TipoLongitud" ColumnName="TipoLongitud" />
+                <ScalarProperty Name="Abreviatura" ColumnName="Abreviatura" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cliente">
+            <EntityTypeMapping TypeName="BDAutoloteModel.Cliente">
+              <MappingFragment StoreEntitySet="Cliente">
+                <ScalarProperty Name="PK_Cliente" ColumnName="PK_Cliente" />
+                <ScalarProperty Name="FK_TipoCliente" ColumnName="FK_TipoCliente" />
+                <ScalarProperty Name="PrimerNombre" ColumnName="PrimerNombre" />
+                <ScalarProperty Name="PrimerApellido" ColumnName="PrimerApellido" />
+                <ScalarProperty Name="SegundoNombre" ColumnName="SegundoNombre" />
+                <ScalarProperty Name="SegundoApellido" ColumnName="SegundoApellido" />
+                <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
+                <ScalarProperty Name="Sexo" ColumnName="Sexo" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ColorVehiculo">
+            <EntityTypeMapping TypeName="BDAutoloteModel.ColorVehiculo">
+              <MappingFragment StoreEntitySet="ColorVehiculo">
+                <ScalarProperty Name="PK_ColorVehiculo" ColumnName="PK_ColorVehiculo" />
+                <ScalarProperty Name="NombreColor" ColumnName="NombreColor" />
+                <ScalarProperty Name="RGB" ColumnName="RGB" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CompraVehiculo">
+            <EntityTypeMapping TypeName="BDAutoloteModel.CompraVehiculo">
+              <MappingFragment StoreEntitySet="CompraVehiculo">
+                <ScalarProperty Name="PK_CompraVehiculo" ColumnName="PK_CompraVehiculo" />
+                <ScalarProperty Name="FK_Proveedor" ColumnName="FK_Proveedor" />
+                <ScalarProperty Name="FK_Empleado" ColumnName="FK_Empleado" />
+                <ScalarProperty Name="NumCompra" ColumnName="NumCompra" />
+                <ScalarProperty Name="FechaCompra" ColumnName="FechaCompra" />
+                <ScalarProperty Name="Anulada" ColumnName="Anulada" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ContactoAutolote">
+            <EntityTypeMapping TypeName="BDAutoloteModel.ContactoAutolote">
+              <MappingFragment StoreEntitySet="ContactoAutolote">
+                <ScalarProperty Name="PK_ContactoAutolote" ColumnName="PK_ContactoAutolote" />
+                <ScalarProperty Name="FK_TipoContacto" ColumnName="FK_TipoContacto" />
+                <ScalarProperty Name="FK_Autolote" ColumnName="FK_Autolote" />
+                <ScalarProperty Name="DetalleContacto" ColumnName="DetalleContacto" />
+                <ScalarProperty Name="ACTIVE" ColumnName="ACTIVE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ContactoCliente">
+            <EntityTypeMapping TypeName="BDAutoloteModel.ContactoCliente">
+              <MappingFragment StoreEntitySet="ContactoCliente">
+                <ScalarProperty Name="PK_ContactoCliente" ColumnName="PK_ContactoCliente" />
+                <ScalarProperty Name="FK_TipoContacto" ColumnName="FK_TipoContacto" />
+                <ScalarProperty Name="FK_Cliente" ColumnName="FK_Cliente" />
+                <ScalarProperty Name="DetalleContacto" ColumnName="DetalleContacto" />
+                <ScalarProperty Name="ACTIVE" ColumnName="ACTIVE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ContactoEmpleado">
+            <EntityTypeMapping TypeName="BDAutoloteModel.ContactoEmpleado">
+              <MappingFragment StoreEntitySet="ContactoEmpleado">
+                <ScalarProperty Name="PK_ContactoEmpleado" ColumnName="PK_ContactoEmpleado" />
+                <ScalarProperty Name="FK_TipoContacto" ColumnName="FK_TipoContacto" />
+                <ScalarProperty Name="FK_Empleado" ColumnName="FK_Empleado" />
+                <ScalarProperty Name="DetalleContacto" ColumnName="DetalleContacto" />
+                <ScalarProperty Name="ACTIVE" ColumnName="ACTIVE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ContactoProveedor">
+            <EntityTypeMapping TypeName="BDAutoloteModel.ContactoProveedor">
+              <MappingFragment StoreEntitySet="ContactoProveedor">
+                <ScalarProperty Name="PK_ContactoProveedor" ColumnName="PK_ContactoProveedor" />
+                <ScalarProperty Name="FK_TipoContacto" ColumnName="FK_TipoContacto" />
+                <ScalarProperty Name="FK_Proveedor" ColumnName="FK_Proveedor" />
+                <ScalarProperty Name="DetalleContacto" ColumnName="DetalleContacto" />
+                <ScalarProperty Name="ACTIVE" ColumnName="ACTIVE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CuerpoVehiculo">
+            <EntityTypeMapping TypeName="BDAutoloteModel.CuerpoVehiculo">
+              <MappingFragment StoreEntitySet="CuerpoVehiculo">
+                <ScalarProperty Name="PK_CuerpoVehiculo" ColumnName="PK_CuerpoVehiculo" />
+                <ScalarProperty Name="CuerpoVehiculo1" ColumnName="CuerpoVehiculo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DetalleCompraVehiculo">
+            <EntityTypeMapping TypeName="BDAutoloteModel.DetalleCompraVehiculo">
+              <MappingFragment StoreEntitySet="DetalleCompraVehiculo">
+                <ScalarProperty Name="PK_DetalleCompraVehiculo" ColumnName="PK_DetalleCompraVehiculo" />
+                <ScalarProperty Name="FK_CompraVehiculo" ColumnName="FK_CompraVehiculo" />
+                <ScalarProperty Name="FK_Vehiculo" ColumnName="FK_Vehiculo" />
+                <ScalarProperty Name="Precio" ColumnName="Precio" />
+                <ScalarProperty Name="Anulada" ColumnName="Anulada" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DetalleVentaVehiculo">
+            <EntityTypeMapping TypeName="BDAutoloteModel.DetalleVentaVehiculo">
+              <MappingFragment StoreEntitySet="DetalleVentaVehiculo">
+                <ScalarProperty Name="PK_DetalleVentaVehiculo" ColumnName="PK_DetalleVentaVehiculo" />
+                <ScalarProperty Name="FK_VentaVehiculo" ColumnName="FK_VentaVehiculo" />
+                <ScalarProperty Name="FK_Vehiculo" ColumnName="FK_Vehiculo" />
+                <ScalarProperty Name="Precio" ColumnName="Precio" />
+                <ScalarProperty Name="Anulada" ColumnName="Anulada" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DireccionAutolote">
+            <EntityTypeMapping TypeName="BDAutoloteModel.DireccionAutolote">
+              <MappingFragment StoreEntitySet="DireccionAutolote">
+                <ScalarProperty Name="PK_DireccionAutolote" ColumnName="PK_DireccionAutolote" />
+                <ScalarProperty Name="FK_Autolote" ColumnName="FK_Autolote" />
+                <ScalarProperty Name="FK_Pais" ColumnName="FK_Pais" />
+                <ScalarProperty Name="FK_Departamento" ColumnName="FK_Departamento" />
+                <ScalarProperty Name="FK_Ciudad" ColumnName="FK_Ciudad" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DireccionCliente">
+            <EntityTypeMapping TypeName="BDAutoloteModel.DireccionCliente">
+              <MappingFragment StoreEntitySet="DireccionCliente">
+                <ScalarProperty Name="PK_DireccionCliente" ColumnName="PK_DireccionCliente" />
+                <ScalarProperty Name="FK_Cliente" ColumnName="FK_Cliente" />
+                <ScalarProperty Name="FK_Pais" ColumnName="FK_Pais" />
+                <ScalarProperty Name="FK_Departamento" ColumnName="FK_Departamento" />
+                <ScalarProperty Name="FK_Ciudad" ColumnName="FK_Ciudad" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="RentadaPropia" ColumnName="RentadaPropia" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DireccionEmpleado">
+            <EntityTypeMapping TypeName="BDAutoloteModel.DireccionEmpleado">
+              <MappingFragment StoreEntitySet="DireccionEmpleado">
+                <ScalarProperty Name="PK_DireccionEmpleado" ColumnName="PK_DireccionEmpleado" />
+                <ScalarProperty Name="FK_Empleado" ColumnName="FK_Empleado" />
+                <ScalarProperty Name="FK_Pais" ColumnName="FK_Pais" />
+                <ScalarProperty Name="FK_Ciudad" ColumnName="FK_Ciudad" />
+                <ScalarProperty Name="FK_Departamento" ColumnName="FK_Departamento" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DireccionProveedor">
+            <EntityTypeMapping TypeName="BDAutoloteModel.DireccionProveedor">
+              <MappingFragment StoreEntitySet="DireccionProveedor">
+                <ScalarProperty Name="PK_DireccionProveedor" ColumnName="PK_DireccionProveedor" />
+                <ScalarProperty Name="FK_Proveedor" ColumnName="FK_Proveedor" />
+                <ScalarProperty Name="FK_Pais" ColumnName="FK_Pais" />
+                <ScalarProperty Name="FK_Departamento" ColumnName="FK_Departamento" />
+                <ScalarProperty Name="FK_Ciudad" ColumnName="FK_Ciudad" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Empleado">
+            <EntityTypeMapping TypeName="BDAutoloteModel.Empleado">
+              <MappingFragment StoreEntitySet="Empleado">
+                <ScalarProperty Name="PK_Empleado" ColumnName="PK_Empleado" />
+                <ScalarProperty Name="FK_TipoEmpleado" ColumnName="FK_TipoEmpleado" />
+                <ScalarProperty Name="NumEmpleado" ColumnName="NumEmpleado" />
+                <ScalarProperty Name="PrimerNombre" ColumnName="PrimerNombre" />
+                <ScalarProperty Name="PrimerApellido" ColumnName="PrimerApellido" />
+                <ScalarProperty Name="SegundoNombre" ColumnName="SegundoNombre" />
+                <ScalarProperty Name="SegundoApellido" ColumnName="SegundoApellido" />
+                <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
+                <ScalarProperty Name="Sexo" ColumnName="Sexo" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EstadoVehiculo">
+            <EntityTypeMapping TypeName="BDAutoloteModel.EstadoVehiculo">
+              <MappingFragment StoreEntitySet="EstadoVehiculo">
+                <ScalarProperty Name="PK_EstadoVehiculo" ColumnName="PK_EstadoVehiculo" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="DetallesAdicional" ColumnName="DetallesAdicional" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IdentificacionCliente">
+            <EntityTypeMapping TypeName="BDAutoloteModel.IdentificacionCliente">
+              <MappingFragment StoreEntitySet="IdentificacionCliente">
+                <ScalarProperty Name="PK_IdentificacionEmpleado" ColumnName="PK_IdentificacionEmpleado" />
+                <ScalarProperty Name="FK_TipoIdentificacion" ColumnName="FK_TipoIdentificacion" />
+                <ScalarProperty Name="FK_Cliente" ColumnName="FK_Cliente" />
+                <ScalarProperty Name="NumIdentificacion" ColumnName="NumIdentificacion" />
+                <ScalarProperty Name="FechaEmision" ColumnName="FechaEmision" />
+                <ScalarProperty Name="FechaExpiracion" ColumnName="FechaExpiracion" />
+                <ScalarProperty Name="ACTIVE" ColumnName="ACTIVE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IdentificacionEmpleado">
+            <EntityTypeMapping TypeName="BDAutoloteModel.IdentificacionEmpleado">
+              <MappingFragment StoreEntitySet="IdentificacionEmpleado">
+                <ScalarProperty Name="PK_IdentificacionEmpleado" ColumnName="PK_IdentificacionEmpleado" />
+                <ScalarProperty Name="FK_TipoIdentificacion" ColumnName="FK_TipoIdentificacion" />
+                <ScalarProperty Name="FK_Empleado" ColumnName="FK_Empleado" />
+                <ScalarProperty Name="NumIdentificacion" ColumnName="NumIdentificacion" />
+                <ScalarProperty Name="FechaEmision" ColumnName="FechaEmision" />
+                <ScalarProperty Name="FechaExpiracion" ColumnName="FechaExpiracion" />
+                <ScalarProperty Name="ACTIVE" ColumnName="ACTIVE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IdentificacionProveedor">
+            <EntityTypeMapping TypeName="BDAutoloteModel.IdentificacionProveedor">
+              <MappingFragment StoreEntitySet="IdentificacionProveedor">
+                <ScalarProperty Name="PK_IdentificacionProveedor" ColumnName="PK_IdentificacionProveedor" />
+                <ScalarProperty Name="FK_TipoIdentificacion" ColumnName="FK_TipoIdentificacion" />
+                <ScalarProperty Name="FK_Proveedor" ColumnName="FK_Proveedor" />
+                <ScalarProperty Name="NumIdentificacion" ColumnName="NumIdentificacion" />
+                <ScalarProperty Name="FechaEmision" ColumnName="FechaEmision" />
+                <ScalarProperty Name="FechaExpiracion" ColumnName="FechaExpiracion" />
+                <ScalarProperty Name="ACTIVE" ColumnName="ACTIVE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MarcaVehiculo">
+            <EntityTypeMapping TypeName="BDAutoloteModel.MarcaVehiculo">
+              <MappingFragment StoreEntitySet="MarcaVehiculo">
+                <ScalarProperty Name="PK_MarcaVehiculo" ColumnName="PK_MarcaVehiculo" />
+                <ScalarProperty Name="FK_Pais" ColumnName="FK_Pais" />
+                <ScalarProperty Name="MarcaVehiculo1" ColumnName="MarcaVehiculo" />
+                <ScalarProperty Name="AnioFundacion" ColumnName="AnioFundacion" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ModeloVehiculo">
+            <EntityTypeMapping TypeName="BDAutoloteModel.ModeloVehiculo">
+              <MappingFragment StoreEntitySet="ModeloVehiculo">
+                <ScalarProperty Name="PK_ModeloVehiculo" ColumnName="PK_ModeloVehiculo" />
+                <ScalarProperty Name="FK_MarcaVehiculo" ColumnName="FK_MarcaVehiculo" />
+                <ScalarProperty Name="FK_CuerpoVehiculo" ColumnName="FK_CuerpoVehiculo" />
+                <ScalarProperty Name="ModeloVehiculo1" ColumnName="ModeloVehiculo" />
+                <ScalarProperty Name="ModeloAnio" ColumnName="ModeloAnio" />
+                <ScalarProperty Name="ModeloAnioLanzamiento" ColumnName="ModeloAnioLanzamiento" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Proveedor">
+            <EntityTypeMapping TypeName="BDAutoloteModel.Proveedor">
+              <MappingFragment StoreEntitySet="Proveedor">
+                <ScalarProperty Name="PK_Proveedor" ColumnName="PK_Proveedor" />
+                <ScalarProperty Name="FK_TipoProveedor" ColumnName="FK_TipoProveedor" />
+                <ScalarProperty Name="PrimerNombre" ColumnName="PrimerNombre" />
+                <ScalarProperty Name="PrimerApellido" ColumnName="PrimerApellido" />
+                <ScalarProperty Name="SegundoNombre" ColumnName="SegundoNombre" />
+                <ScalarProperty Name="SegundoApellido" ColumnName="SegundoApellido" />
+                <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
+                <ScalarProperty Name="Sexo" ColumnName="Sexo" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="BDAutoloteModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoCliente">
+            <EntityTypeMapping TypeName="BDAutoloteModel.TipoCliente">
+              <MappingFragment StoreEntitySet="TipoCliente">
+                <ScalarProperty Name="PK_TipoCliente" ColumnName="PK_TipoCliente" />
+                <ScalarProperty Name="TipoCliente1" ColumnName="TipoCliente" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoContacto">
+            <EntityTypeMapping TypeName="BDAutoloteModel.TipoContacto">
+              <MappingFragment StoreEntitySet="TipoContacto">
+                <ScalarProperty Name="PK_TipoContacto" ColumnName="PK_TipoContacto" />
+                <ScalarProperty Name="TipoContacto1" ColumnName="TipoContacto" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoEmpleado">
+            <EntityTypeMapping TypeName="BDAutoloteModel.TipoEmpleado">
+              <MappingFragment StoreEntitySet="TipoEmpleado">
+                <ScalarProperty Name="PK_TipoEmpleado" ColumnName="PK_TipoEmpleado" />
+                <ScalarProperty Name="EmpleadoPuesto" ColumnName="EmpleadoPuesto" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoIdentificacion">
+            <EntityTypeMapping TypeName="BDAutoloteModel.TipoIdentificacion">
+              <MappingFragment StoreEntitySet="TipoIdentificacion">
+                <ScalarProperty Name="PK_TipoIdentificacion" ColumnName="PK_TipoIdentificacion" />
+                <ScalarProperty Name="TipoIdentificacion1" ColumnName="TipoIdentificacion" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoMotor">
+            <EntityTypeMapping TypeName="BDAutoloteModel.TipoMotor">
+              <MappingFragment StoreEntitySet="TipoMotor">
+                <ScalarProperty Name="PK_TipoMotor" ColumnName="PK_TipoMotor" />
+                <ScalarProperty Name="TipoMotor1" ColumnName="TipoMotor" />
+                <ScalarProperty Name="DetalleAdicional" ColumnName="DetalleAdicional" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoProveedor">
+            <EntityTypeMapping TypeName="BDAutoloteModel.TipoProveedor">
+              <MappingFragment StoreEntitySet="TipoProveedor">
+                <ScalarProperty Name="PK_TipoProveedor" ColumnName="PK_TipoProveedor" />
+                <ScalarProperty Name="TipoProveedor1" ColumnName="TipoProveedor" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoTransmision">
+            <EntityTypeMapping TypeName="BDAutoloteModel.TipoTransmision">
+              <MappingFragment StoreEntitySet="TipoTransmision">
+                <ScalarProperty Name="PK_TipoTransmision" ColumnName="PK_TipoTransmision" />
+                <ScalarProperty Name="TipoTransmision1" ColumnName="TipoTransmision" />
+                <ScalarProperty Name="DetalleAdicional" ColumnName="DetalleAdicional" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoVehiculo">
+            <EntityTypeMapping TypeName="BDAutoloteModel.TipoVehiculo">
+              <MappingFragment StoreEntitySet="TipoVehiculo">
+                <ScalarProperty Name="PK_TipoVehiculo" ColumnName="PK_TipoVehiculo" />
+                <ScalarProperty Name="TipoVehiculo1" ColumnName="TipoVehiculo" />
+                <ScalarProperty Name="DetallesAdicional" ColumnName="DetallesAdicional" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vehiculo">
+            <EntityTypeMapping TypeName="BDAutoloteModel.Vehiculo">
+              <MappingFragment StoreEntitySet="Vehiculo">
+                <ScalarProperty Name="PK_Vehiculo" ColumnName="PK_Vehiculo" />
+                <ScalarProperty Name="FK_ModeloVehiculo" ColumnName="FK_ModeloVehiculo" />
+                <ScalarProperty Name="FK_CuerpoVehiculo" ColumnName="FK_CuerpoVehiculo" />
+                <ScalarProperty Name="FK_TipoTransmision" ColumnName="FK_TipoTransmision" />
+                <ScalarProperty Name="FK_TipoMotor" ColumnName="FK_TipoMotor" />
+                <ScalarProperty Name="FK_ColorVehiculo" ColumnName="FK_ColorVehiculo" />
+                <ScalarProperty Name="FK_EstadoVehiculo" ColumnName="FK_EstadoVehiculo" />
+                <ScalarProperty Name="FK_PrecioCompraMoneda" ColumnName="FK_PrecioCompraMoneda" />
+                <ScalarProperty Name="FK_PrecioVentaMoneda" ColumnName="FK_PrecioVentaMoneda" />
+                <ScalarProperty Name="FK_TipoKilometraje" ColumnName="FK_TipoKilometraje" />
+                <ScalarProperty Name="Kilometraje" ColumnName="Kilometraje" />
+                <ScalarProperty Name="VIN" ColumnName="VIN" />
+                <ScalarProperty Name="Placa" ColumnName="Placa" />
+                <ScalarProperty Name="PrecioCompra" ColumnName="PrecioCompra" />
+                <ScalarProperty Name="PrecioVenta" ColumnName="PrecioVenta" />
+                <ScalarProperty Name="Disponible" ColumnName="Disponible" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="FK_TipoVehiculo" ColumnName="FK_TipoVehiculo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VentaVehiculo">
+            <EntityTypeMapping TypeName="BDAutoloteModel.VentaVehiculo">
+              <MappingFragment StoreEntitySet="VentaVehiculo">
+                <ScalarProperty Name="PK_VentaVehiculo" ColumnName="PK_VentaVehiculo" />
+                <ScalarProperty Name="FK_Empleado" ColumnName="FK_Empleado" />
+                <ScalarProperty Name="FK_Cliente" ColumnName="FK_Cliente" />
+                <ScalarProperty Name="NumVenta" ColumnName="NumVenta" />
+                <ScalarProperty Name="Cotizar" ColumnName="Cotizar" />
+                <ScalarProperty Name="Anulada" ColumnName="Anulada" />
+                <ScalarProperty Name="FechaVenta" ColumnName="FechaVenta" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

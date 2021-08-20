@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="1cee4532f5214d9e82c7d6932478010d" Name="Diagram1">
+        <EntityTypeShape EntityType="BDAutoloteModel.Autolote" Width="1.5" PointX="0.75" PointY="25.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDAutoloteModel.CatalogoCiudad" Width="1.5" PointX="0.75" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDAutoloteModel.CatalogoDepartamento" Width="1.5" PointX="0.75" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDAutoloteModel.CatalogoPais" Width="1.5" PointX="0.75" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDAutoloteModel.CatalogoTipoMoneda" Width="1.5" PointX="5.25" PointY="21.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDAutoloteModel.CatalogoUnidadLongitud" Width="1.5" PointX="5.25" PointY="24" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDAutoloteModel.Cliente" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDAutoloteModel.ColorVehiculo" Width="1.5" PointX="5.25" PointY="33.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDAutoloteModel.CompraVehiculo" Width="1.5" PointX="7.5" PointY="23" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDAutoloteModel.ContactoAutolote" Width="1.5" PointX="11" PointY="16.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDAutoloteModel.ContactoCliente" Width="1.5" PointX="11" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDAutoloteModel.ContactoEmpleado" Width="1.5" PointX="11" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDAutoloteModel.ContactoProveedor" Width="1.5" PointX="11" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDAutoloteModel.CuerpoVehiculo" Width="1.5" PointX="3" PointY="26.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDAutoloteModel.DetalleCompraVehiculo" Width="1.5" PointX="9.75" PointY="29.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDAutoloteModel.DetalleVentaVehiculo" Width="1.5" PointX="12.75" PointY="29.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDAutoloteModel.DireccionAutolote" Width="1.5" PointX="3" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDAutoloteModel.DireccionCliente" Width="1.5" PointX="6" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDAutoloteModel.DireccionEmpleado" Width="1.5" PointX="3" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDAutoloteModel.DireccionProveedor" Width="1.5" PointX="3" PointY="17" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDAutoloteModel.Empleado" Width="1.5" PointX="0.75" PointY="17.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDAutoloteModel.EstadoVehiculo" Width="1.5" PointX="5.25" PointY="36.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDAutoloteModel.IdentificacionCliente" Width="1.5" PointX="16" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDAutoloteModel.IdentificacionEmpleado" Width="1.5" PointX="16" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDAutoloteModel.IdentificacionProveedor" Width="1.5" PointX="16" PointY="18.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDAutoloteModel.MarcaVehiculo" Width="1.5" PointX="3" PointY="29.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDAutoloteModel.ModeloVehiculo" Width="1.5" PointX="5.25" PointY="28.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDAutoloteModel.Proveedor" Width="1.5" PointX="0.75" PointY="28.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDAutoloteModel.sysdiagrams" Width="1.5" PointX="2.75" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDAutoloteModel.TipoCliente" Width="1.5" PointX="1.5" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDAutoloteModel.TipoContacto" Width="1.5" PointX="8.75" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDAutoloteModel.TipoEmpleado" Width="1.5" PointX="1.5" PointY="22.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDAutoloteModel.TipoIdentificacion" Width="1.5" PointX="13.75" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDAutoloteModel.TipoMotor" Width="1.5" PointX="5.25" PointY="39" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDAutoloteModel.TipoProveedor" Width="1.5" PointX="1.5" PointY="33.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDAutoloteModel.TipoTransmision" Width="1.5" PointX="5.25" PointY="41.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDAutoloteModel.TipoVehiculo" Width="1.5" PointX="5.25" PointY="44.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDAutoloteModel.Vehiculo" Width="1.5" PointX="7.5" PointY="27" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDAutoloteModel.VentaVehiculo" Width="1.5" PointX="10.5" PointY="24.875" IsExpanded="true" />
+        <AssociationConnector Association="BDAutoloteModel.FK__ContactoA__FK_Au__1BC821DD" ManuallyRouted="false" />
+        <AssociationConnector Association="BDAutoloteModel.FK__Direccion__FK_Au__339FAB6E" ManuallyRouted="false" />
+        <AssociationConnector Association="BDAutoloteModel.FK__Direccion__FK_Ci__245D67DE" ManuallyRouted="false" />
+        <AssociationConnector Association="BDAutoloteModel.FK__Direccion__FK_Ci__2B0A656D" ManuallyRouted="false" />
+        <AssociationConnector Association="BDAutoloteModel.FK__Direccion__FK_Ci__30C33EC3" ManuallyRouted="false" />
+        <AssociationConnector Association="BDAutoloteModel.FK__Direccion__FK_Ci__367C1819" ManuallyRouted="false" />
+        <AssociationConnector Association="BDAutoloteModel.FK__Direccion__FK_De__25518C17" ManuallyRouted="false" />
+        <AssociationConnector Association="BDAutoloteModel.FK__Direccion__FK_De__2A164134" ManuallyRouted="false" />
+        <AssociationConnector Association="BDAutoloteModel.FK__Direccion__FK_De__2FCF1A8A" ManuallyRouted="false" />
+        <AssociationConnector Association="BDAutoloteModel.FK__Direccion__FK_De__3587F3E0" ManuallyRouted="false" />
+        <AssociationConnector Association="BDAutoloteModel.FK__Direccion__FK_Pa__236943A5" ManuallyRouted="false" />
+        <AssociationConnector Association="BDAutoloteModel.FK__Direccion__FK_Pa__29221CFB" ManuallyRouted="false" />
+        <AssociationConnector Association="BDAutoloteModel.FK__Direccion__FK_Pa__2EDAF651" ManuallyRouted="false" />
+        <AssociationConnector Association="BDAutoloteModel.FK__Direccion__FK_Pa__3493CFA7" ManuallyRouted="false" />
+        <AssociationConnector Association="BDAutoloteModel.FK__MarcaVehi__FK_Pa__3F466844" ManuallyRouted="false" />
+        <AssociationConnector Association="BDAutoloteModel.FK__Vehiculo__FK_Pre__5EBF139D" ManuallyRouted="false" />
+        <AssociationConnector Association="BDAutoloteModel.FK__Vehiculo__FK_Pre__5FB337D6" ManuallyRouted="false" />
+        <AssociationConnector Association="BDAutoloteModel.FK__Vehiculo__FK_Tip__60A75C0F" ManuallyRouted="false" />
+        <AssociationConnector Association="BDAutoloteModel.FK__Cliente__FK_Tipo__787EE5A0" ManuallyRouted="false" />
+        <AssociationConnector Association="BDAutoloteModel.FK__ContactoC__FK_Cl__14270015" ManuallyRouted="false" />
+        <AssociationConnector Association="BDAutoloteModel.FK__Direccion__FK_Cl__282DF8C2" ManuallyRouted="false" />
+        <AssociationConnector Association="BDAutoloteModel.FK__Identific__FK_Cl__08B54D69" ManuallyRouted="false" />
+        <AssociationConnector Association="BDAutoloteModel.FK__VentaVehi__FK_Cl__41EDCAC5" ManuallyRouted="false" />
+        <AssociationConnector Association="BDAutoloteModel.FK__Vehiculo__FK_Col__5CD6CB2B" ManuallyRouted="false" />
+        <AssociationConnector Association="BDAutoloteModel.FK__CompraVeh__FK_Em__3A4CA8FD" ManuallyRouted="false" />
+        <AssociationConnector Association="BDAutoloteModel.FK__CompraVeh__FK_Pr__395884C4" ManuallyRouted="false" />
+        <AssociationConnector Association="BDAutoloteModel.FK__DetalleCo__FK_Co__3D2915A8" ManuallyRouted="false" />
+        <AssociationConnector Association="BDAutoloteModel.FK__ContactoA__FK_Ti__1AD3FDA4" ManuallyRouted="false" />
+        <AssociationConnector Association="BDAutoloteModel.FK__ContactoC__FK_Ti__1332DBDC" ManuallyRouted="false" />
+        <AssociationConnector Association="BDAutoloteModel.FK__ContactoE__FK_Em__10566F31" ManuallyRouted="false" />
+        <AssociationConnector Association="BDAutoloteModel.FK__ContactoE__FK_Ti__0F624AF8" ManuallyRouted="false" />
+        <AssociationConnector Association="BDAutoloteModel.FK__ContactoP__FK_Pr__17F790F9" ManuallyRouted="false" />
+        <AssociationConnector Association="BDAutoloteModel.FK__ContactoP__FK_Ti__17036CC0" ManuallyRouted="false" />
+        <AssociationConnector Association="BDAutoloteModel.FK__ModeloVeh__FK_Cu__44FF419A" ManuallyRouted="false" />
+        <AssociationConnector Association="BDAutoloteModel.FK__Vehiculo__FK_Cue__59FA5E80" ManuallyRouted="false" />
+        <AssociationConnector Association="BDAutoloteModel.FK__DetalleCo__FK_Ve__3E1D39E1" ManuallyRouted="false" />
+        <AssociationConnector Association="BDAutoloteModel.FK__DetalleVe__FK_Ve__44CA3770" ManuallyRouted="false" />
+        <AssociationConnector Association="BDAutoloteModel.FK__DetalleVe__FK_Ve__45BE5BA9" ManuallyRouted="false" />
+        <AssociationConnector Association="BDAutoloteModel.FK__Direccion__FK_Em__22751F6C" ManuallyRouted="false" />
+        <AssociationConnector Association="BDAutoloteModel.FK__Direccion__FK_Pr__2DE6D218" ManuallyRouted="false" />
+        <AssociationConnector Association="BDAutoloteModel.FK__Empleado__FK_Tip__75A278F5" ManuallyRouted="false" />
+        <AssociationConnector Association="BDAutoloteModel.FK__Identific__FK_Em__04E4BC85" ManuallyRouted="false" />
+        <AssociationConnector Association="BDAutoloteModel.FK__VentaVehi__FK_Em__40F9A68C" ManuallyRouted="false" />
+        <AssociationConnector Association="BDAutoloteModel.FK__Vehiculo__FK_Est__5DCAEF64" ManuallyRouted="false" />
+        <AssociationConnector Association="BDAutoloteModel.FK__Identific__FK_Ti__07C12930" ManuallyRouted="false" />
+        <AssociationConnector Association="BDAutoloteModel.FK__Identific__FK_Ti__03F0984C" ManuallyRouted="false" />
+        <AssociationConnector Association="BDAutoloteModel.FK__Identific__FK_Pr__0C85DE4D" ManuallyRouted="false" />
+        <AssociationConnector Association="BDAutoloteModel.FK__Identific__FK_Ti__0B91BA14" ManuallyRouted="false" />
+        <AssociationConnector Association="BDAutoloteModel.FK__ModeloVeh__FK_Ma__440B1D61" ManuallyRouted="false" />
+        <AssociationConnector Association="BDAutoloteModel.FK__Vehiculo__FK_Mod__59063A47" ManuallyRouted="false" />
+        <AssociationConnector Association="BDAutoloteModel.FK__Proveedor__FK_Ti__7B5B524B" ManuallyRouted="false" />
+        <AssociationConnector Association="BDAutoloteModel.FK__Vehiculo__FK_Tip__5BE2A6F2" ManuallyRouted="false" />
+        <AssociationConnector Association="BDAutoloteModel.FK__Vehiculo__FK_Tip__5AEE82B9" ManuallyRouted="false" />
+        <AssociationConnector Association="BDAutoloteModel.FK__Vehiculo__FK_Tip__6C190EBB" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
