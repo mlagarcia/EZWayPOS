@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using EZWayPOS.Vistas.ColorVehiculo;
+using EZWayPOS.Vistas.CuerpoVehiculo;
+using EZWayPOS.Vistas.Main;
 
 namespace EZWayPOS
 {
@@ -17,7 +20,9 @@ namespace EZWayPOS
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmTipoVehiculo());
+            //Application.Run(new FrmTipoVehiculo());
+          // Application.Run(new Color_Vehiculo());
+            Application.Run(new MdiMain());
         }
     }
 }

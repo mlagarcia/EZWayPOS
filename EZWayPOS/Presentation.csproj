@@ -48,6 +48,30 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Vistas\ColorVehiculo\FrmColorVehiculo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\ColorVehiculo\FrmColorVehiculo.Designer.cs">
+      <DependentUpon>FrmColorVehiculo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\CuerpoVehiculo\FrmCuerpoVehiculo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\CuerpoVehiculo\FrmCuerpoVehiculo.Designer.cs">
+      <DependentUpon>FrmCuerpoVehiculo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\Main\MdiMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\Main\MdiMain.Designer.cs">
+      <DependentUpon>MdiMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\MarcaVehiculo\FrmMarcaVehiculo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\MarcaVehiculo\FrmMarcaVehiculo.Designer.cs">
+      <DependentUpon>FrmMarcaVehiculo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Vistas\TipoVehiculo\FrmTipoVehiculo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -63,6 +87,18 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Vistas\ColorVehiculo\FrmColorVehiculo.resx">
+      <DependentUpon>FrmColorVehiculo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\CuerpoVehiculo\FrmCuerpoVehiculo.resx">
+      <DependentUpon>FrmCuerpoVehiculo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\Main\MdiMain.resx">
+      <DependentUpon>MdiMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\MarcaVehiculo\FrmMarcaVehiculo.resx">
+      <DependentUpon>FrmMarcaVehiculo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Vistas\TipoVehiculo\FrmTipoVehiculo.resx">
       <DependentUpon>FrmTipoVehiculo.cs</DependentUpon>
     </EmbeddedResource>
@@ -84,6 +120,9 @@
       <Project>{32281de9-07ba-4285-993e-56d86e7385e6}</Project>
       <Name>BusinessLogic</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
