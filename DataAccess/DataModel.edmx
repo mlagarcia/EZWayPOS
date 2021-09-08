@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="BDAutoloteModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="BDAutoloteModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Autolote">
           <Key>
             <PropertyRef Name="PK_Autolote" />
@@ -371,6 +371,15 @@
           <Property Name="PK_TipoVehiculo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TipoVehiculo" Type="nvarchar" MaxLength="25" Nullable="false" />
           <Property Name="DetallesAdicional" Type="nvarchar" MaxLength="100" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Usuarios">
+          <Key>
+            <PropertyRef Name="PK_Usuario" />
+          </Key>
+          <Property Name="PK_Usuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreUsuario" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PWD" Type="nvarchar" MaxLength="50" />
           <Property Name="Active" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Vehiculo">
@@ -1094,6 +1103,7 @@
           <EntitySet Name="TipoProveedor" EntityType="Self.TipoProveedor" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TipoTransmision" EntityType="Self.TipoTransmision" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TipoVehiculo" EntityType="Self.TipoVehiculo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Vehiculo" EntityType="Self.Vehiculo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="VentaVehiculo" EntityType="Self.VentaVehiculo" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__Cliente__FK_Tipo__787EE5A0" Association="Self.FK__Cliente__FK_Tipo__787EE5A0">
@@ -1313,8 +1323,7 @@
             <End Role="VentaVehiculo" EntitySet="VentaVehiculo" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="BDAutoloteModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -2733,7 +2742,17 @@
             <End Role="TipoVehiculo" EntitySet="TipoVehiculo" />
             <End Role="Vehiculo" EntitySet="Vehiculo" />
           </AssociationSet>
+          <EntitySet Name="Usuarios" EntityType="BDAutoloteModel.Usuarios" />
         </EntityContainer>
+        <EntityType Name="Usuarios">
+          <Key>
+            <PropertyRef Name="PK_Usuario" />
+          </Key>
+          <Property Name="PK_Usuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreUsuario" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PWD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -3179,6 +3198,16 @@
                 <ScalarProperty Name="Cotizar" ColumnName="Cotizar" />
                 <ScalarProperty Name="Anulada" ColumnName="Anulada" />
                 <ScalarProperty Name="FechaVenta" ColumnName="FechaVenta" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuarios">
+            <EntityTypeMapping TypeName="BDAutoloteModel.Usuarios">
+              <MappingFragment StoreEntitySet="Usuarios">
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="PWD" ColumnName="PWD" />
+                <ScalarProperty Name="NombreUsuario" ColumnName="NombreUsuario" />
+                <ScalarProperty Name="PK_Usuario" ColumnName="PK_Usuario" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

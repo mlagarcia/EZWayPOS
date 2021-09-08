@@ -48,6 +48,24 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Vistas\Cliente\FrmActualizarCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\Cliente\FrmActualizarCliente.Designer.cs">
+      <DependentUpon>FrmActualizarCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\Cliente\FrmCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\Cliente\FrmCliente.Designer.cs">
+      <DependentUpon>FrmCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\Cliente\FrmClienteViewModel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\Cliente\FrmClienteViewModel.Designer.cs">
+      <DependentUpon>FrmClienteViewModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Vistas\ColorVehiculo\FrmColorVehiculo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -59,6 +77,54 @@
     </Compile>
     <Compile Include="Vistas\CuerpoVehiculo\FrmCuerpoVehiculo.Designer.cs">
       <DependentUpon>FrmCuerpoVehiculo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\EstadoVehiculo\FrmEstadoVehiculo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\EstadoVehiculo\FrmEstadoVehiculo.Designer.cs">
+      <DependentUpon>FrmEstadoVehiculo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\MarcaVehiculo\FrmActualizarMarcaVehiculo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\MarcaVehiculo\FrmActualizarMarcaVehiculo.Designer.cs">
+      <DependentUpon>FrmActualizarMarcaVehiculo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\MarcaVehiculo\FrmMarcaVehiculoViewModel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\MarcaVehiculo\FrmMarcaVehiculoViewModel.Designer.cs">
+      <DependentUpon>FrmMarcaVehiculoViewModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\ModeloVehiculo\FrmActualizarModeloVehiculo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\ModeloVehiculo\FrmActualizarModeloVehiculo.Designer.cs">
+      <DependentUpon>FrmActualizarModeloVehiculo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\ModeloVehiculo\FrmModeloVehiculo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\ModeloVehiculo\FrmModeloVehiculo.Designer.cs">
+      <DependentUpon>FrmModeloVehiculo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\ModeloVehiculo\FrmModeloVehiculoViewModel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\ModeloVehiculo\FrmModeloVehiculoViewModel.Designer.cs">
+      <DependentUpon>FrmModeloVehiculoViewModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\TipoTransmision\FrmTipoTransmision.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\TipoTransmision\FrmTipoTransmision.Designer.cs">
+      <DependentUpon>FrmTipoTransmision.cs</DependentUpon>
     </Compile>
     <Compile Include="Vistas\Main\MdiMain.cs">
       <SubType>Form</SubType>
@@ -72,11 +138,23 @@
     <Compile Include="Vistas\MarcaVehiculo\FrmMarcaVehiculo.Designer.cs">
       <DependentUpon>FrmMarcaVehiculo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Vistas\TipoMotor\FrmTipoMotor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\TipoMotor\FrmTipoMotor.Designer.cs">
+      <DependentUpon>FrmTipoMotor.cs</DependentUpon>
+    </Compile>
     <Compile Include="Vistas\TipoVehiculo\FrmTipoVehiculo.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Vistas\TipoVehiculo\FrmTipoVehiculo.Designer.cs">
       <DependentUpon>FrmTipoVehiculo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\Vehiculo\FrmVehiculo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\Vehiculo\FrmVehiculo.Designer.cs">
+      <DependentUpon>FrmVehiculo.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -87,11 +165,44 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Vistas\Cliente\FrmActualizarCliente.resx">
+      <DependentUpon>FrmActualizarCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\Cliente\FrmCliente.resx">
+      <DependentUpon>FrmCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\Cliente\FrmClienteViewModel.resx">
+      <DependentUpon>FrmClienteViewModel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Vistas\ColorVehiculo\FrmColorVehiculo.resx">
       <DependentUpon>FrmColorVehiculo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vistas\CuerpoVehiculo\FrmCuerpoVehiculo.resx">
       <DependentUpon>FrmCuerpoVehiculo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\EstadoVehiculo\FrmEstadoVehiculo.resx">
+      <DependentUpon>FrmEstadoVehiculo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\MarcaVehiculo\FrmActualizarMarcaVehiculo.resx">
+      <DependentUpon>FrmActualizarMarcaVehiculo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\MarcaVehiculo\FrmMarcaVehiculoViewModel.resx">
+      <DependentUpon>FrmMarcaVehiculoViewModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\ModeloVehiculo\FrmActualizarModeloVehiculo.resx">
+      <DependentUpon>FrmActualizarModeloVehiculo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\ModeloVehiculo\FrmModeloVehiculo.resx">
+      <DependentUpon>FrmModeloVehiculo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\ModeloVehiculo\FrmModeloVehiculoViewModel.resx">
+      <DependentUpon>FrmModeloVehiculoViewModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\TipoTransmision\FrmTipoTransmision.resx">
+      <DependentUpon>FrmTipoTransmision.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vistas\Main\MdiMain.resx">
       <DependentUpon>MdiMain.cs</DependentUpon>
@@ -99,8 +210,14 @@
     <EmbeddedResource Include="Vistas\MarcaVehiculo\FrmMarcaVehiculo.resx">
       <DependentUpon>FrmMarcaVehiculo.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\TipoMotor\FrmTipoMotor.resx">
+      <DependentUpon>FrmTipoMotor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Vistas\TipoVehiculo\FrmTipoVehiculo.resx">
       <DependentUpon>FrmTipoVehiculo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\Vehiculo\FrmVehiculo.resx">
+      <DependentUpon>FrmVehiculo.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

@@ -98,6 +98,7 @@
         <AssociationConnector Association="BDAutoloteModel.FK__Vehiculo__FK_Tip__5BE2A6F2" ManuallyRouted="false" />
         <AssociationConnector Association="BDAutoloteModel.FK__Vehiculo__FK_Tip__5AEE82B9" ManuallyRouted="false" />
         <AssociationConnector Association="BDAutoloteModel.FK__Vehiculo__FK_Tip__6C190EBB" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="BDAutoloteModel.Usuarios" Width="1.5" PointX="5.375" PointY="5.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
