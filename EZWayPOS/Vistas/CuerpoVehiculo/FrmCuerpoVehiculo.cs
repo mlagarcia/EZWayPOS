@@ -17,29 +17,44 @@ namespace EZWayPOS.Vistas.CuerpoVehiculo
         public FrmCuerpoVehiculo()
         {
             InitializeComponent();
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            t.CuerpoVehiculo1 = this.txtCuerpoVehiculo1.Text;
-            
 
-            if (t.AgregarCuerpoVehiculo() == true)
+            if (String.IsNullOrEmpty(txtCuerpoVehiculo1.Text))
             {
-                this.txtCuerpoVehiculo1.Clear();
-
-
-                MessageBox.Show("Registro Guardado con Exito", "Color Vehiculo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(this, "Los campos con astericos son obligatorios, revise e intente de nuevo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtCuerpoVehiculo1.Focus();
             }
-            else if (t.AgregarCuerpoVehiculo() == false)
+            else
             {
-                MessageBox.Show("Ha ocurrido un error", "CuerpoVehiculo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                t.CuerpoVehiculo1 = this.txtCuerpoVehiculo1.Text;
+
+                if (t.AgregarCuerpoVehiculo() == true)
+                {
+                    this.txtCuerpoVehiculo1.Clear();
+
+
+                    MessageBox.Show("Cuerpo de vehiculo guardado con éxito", "Cuerpo Vehiculo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else if (t.AgregarCuerpoVehiculo() == false)
+                {
+                    MessageBox.Show("Ha ocurrido un error", "Cuerpo Vehiculo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+        private void FrmCuerpoVehiculo_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

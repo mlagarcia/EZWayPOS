@@ -27,7 +27,7 @@ namespace EZWayPOS
         {
           Application.EnableVisualStyles();
           Application.SetCompatibleTextRenderingDefault(false);
-          Application.Run(new MdiMain());
+          Application.Run(new FrmInicioSesion());
     }
     }
 }

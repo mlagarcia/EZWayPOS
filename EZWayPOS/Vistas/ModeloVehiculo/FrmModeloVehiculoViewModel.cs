@@ -23,8 +23,8 @@ namespace EZWayPOS.Vistas.ModeloVehiculo
             InitializeComponent();
             this.MaximizeBox = false; //Para no permitir maximizar
             m.ListadoModelo(this.gridModeloVehiculo);
-           
-           
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
         }
         private void FrmListadoMarcaVehiculo_Load(object sender, EventArgs e)
         {
@@ -38,8 +38,8 @@ namespace EZWayPOS.Vistas.ModeloVehiculo
             d.GridMarcasInit(0, "ID #", 80);
             d.GridMarcasInit(1, "Marca", 130);
             d.GridMarcasInit(2, "Modelo", 150);
-            d.GridMarcasInit(3, "Cuerpo Vehiculo", 200);
-            d.GridMarcasInit(4, "Año de Lanzamiento", 150);
+            d.GridMarcasInit(3, "Cuerpo de Vehículo", 200);
+            d.GridMarcasInit(4, "Año de Lanzamiento", 140);
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)

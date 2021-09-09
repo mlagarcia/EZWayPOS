@@ -20,6 +20,9 @@ namespace EZWayPOS.Vistas.Cliente
         public FrmCliente()
         {
             InitializeComponent();
+
+            tt.SetToolTip(this.TxtPrimerNombre, "Ingrese primer nombre");
+            
             CboTipoCliente.DataSource = t.ListadoTipoCliente();
             CboTipoCliente.DisplayMember = "TipoCliente1";
             CboTipoCliente.ValueMember = "PK_TipoCliente";
@@ -27,13 +30,18 @@ namespace EZWayPOS.Vistas.Cliente
             CboSexo.Items.Add("Masculino");
             CboSexo.Items.Add("Femenino");
             CboSexo.SelectedIndex = 0;
+
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+          
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            if (CboTipoCliente.SelectedIndex == -1)
+            if (String.IsNullOrEmpty (TxtPrimerNombre.Text) || String.IsNullOrEmpty(TxtPrimerApellido.Text))
             {
-                MessageBox.Show("Error", "No es un cliente Valido");
+                MessageBox.Show(this,"Los campos con astericos son obligatorios, revise e intente de nuevo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                TxtPrimerNombre.Focus();
             }
             else
             {
@@ -56,11 +64,11 @@ namespace EZWayPOS.Vistas.Cliente
                     this.TxtSegundoApellido.Clear();
                     this.CboSexo.SelectedIndex = 0;
                     this.CboTipoCliente.SelectedIndex = 0;
-                    MessageBox.Show("Registro Guardado con Exito", "Sorry", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Cliente guardado con éxito", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else if (mv.AgregarCliente() == false)
                 {
-                    MessageBox.Show("Ha ocurrido un error", "Sorry", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Ha ocurrido un error", "Ups..", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }

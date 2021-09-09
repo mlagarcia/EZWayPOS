@@ -17,25 +17,39 @@ namespace EZWayPOS.Vistas.ColorVehiculo
         public Color_Vehiculo()
         {
             InitializeComponent();
+
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            t.NombreColor = this.TxtNombreColor.Text;
-            t.RGB = SelectedColor.BackColor.ToArgb().ToString();
-        
-            t.Active = true;
 
-            if (t.AgregarColorVehiculo() == true)
+            if (String.IsNullOrEmpty(this.TxtNombreColor.Text))
             {
-                this.TxtNombreColor.Clear();
+                MessageBox.Show(this, "Los campos con astericos son obligatorios, revise e intente de nuevo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                TxtNombreColor.Focus();
 
-                
-                MessageBox.Show("Registro Guardado con Exito", "Color Vehiculo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            else if (t.AgregarColorVehiculo() == false)
+            else
             {
-                MessageBox.Show("Ha ocurrido un error", "ColorVehiculo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                t.NombreColor = this.TxtNombreColor.Text;
+                t.RGB = SelectedColor.BackColor.ToArgb().ToString();
+
+                t.Active = true;
+
+                if (t.AgregarColorVehiculo() == true)
+                {
+                    this.TxtNombreColor.Clear();
+
+
+                    MessageBox.Show("Color guardado con éxito", "Color Vehiculo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else if (t.AgregarColorVehiculo() == false)
+                {
+                    MessageBox.Show("Ha ocurrido un error", "Ups..", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
@@ -46,15 +60,30 @@ namespace EZWayPOS.Vistas.ColorVehiculo
 
         private void btnSeleccionar_Click(object sender, EventArgs e)
         {
-         if (colorDialog1.ShowDialog()==DialogResult.OK)
-            this.SelectedColor.BackColor = this.colorDialog1.Color;
-            
+            if (colorDialog1.ShowDialog() == DialogResult.OK)
+                this.SelectedColor.BackColor = this.colorDialog1.Color;
+
         }
 
         private void Color_Vehiculo_Load(object sender, EventArgs e)
         {
 
         }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void SelectedColor_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
-    }
+}
 

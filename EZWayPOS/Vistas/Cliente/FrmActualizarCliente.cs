@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BusinessLogic;
+using EZWayPOS.Vistas.Main;
 
 namespace EZWayPOS.Vistas.Cliente
 {
@@ -17,11 +18,16 @@ namespace EZWayPOS.Vistas.Cliente
         BusinessLogic.Controller.CommonValidations.CboValidator val = new BusinessLogic.Controller.CommonValidations.CboValidator();
         BusinessLogic.TipoCliente t = new BusinessLogic.TipoCliente();
         FrmClienteViewModel v;
+        DialogResult d;
+        MdiMain m;
         public FrmActualizarCliente(string[] Valor)
         {
             InitializeComponent();
             txtId.Text = Valor[0];
             this.txtId.Enabled = false;
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.Text = "Actualizar Cliente: "+ Valor[2];
 
             CboTipoCliente.DataSource = t.ListadoTipoCliente();
             CboTipoCliente.DisplayMember = "TipoCliente1";
@@ -48,9 +54,10 @@ namespace EZWayPOS.Vistas.Cliente
  
         private void btnActualizar_Click(object sender, EventArgs e)
         {
-            if (CboTipoCliente.SelectedIndex == -1)
+            if (String.IsNullOrEmpty(TxtPrimerNombre.Text) || String.IsNullOrEmpty(TxtPrimerApellido.Text))
             {
-                MessageBox.Show("Error", "No es un Tipo Cliente Valido valido");
+                MessageBox.Show(this, "Los campos con astericos son obligatorios, revise e intente de nuevo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                TxtPrimerNombre.Focus();
             }
             else
             {
@@ -66,13 +73,12 @@ namespace EZWayPOS.Vistas.Cliente
 
                 if (mv.ActualizarCliente() == true)
                 {
-                    MessageBox.Show("Registro Guardado con Exito", "Cliente", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Client actualizado con éxito", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();
-
                 }
                 else if (mv.ActualizarCliente() == false)
                 {
-                    MessageBox.Show("Ha ocurrido un error", "ModeloVehiculo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Ha ocurrido un error", "Ups..", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
 
@@ -80,25 +86,30 @@ namespace EZWayPOS.Vistas.Cliente
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            mv.PK_Cliente = Convert.ToInt32(txtId.Text);
-            mv.PrimerNombre = this.TxtPrimerNombre.Text;
-            mv.SegundoNombre = this.TxtSegundoNombre.Text;
-            mv.PrimerApellido = this.TxtPrimerApellido.Text;
-            mv.SegundoApellido = this.TxtSegundoApellido.Text;
-            mv.FechaNacimiento = this.FechaNacPicker.Value.Date;
-            mv.Sexo = this.CboSexo.Text;
-            mv.TipoCliente = new BusinessLogic.TipoCliente() { PK_TipoCliente = (int)CboTipoCliente.SelectedValue };
-            mv.Active = false;
+            d = MessageBox.Show("Esta seguro que desea eliminar este cliente", "Eliminar Cliente", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-            if (mv.EliminarCliente() == true)
+            if (d == DialogResult.Yes)
             {
-                MessageBox.Show("Registro Eliminado con Exito", "Cliente", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.Close();
+                mv.PK_Cliente = Convert.ToInt32(txtId.Text);
+                mv.PrimerNombre = this.TxtPrimerNombre.Text;
+                mv.SegundoNombre = this.TxtSegundoNombre.Text;
+                mv.PrimerApellido = this.TxtPrimerApellido.Text;
+                mv.SegundoApellido = this.TxtSegundoApellido.Text;
+                mv.FechaNacimiento = this.FechaNacPicker.Value.Date;
+                mv.Sexo = this.CboSexo.Text;
+                mv.TipoCliente = new BusinessLogic.TipoCliente() { PK_TipoCliente = (int)CboTipoCliente.SelectedValue };
+                mv.Active = false;
 
-            }
-            else if (mv.EliminarCliente() == false)
-            {
-                MessageBox.Show("Ha ocurrido un error", "ModeloVehiculo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (mv.EliminarCliente() == true)
+                {
+                    MessageBox.Show("Cliente eliminado con éxito", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
+
+                }
+                else if (mv.EliminarCliente() == false)
+                {
+                    MessageBox.Show("Ha ocurrido un error", "Ups..", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
     }

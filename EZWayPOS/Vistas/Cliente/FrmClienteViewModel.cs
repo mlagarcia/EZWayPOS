@@ -21,6 +21,9 @@ namespace EZWayPOS.Vistas.Cliente
         {
             InitializeComponent();
             this.MaximizeBox = false; //Para no permitir maximizar
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+
             m.listadoCliente(this.gridCliente);
             CboTipoBusqueda.Items.Add("Nombre");
             CboTipoBusqueda.Items.Add("Apellido");
@@ -28,18 +31,18 @@ namespace EZWayPOS.Vistas.Cliente
         }
 
 
-        private void FrmClienteViewModel_Load(object sender, EventArgs e)
+        public void FrmClienteViewModel_Load(object sender, EventArgs e)
         {
             d = new BusinessLogic.Controller.DataGridValidator(gridCliente); //Instancia a validador de Grid
                                                                              //Inicializar valores de grid [ColIndex, Header, WidthSize]
-            d.GridMarcasInit(0, "ID #", 80);
-            d.GridMarcasInit(1, "Tipo Cliente", 130);
-            d.GridMarcasInit(2, "Primer Nombre", 150);
-            d.GridMarcasInit(3, "Segundo Nombre", 200);
-            d.GridMarcasInit(4, "Primer Apellido", 150);
-            d.GridMarcasInit(5, "Segundo Apellido", 150);
-            d.GridMarcasInit(6, "Fecha Nacimiento", 150);
-            d.GridMarcasInit(7, "Sexo", 150);
+            d.GridMarcasInit(0, "ID #", 100);
+            d.GridMarcasInit(1, "Tipo de Cliente", 120);
+            d.GridMarcasInit(2, "Primer Nombre", 120);
+            d.GridMarcasInit(3, "Segundo Nombre", 100);
+            d.GridMarcasInit(4, "Primer Apellido", 120);
+            d.GridMarcasInit(5, "Segundo Apellido", 100);
+            d.GridMarcasInit(6, "Fecha Nacimiento", 100);
+            d.GridMarcasInit(7, "Sexo", 82);
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
@@ -77,7 +80,6 @@ namespace EZWayPOS.Vistas.Cliente
             valor[5] = gridCliente.CurrentRow.Cells[5].Value != null ? gridCliente.CurrentRow.Cells[5].Value.ToString() : string.Empty;
             valor[6] = gridCliente.CurrentRow.Cells[6].Value != null ? gridCliente.CurrentRow.Cells[6].Value.ToString() : string.Empty;
             valor[7] = gridCliente.CurrentRow.Cells[7].Value != null ? gridCliente.CurrentRow.Cells[7].Value.ToString() : string.Empty;
-
             act = new FrmActualizarCliente(valor); //Fila seleccionada se pasa al constructor de la vista de actualizacion
             act.ShowDialog();
 

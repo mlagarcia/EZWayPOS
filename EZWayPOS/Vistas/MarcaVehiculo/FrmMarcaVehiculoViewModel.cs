@@ -23,6 +23,8 @@ namespace EZWayPOS.Vistas.MarcaVehiculo
             InitializeComponent();
             this.MaximizeBox = false; //Para no permitir maximizar
             m.ListadoMarcas(gridMarcaVehiculo);
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
 
         }
 
@@ -30,10 +32,10 @@ namespace EZWayPOS.Vistas.MarcaVehiculo
         {
             d = new BusinessLogic.Controller.DataGridValidator(gridMarcaVehiculo); //Instancia a validador de Grid
             //Inicializar valores de grid [ColIndex, Header, WidthSize]
-            d.GridMarcasInit(0, "ID #", 80);
-            d.GridMarcasInit(1, "Marca", 125);
-            d.GridMarcasInit(2, "País de Origen", 100);
-            d.GridMarcasInit(3, "Año de Fundación", 80);
+            d.GridMarcasInit(0, "ID #", 85);
+            d.GridMarcasInit(1, "Marca", 135);
+            d.GridMarcasInit(2, "País de Origen", 110);
+            d.GridMarcasInit(3, "Año de Fundación", 92);
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)

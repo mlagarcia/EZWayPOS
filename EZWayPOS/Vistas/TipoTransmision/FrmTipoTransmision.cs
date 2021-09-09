@@ -17,26 +17,39 @@ namespace EZWayPOS.Vistas
         public FrmTipoTransmision()
         {
             InitializeComponent();
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            t.TipoTramsmision1 = this.TxtTipoTransmision.Text;
-            t.DetalleAdicional = this.TxtDetalleAdicional.Text;
 
-            t.Active = true;
-
-            if (t.AgregarTipoTransmision() == true)
+            if (String.IsNullOrEmpty(TxtTipoTransmision.Text))
             {
-                this.TxtTipoTransmision.Clear();
-
-
-                MessageBox.Show("Registro Guardado con Exito", "Tipo Transmision", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(this, "Los campos con astericos son obligatorios, revise e intente de nuevo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                TxtTipoTransmision.Focus();
             }
-            else if (t.AgregarTipoTransmision() == false)
+            else
             {
-                MessageBox.Show("Ha ocurrido un error", "Tipo Transmision", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                t.TipoTramsmision1 = this.TxtTipoTransmision.Text;
+                t.DetalleAdicional = this.TxtDetalleAdicional.Text;
+
+                t.Active = true;
+
+                if (t.AgregarTipoTransmision() == true)
+                {
+                    this.TxtTipoTransmision.Clear();
+
+
+                    MessageBox.Show("Registro Guardado con Exito", "Tipo Transmision", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else if (t.AgregarTipoTransmision() == false)
+                {
+                    MessageBox.Show("Ha ocurrido un error", "Tipo Transmision", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
             }
+           
         }
 
         private void button2_Click(object sender, EventArgs e)

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using DataAccess;
 
 namespace BusinessLogic
@@ -48,5 +49,34 @@ namespace BusinessLogic
             }
         }
 
+    public void ListadoEstado(ComboBox Cbo)
+    {
+      using (BDAutoloteEntities conn = new BDAutoloteEntities())
+      {
+
+        try
+        {
+          var query = (from p in conn.EstadoVehiculo
+                       where p.Active == true //Filtar por registros con Active = 1
+
+                       select new
+                       {   //Parametros a mostrar del result de la query
+                         PK_EstadoVehiculo = p.PK_EstadoVehiculo,
+                         Estado = p.Estado
+                       }
+                       ).ToList(); //Convetir de var [query] a list
+
+          Cbo.DataSource = query;
+          Cbo.DisplayMember = "Estado";
+          Cbo.ValueMember = "PK_EstadoVehiculo";
+        }
+        catch (Exception Ex)
+        {
+
+        }
+      }
     }
+
+
+  }
 }

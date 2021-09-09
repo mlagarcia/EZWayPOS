@@ -17,18 +17,21 @@ namespace EZWayPOS.Vistas.MarcaVehiculo
         BusinessLogic.MarcaVehiculo mv = new BusinessLogic.MarcaVehiculo();
         BusinessLogic.Controller.CommonValidations.CboValidator val = new BusinessLogic.Controller.CommonValidations.CboValidator();
         FrmMarcaVehiculoViewModel v;
-        public FrmActualizarMarcaVehiculo(string [] Valor)
+        DialogResult d;
+        public FrmActualizarMarcaVehiculo(string[] Valor)
         {
             InitializeComponent();
             this.txtId.Text = Valor[0]; // Mostrar Id
             this.txtId.Enabled = false;
             this.TxtMarcaVehiculo.Text = Valor[1]; // Mostrar Marca
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
 
             val.CboInit(CboPais);
             CboPais.DataSource = mv.ListadoPaises(); //Seleccionar por defecto pais de la marca
             CboPais.DisplayMember = "NombrePais";
             CboPais.ValueMember = "PK_Pais";
-            //CboPais.Text = Valor[2];
+            CboPais.Text = Valor[2];
 
             val.CboInit(CboFundacion);
             CboFundacion.DataSource = Enumerable.Range(1900, 100).ToList();
@@ -38,54 +41,65 @@ namespace EZWayPOS.Vistas.MarcaVehiculo
 
         private void FrmActualizarMarcaVehiculo_Load(object sender, EventArgs e)
         {
-      
+
         }
 
         private void btnActualizar_Click(object sender, EventArgs e)
         {
-            if (CboPais.SelectedIndex == -1)
+            if (CboPais.SelectedIndex == -1 || CboFundacion.SelectedIndex == -1)
             {
-                MessageBox.Show("Error", "No es un pais valido");
+                MessageBox.Show("Revise las opciones seleccionadas e intente de nuevo", "Ups...ha ocurrido un error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
-                mv.PK_MarcaVehiculo = Convert.ToInt32(txtId.Text);
-                mv.MarcaVehiculo1 = this.TxtMarcaVehiculo.Text;
-                mv.Pais = new CatalogoPais() { PK_Pais = (int)CboPais.SelectedValue };
-                mv.AnioFundacion = (int)this.CboFundacion.SelectedItem;
-                mv.Active = true;
-
-                if (mv.ActualizarMarca() == true)
+                if (String.IsNullOrEmpty(TxtMarcaVehiculo.Text))
                 {
-                   
-                    MessageBox.Show("Registro Guardado con Exito", "Tipo Motor", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.Close();
-
+                    MessageBox.Show(this, "Los campos con astericos son obligatorios, revise e intente de nuevo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    TxtMarcaVehiculo.Focus();
                 }
-                else if (mv.ActualizarMarca() == false)
+                else
                 {
-                    MessageBox.Show("Ha ocurrido un error", "TipoMotor", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    mv.PK_MarcaVehiculo = Convert.ToInt32(txtId.Text);
+                    mv.MarcaVehiculo1 = this.TxtMarcaVehiculo.Text;
+                    mv.Pais = new CatalogoPais() { PK_Pais = (int)CboPais.SelectedValue };
+                    mv.AnioFundacion = (int)this.CboFundacion.SelectedItem;
+                    mv.Active = true;
+
+                    if (mv.ActualizarMarca() == true)
+                    {
+                        MessageBox.Show("Marca guardada con éxito", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        this.Close();
+
+                    }
+                    else if (mv.ActualizarMarca() == false)
+                    {
+                        MessageBox.Show("Ha ocurrido un error", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            mv.PK_MarcaVehiculo = Convert.ToInt32(txtId.Text);
-            mv.MarcaVehiculo1 = this.TxtMarcaVehiculo.Text;
-            mv.Pais = new CatalogoPais() { PK_Pais = (int)CboPais.SelectedValue };
-            mv.AnioFundacion = (int)this.CboFundacion.SelectedItem;
-            mv.Active = false;
-
-            if (mv.EliminarMarca() == true)
+            d = MessageBox.Show("Esta seguro que desea eliminar esta marca", "Eliminar marca", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (d == DialogResult.Yes)
             {
-                MessageBox.Show("Registro eliminado con Exito", "Marca Vehiculo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.Close();
+                mv.PK_MarcaVehiculo = Convert.ToInt32(txtId.Text);
+                mv.MarcaVehiculo1 = this.TxtMarcaVehiculo.Text;
+                mv.Pais = new CatalogoPais() { PK_Pais = (int)CboPais.SelectedValue };
+                mv.AnioFundacion = (int)this.CboFundacion.SelectedItem;
+                mv.Active = false;
 
-            }
-            else if (mv.EliminarMarca() == false)
-            {
-                MessageBox.Show("Ha ocurrido un error", "MarcaVehiculo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (mv.EliminarMarca() == true)
+                {
+                    MessageBox.Show("Registro eliminado con éxito", "Marca Vehiculo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
+
+                }
+                else if (mv.EliminarMarca() == false)
+                {
+                    MessageBox.Show("Ha ocurrido un error", "Marca Vehiculo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
     }

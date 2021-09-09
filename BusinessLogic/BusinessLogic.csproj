@@ -55,13 +55,16 @@
     <Compile Include="Controller\CommonValidations\CboValidator.cs" />
     <Compile Include="CuerpoVehiculo.cs" />
     <Compile Include="EstadoVehiculo.cs" />
+    <Compile Include="Login\LoginProvider.cs" />
     <Compile Include="MarcaVehiculo.cs" />
     <Compile Include="ModeloVehiculo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TipoCliente.cs" />
+    <Compile Include="TipoMoneda.cs" />
     <Compile Include="TipoMotor.cs" />
     <Compile Include="TipoTransmision.cs" />
     <Compile Include="TipoVehiculo.cs" />
+    <Compile Include="UnidadLongitud.cs" />
     <Compile Include="Vehiculo.cs" />
   </ItemGroup>
   <ItemGroup>

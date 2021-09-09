@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using DataAccess;
 
 namespace BusinessLogic
@@ -49,8 +50,32 @@ namespace BusinessLogic
                 }
             }
         }
+    public void ListadoColor(ComboBox Cbo)
+    {
+      using (BDAutoloteEntities conn = new BDAutoloteEntities())
+      {
 
+        try
+        {
+          var query = (from p in conn.ColorVehiculo
+                       where p.Active == true && p.NombreColor != null//Filtar por registros con Active = 1
 
+                       select new
+                       {   //Parametros a mostrar del result de la query
+                         PK_ColorVehiculo = p.PK_ColorVehiculo,
+                         NombreColor = p.NombreColor
+                       }
+                       ).ToList(); //Convetir de var [query] a list
+
+          Cbo.DataSource = query;
+          Cbo.DisplayMember = "NombreColor";
+          Cbo.ValueMember = "PK_ColorVehiculo";
+        }
+        catch (Exception Ex)
+        {
+
+        }
+      }
     }
-
+  }
 }

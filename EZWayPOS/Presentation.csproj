@@ -84,11 +84,11 @@
     <Compile Include="Vistas\EstadoVehiculo\FrmEstadoVehiculo.Designer.cs">
       <DependentUpon>FrmEstadoVehiculo.cs</DependentUpon>
     </Compile>
-    <Compile Include="Vistas\Form1.cs">
+    <Compile Include="Vistas\FrmInicioSesion.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Vistas\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Vistas\FrmInicioSesion.Designer.cs">
+      <DependentUpon>FrmInicioSesion.cs</DependentUpon>
     </Compile>
     <Compile Include="Vistas\MarcaVehiculo\FrmActualizarMarcaVehiculo.cs">
       <SubType>Form</SubType>
@@ -164,6 +164,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Vistas\Cliente\FrmActualizarCliente.resx">
       <DependentUpon>FrmActualizarCliente.cs</DependentUpon>
@@ -183,8 +184,8 @@
     <EmbeddedResource Include="Vistas\EstadoVehiculo\FrmEstadoVehiculo.resx">
       <DependentUpon>FrmEstadoVehiculo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Vistas\Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="Vistas\FrmInicioSesion.resx">
+      <DependentUpon>FrmInicioSesion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vistas\MarcaVehiculo\FrmActualizarMarcaVehiculo.resx">
       <DependentUpon>FrmActualizarMarcaVehiculo.cs</DependentUpon>
@@ -239,7 +240,19 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Resources\" />
+    <None Include="Resources\search.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\search-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\diskette.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cancel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Vistas\Usuario\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

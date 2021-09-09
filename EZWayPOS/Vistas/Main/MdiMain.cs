@@ -14,6 +14,7 @@ using EZWayPOS.Vistas.MarcaVehiculo;
 using EZWayPOS.Vistas.ModeloVehiculo;
 using EZWayPOS.Vistas.Cliente;
 using EZWayPOS.Vistas.Vehiculo;
+using EZWayPOS.Vistas.TipoVehiculo;
 
 namespace EZWayPOS.Vistas.Main
 {
@@ -31,16 +32,16 @@ namespace EZWayPOS.Vistas.Main
         private FrmCliente cl;
         private FrmClienteViewModel Cl1;
         private FrmVehiculo vh;
+        private FrmTipoVehiculo tv;
+        private FrmInicioSesion s;
 
-        private int childFormNumber = 0;
-
-        public MdiMain()
+        public MdiMain(String user)
         {
             InitializeComponent();
             this.WindowState = FormWindowState.Maximized;
             this.MaximizeBox = false;
             this.usuarioToolStripMenuItem.Text = "Mariela";
-
+            this.usuarioToolStripMenuItem.Text = user;
         }
 
         private void ShowNewForm(object sender, EventArgs e)
@@ -317,7 +318,7 @@ namespace EZWayPOS.Vistas.Main
                 vh.MdiParent = this;
                 vh.Show();
             }
-            else
+            else 
             {
                 vh.WindowState = FormWindowState.Normal;
             }
@@ -327,6 +328,44 @@ namespace EZWayPOS.Vistas.Main
         {
             vh = null;
            
+        }
+
+        private void tiposDeEmpleadoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tiposDeVehiculoToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+           if (tv == null)
+            {
+                tv = new FrmTipoVehiculo();
+                tv.FormClosed += new FormClosedEventHandler(Tv_FormClosed);
+                tv.MdiParent = this;
+                tv.Show();
+            }else
+            {
+                tv.WindowState = FormWindowState.Normal;
+            }
+            
+        }
+
+        private void Tv_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            tv = null;
+        }
+
+        private void usuarioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void salirToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            s = new FrmInicioSesion();
+            s.Show();
+            this.Hide();
+      
         }
     }
 }

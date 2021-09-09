@@ -16,9 +16,14 @@ namespace EZWayPOS.Vistas.ModeloVehiculo
         BusinessLogic.ModeloVehiculo mv = new BusinessLogic.ModeloVehiculo();
         BusinessLogic.Controller.CommonValidations.CboValidator val = new BusinessLogic.Controller.CommonValidations.CboValidator();
         FrmModeloVehiculoViewModel v;
+        DialogResult d;
         public FrmActualizarModeloVehiculo(string[] Valor)
         {
             InitializeComponent();
+
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+
             txtId.Text = Valor[0];
             this.txtId.Enabled = false;// Mostrar Id
 
@@ -26,12 +31,12 @@ namespace EZWayPOS.Vistas.ModeloVehiculo
             mv.listadoMarca(CboMarca);
             CboMarca.Text = Valor[1];
 
-           
+
             this.TxtModeloVehiculo.Text = Valor[2];
 
             val.CboInit(CboCuerpo);
             mv.listadoCuerpoVehiculo(CboCuerpo); //Seleccionar por defecto pais de la marca
-            CboCuerpo.Text=Valor[3];
+            CboCuerpo.Text = Valor[3];
 
             val.CboInit(CboAnioLanzamiento);
             CboAnioLanzamiento.DataSource = Enumerable.Range(1900, 200).ToList();
@@ -48,64 +53,76 @@ namespace EZWayPOS.Vistas.ModeloVehiculo
 
         private void btnActualizar_Click(object sender, EventArgs e)
         {
-            if (CboCuerpo.SelectedIndex == -1)
+            if (CboMarca.SelectedIndex == -1 || CboCuerpo.SelectedIndex == -1 || CboAnioLanzamiento.SelectedIndex == -1)
             {
-                MessageBox.Show("Error", "No es un cuerpo vehiculo Valido valido");
+                MessageBox.Show("Revise las opciones seleccionadas e intente de nuevo", "Ups...ha ocurrido un error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
-                mv.PK_ModeloVehiculo = Convert.ToInt32(txtId.Text);
-                mv.ModeloVehiculo1 = this.TxtModeloVehiculo.Text;
-                mv.MarcaVehiculo = new BusinessLogic.MarcaVehiculo() { PK_MarcaVehiculo = (int)CboMarca.SelectedValue };
-                mv.CuerpoVehiculo = new BusinessLogic.CuerpoVehiculo() { PK_CuerpoVehiculo = (int)CboCuerpo.SelectedValue };
-                mv.ModeloAnioLanzamiento = (int)this.CboAnioLanzamiento.SelectedItem;
-                mv.ModeloAnio= (int)this.CboAnioLanzamiento.SelectedItem;
-                mv.Active = true;
-
-                if (mv.ActualizarModelo() == true)
+                if (String.IsNullOrEmpty(this.TxtModeloVehiculo.Text))
                 {
-                    MessageBox.Show("Registro Guardado con Exito", "Tipo Motor", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.Close();
-
+                    MessageBox.Show(this, "Los campos con astericos son obligatorios, revise e intente de nuevo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    TxtModeloVehiculo.Focus();
                 }
-                else if (mv.ActualizarModelo() == false)
+                else
                 {
-                    MessageBox.Show("Ha ocurrido un error", "ModeloVehiculo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    mv.PK_ModeloVehiculo = Convert.ToInt32(txtId.Text);
+                    mv.ModeloVehiculo1 = this.TxtModeloVehiculo.Text;
+                    mv.MarcaVehiculo = new BusinessLogic.MarcaVehiculo() { PK_MarcaVehiculo = (int)CboMarca.SelectedValue };
+                    mv.CuerpoVehiculo = new BusinessLogic.CuerpoVehiculo() { PK_CuerpoVehiculo = (int)CboCuerpo.SelectedValue };
+                    mv.ModeloAnioLanzamiento = (int)this.CboAnioLanzamiento.SelectedItem;
+                    mv.ModeloAnio = (int)this.CboAnioLanzamiento.SelectedItem;
+                    mv.Active = true;
+
+                    if (mv.ActualizarModelo() == true)
+                    {
+                        MessageBox.Show("Modelo actualizado con éxito", "Modelo Vehiculo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        this.Close();
+                    }
+                    else if (mv.ActualizarModelo() == false)
+                    {
+                        MessageBox.Show("Ups.. Ha ocurrido un error", "Modelo Vehiculo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
         }
 
         private void label3_Click(object sender, EventArgs e)
         {
-          
+
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            mv.PK_ModeloVehiculo = Convert.ToInt32(txtId.Text);
-            mv.ModeloVehiculo1 = this.TxtModeloVehiculo.Text;
-            mv.MarcaVehiculo = new BusinessLogic.MarcaVehiculo() { PK_MarcaVehiculo = (int)CboMarca.SelectedValue };
-            mv.CuerpoVehiculo = new BusinessLogic.CuerpoVehiculo() { PK_CuerpoVehiculo = (int)CboCuerpo.SelectedValue };
-            mv.ModeloAnioLanzamiento = (int)this.CboAnioLanzamiento.SelectedItem;
-            mv.ModeloAnio = (int)this.CboAnioLanzamiento.SelectedItem;
-            mv.Active = false;
 
-            if (mv.EliminarModelo() == true)
+            d = MessageBox.Show("Esta seguro que desea eliminar este modelo", "Eliminar modelo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (d == DialogResult.Yes)
             {
-                MessageBox.Show("Registro eliminado con Exito", "Tipo Motor", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.Close();
+                mv.PK_ModeloVehiculo = Convert.ToInt32(txtId.Text);
+                mv.ModeloVehiculo1 = this.TxtModeloVehiculo.Text;
+                mv.MarcaVehiculo = new BusinessLogic.MarcaVehiculo() { PK_MarcaVehiculo = (int)CboMarca.SelectedValue };
+                mv.CuerpoVehiculo = new BusinessLogic.CuerpoVehiculo() { PK_CuerpoVehiculo = (int)CboCuerpo.SelectedValue };
+                mv.ModeloAnioLanzamiento = (int)this.CboAnioLanzamiento.SelectedItem;
+                mv.ModeloAnio = (int)this.CboAnioLanzamiento.SelectedItem;
+                mv.Active = false;
 
-            }
-            else if (mv.EliminarModelo() == false)
-            {
-                MessageBox.Show("Ha ocurrido un error", "ModeloVehiculo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (mv.EliminarModelo() == true)
+                {
+                    MessageBox.Show("Registro eliminado con Exito", "Tipo Motor", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
+
+                }
+                else if (mv.EliminarModelo() == false)
+                {
+                    MessageBox.Show("Ha ocurrido un error", "ModeloVehiculo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
-    private void CboCuerpo_SelectedIndexChanged(object sender, EventArgs e)
-    {
+        private void CboCuerpo_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
+        }
     }
-  }
-    }
+}
 

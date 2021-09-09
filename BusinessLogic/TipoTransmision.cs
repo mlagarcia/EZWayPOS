@@ -8,10 +8,10 @@ using System.Windows.Forms;
 
 namespace BusinessLogic
 {
-    public class TipoTransmision
+  public  class TipoTransmision
     {
         public int PK_TipoTransmision { get; set; }
-        public string TipoTramsmision1 { get; set; }
+        public string TipoTramsmision1{ get; set; }
         public string DetalleAdicional { get; set; }
         public bool Active { get; set; }
         public TipoTransmision()
@@ -49,35 +49,35 @@ namespace BusinessLogic
                 }
             }
         }
-        public void ListadoTipoTransmision(ComboBox Cbo)
+    public void ListadoTipoTransmision (ComboBox Cbo)
+    {
+      using (BDAutoloteEntities conn = new BDAutoloteEntities())
+      {
+
+        try
         {
-            using (BDAutoloteEntities conn = new BDAutoloteEntities())
-            {
+          var query = (from p in conn.TipoTransmision
+                       where p.Active == true //Filtar por registros con Active = 1
 
-                try
-                {
-                    var query = (from p in conn.TipoTransmision
-                                 where p.Active == true //Filtar por registros con Active = 1
+                       select new
+                       {   //Parametros a mostrar del result de la query
+                         PK_TipoTransmision = p.PK_TipoTransmision,
+                         TipoTransmision1 = p.TipoTransmision1
+                       }
+                       ).ToList(); //Convetir de var [query] a list
 
-                                 select new
-                                 {   //Parametros a mostrar del result de la query
-                                     PK_TipoTransmision = p.PK_TipoTransmision,
-                                     TipoTransmision1 = p.TipoTransmision1,
-                                 }
-                                 ).ToList(); //Convetir de var [query] a list
-
-                    Cbo.DataSource = query;
-                    Cbo.DisplayMember = "TipoTransmision1";
-                    Cbo.ValueMember = "PK_TipoTransmision";
-                }
-                catch (Exception Ex)
-                {
-
-                }
-            }
+          Cbo.DataSource = query;
+          Cbo.DisplayMember = "TipoTransmision1";
+          Cbo.ValueMember = "PK_TipoTransmision";
         }
+        catch (Exception Ex)
+        {
 
+        }
+      }
     }
+
+  }
 
 
 }

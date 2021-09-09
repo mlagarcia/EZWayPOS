@@ -16,31 +16,46 @@ namespace EZWayPOS.Vistas.MarcaVehiculo
         public FrmEstadoVehiculo()
         {
             InitializeComponent();
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            t.Estado = this.TxtEstado.Text;
-            t.DetallesAdicional = this.TxtDetalleAdicional.Text;
-
-            t.Active = true;
-
-            if (t.AgregarEstadoVehiculo() == true)
+            if (String.IsNullOrEmpty(this.TxtEstado.Text))
             {
-                this.TxtEstado.Clear();
-
-
-                MessageBox.Show("Registro Guardado con Exito", "Estado Vehiculo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(this, "Los campos con astericos son obligatorios, revise e intente de nuevo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                TxtEstado.Focus();
             }
-            else if (t.AgregarEstadoVehiculo() == false)
+            else
             {
-                MessageBox.Show("Ha ocurrido un error", "Estado Vehiculo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                t.Estado = this.TxtEstado.Text;
+                t.DetallesAdicional = this.TxtDetalleAdicional.Text;
+
+                t.Active = true;
+
+                if (t.AgregarEstadoVehiculo() == true)
+                {
+                    this.TxtEstado.Clear();
+                    this.TxtDetalleAdicional.Clear();
+
+                    MessageBox.Show("Registro guardado con éxito", "Estado Vehiculo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else if (t.AgregarEstadoVehiculo() == false)
+                {
+                    MessageBox.Show("Ha ocurrido un error", "Estado Vehiculo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void FrmEstadoVehiculo_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
