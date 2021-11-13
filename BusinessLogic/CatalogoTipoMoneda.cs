@@ -51,11 +51,5 @@ namespace BusinessLogic
                 }
             }
         }
-
-
-
-
-
-
     }
 }
