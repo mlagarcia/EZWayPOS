@@ -53,7 +53,6 @@ namespace EZWayPOS.Vistas.Main
             this.tipoMotorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tipoTransmisionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tiposDeVehiculoToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.sesiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.usuarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.verPerfilToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -189,8 +188,7 @@ namespace EZWayPOS.Vistas.Main
             // fileMenu
             // 
             this.fileMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.newToolStripMenuItem,
-            this.toolStripSeparator1});
+            this.newToolStripMenuItem});
             this.fileMenu.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.fileMenu.ImageTransparentColor = System.Drawing.SystemColors.ActiveBorder;
             this.fileMenu.Name = "fileMenu";
@@ -207,10 +205,11 @@ namespace EZWayPOS.Vistas.Main
             this.tipoTransmisionToolStripMenuItem,
             this.tiposDeVehiculoToolStripMenuItem1});
             this.newToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("newToolStripMenuItem.Image")));
+            this.newToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.newToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Black;
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
             this.newToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(196, 30);
             this.newToolStripMenuItem.Text = "Vehículos";
             this.newToolStripMenuItem.Click += new System.EventHandler(this.ShowNewForm);
             // 
@@ -256,11 +255,6 @@ namespace EZWayPOS.Vistas.Main
             this.tiposDeVehiculoToolStripMenuItem1.Text = "Tipos de vehículo";
             this.tiposDeVehiculoToolStripMenuItem1.Click += new System.EventHandler(this.tiposDeVehiculoToolStripMenuItem1_Click);
             // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(185, 6);
-            // 
             // sesiToolStripMenuItem
             // 
             this.sesiToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -285,13 +279,13 @@ namespace EZWayPOS.Vistas.Main
             // verPerfilToolStripMenuItem
             // 
             this.verPerfilToolStripMenuItem.Name = "verPerfilToolStripMenuItem";
-            this.verPerfilToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.verPerfilToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
             this.verPerfilToolStripMenuItem.Text = "Ver perfil";
             // 
             // salirToolStripMenuItem
             // 
             this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
-            this.salirToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.salirToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
             this.salirToolStripMenuItem.Text = "Salir";
             this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
             // 
@@ -349,7 +343,6 @@ namespace EZWayPOS.Vistas.Main
         private System.Windows.Forms.ToolStripMenuItem tiposDeVehiculoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tipoDeVehiculoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tiposDeVehiculoToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem sesiToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem usuarioToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem salirToolStripMenuItem;

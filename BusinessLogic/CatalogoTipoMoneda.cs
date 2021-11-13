@@ -8,13 +8,13 @@ using DataAccess;
 
 namespace BusinessLogic
 {
-  public  class TipoMoneda
+  public  class CatalogoTipoMoneda
     {
         public int PK_TipoMoneda { get; set; }
         public string TipoMoneda1 { get; set; }
         public string Simbolo { get; set; }
 
-        public TipoMoneda()
+        public CatalogoTipoMoneda()
         {
             Init();
 

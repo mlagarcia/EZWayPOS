@@ -51,7 +51,7 @@ namespace EZWayPOS.Vistas
                 {
                     if (l.flag == 1)
                     {
-             
+                        
                         m = new MdiMain(this.TxtUser.Text);
                         m.Show();
                         this.Hide();

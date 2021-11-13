@@ -81,6 +81,19 @@ namespace EZWayPOS.Vistas.ModeloVehiculo
             act = new FrmActualizarModeloVehiculo(valor); //Fila seleccionada se pasa al constructor de la vista de actualizacion
             act.ShowDialog();
         }
+
+        private void txtModelo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
+
+        private void txtModelo_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                this.btnBuscar.PerformClick();
+            }
+        }
     }
 }
 

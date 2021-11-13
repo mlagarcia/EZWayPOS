@@ -47,6 +47,7 @@ namespace EZWayPOS.Vistas.Cliente
             this.txtCliente.Name = "txtCliente";
             this.txtCliente.Size = new System.Drawing.Size(497, 26);
             this.txtCliente.TabIndex = 4;
+            this.txtCliente.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCliente_KeyDown);
             // 
             // gridCliente
             // 

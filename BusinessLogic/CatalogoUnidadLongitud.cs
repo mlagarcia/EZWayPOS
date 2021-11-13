@@ -8,13 +8,13 @@ using DataAccess;
 
 namespace BusinessLogic
 {
-  public class UnidadLongitud
+  public class CatalogoUnidadLongitud
   {
     public int PK_UnidadLongitud { get; set; }
     public string TipoLongitud { get; set; }
     public string Abreviatura { get; set; }
 
-    public UnidadLongitud () {
+    public CatalogoUnidadLongitud () {
       Init();
 
     }
@@ -37,7 +37,7 @@ namespace BusinessLogic
                        select new
                        {   //Parametros a mostrar del result de la query
                          PK_UnidadLongitud = p.PK_UnidadLongitud,
-                         TipoLongitud= p.TipoLongitud
+                         TipoLongitud= p.TipoLongitud + " ("+p.Abreviatura+ ")"
                        }
                        ).ToList(); //Convetir de var [query] a list
 

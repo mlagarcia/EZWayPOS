@@ -44,6 +44,7 @@ namespace EZWayPOS.Vistas.MarcaVehiculo
             this.txtMarca.Name = "txtMarca";
             this.txtMarca.Size = new System.Drawing.Size(363, 25);
             this.txtMarca.TabIndex = 1;
+            this.txtMarca.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtMarca_KeyDown);
             // 
             // btnBuscar
             // 

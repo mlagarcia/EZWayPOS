@@ -17,9 +17,6 @@ namespace BusinessLogic.Controller.CommonValidations
             Cbo.DropDownHeight = Cbo.Font.Height * 5;
             Cbo.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             Cbo.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-
         }
-
-
     }
 }

@@ -77,5 +77,13 @@ namespace EZWayPOS.Vistas.MarcaVehiculo
     {
 
     }
-  }
+
+        private void txtMarca_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                this.btnBuscar.PerformClick();
+            }
+        }
+    }
 }

@@ -19,7 +19,5 @@ namespace BusinessLogic.Controller
             data.Columns[ColumnIndex].HeaderText = Header;
             data.Columns[ColumnIndex].Width = Width;
         }
-
-
   }
 }

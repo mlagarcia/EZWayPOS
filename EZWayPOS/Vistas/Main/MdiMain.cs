@@ -364,7 +364,7 @@ namespace EZWayPOS.Vistas.Main
         {
             s = new FrmInicioSesion();
             s.Show();
-            this.Hide();
+            this.Close();
       
         }
     }

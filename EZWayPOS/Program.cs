@@ -13,8 +13,6 @@ using EZWayPOS.Vistas.MarcaVehiculo;
 using EZWayPOS.Vistas.ModeloVehiculo;
 
 
-
-
 namespace EZWayPOS
 {
     static class Program
