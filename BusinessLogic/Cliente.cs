@@ -78,7 +78,7 @@ namespace BusinessLogic
                     t.SegundoApellido = this.SegundoApellido;
                     t.FechaNacimiento = this.FechaNacimiento;
                     t.Sexo = this.Sexo;
-                    t.Active = this.Active; 
+                    t.Active = this.Active;
 
                     conn.Cliente.Attach(t);
                     conn.Entry(t).Property(x => x.Active).IsModified = true;
@@ -92,9 +92,6 @@ namespace BusinessLogic
                 }
             }
         }
-
-
-
 
         public IEnumerable<object> DetalleTipoCliente(string TipoCliente)
         {
@@ -115,7 +112,6 @@ namespace BusinessLogic
         }
 
         public bool ActualizarCliente()
-
         {
             using (BDAutoloteEntities conn = new BDAutoloteEntities())
             {
@@ -171,7 +167,6 @@ namespace BusinessLogic
                                      SegundoApellido = m.SegundoApellido,
                                      FechaNacimiento = m.FechaNacimiento,
                                      sexo = m.Sexo
-
                                  }
                                  ).ToList(); //Convetir de var [query] a list
 
@@ -179,9 +174,7 @@ namespace BusinessLogic
                 }
                 catch (Exception Ex)
                 {
-
                 }
-
             }
         }
 
@@ -209,7 +202,6 @@ namespace BusinessLogic
                                      SegundoApellido = m.SegundoApellido,
                                      FechaNacimiento = m.FechaNacimiento,
                                      sexo = m.Sexo
-
                                  }
                                  ).ToList(); //Convetir de var [query] a list
 
@@ -217,15 +209,11 @@ namespace BusinessLogic
                 }
                 catch (Exception Ex)
                 {
-
                 }
-
             }
         }
 
-       
-
-        public void listadoCliente(DataGridView data )
+        public void listadoCliente(DataGridView data)
         {
             using (BDAutoloteEntities conn = new BDAutoloteEntities())
             {
@@ -236,7 +224,7 @@ namespace BusinessLogic
                                  join p in conn.TipoCliente
                                  on m.FK_TipoCliente equals p.PK_TipoCliente//Join de MarcaVehiculo con CatalogoPais
                                  where m.Active == true //Filtar por registros con Active = 1
-                                 
+
                                  select new
                                  {   //Parametros a mostrar del result de la query
                                      PK_Cliente = m.PK_Cliente,
@@ -247,7 +235,6 @@ namespace BusinessLogic
                                      SegundoApellido = m.SegundoApellido,
                                      FechaNacimiento = m.FechaNacimiento,
                                      sexo = m.Sexo
-
                                  }
                                  ).ToList(); //Convetir de var [query] a list
 
@@ -257,10 +244,8 @@ namespace BusinessLogic
                 {
 
                 }
-
             }
         }
-
 
     }
 }
