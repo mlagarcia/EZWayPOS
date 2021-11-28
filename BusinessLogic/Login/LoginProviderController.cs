@@ -50,11 +50,9 @@ namespace BusinessLogic.Login
                 {
                     ExMessage = Ex.Message;
                     return false;
-
                 }
             }
         }
-
         public bool PermitirReintento(int nIntento, int MaxIntento)
         {
             if (nIntento >= MaxIntento)
@@ -66,5 +64,7 @@ namespace BusinessLogic.Login
                 return true;
             }
         }
+
+
     }
 }

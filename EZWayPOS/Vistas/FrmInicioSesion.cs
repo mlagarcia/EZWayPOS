@@ -18,7 +18,6 @@ namespace EZWayPOS.Vistas
         MdiMain m;
         int retriesCount = 0;
         int MaxRetries = 3;
-
         public FrmInicioSesion()
         {
 
@@ -55,9 +54,10 @@ namespace EZWayPOS.Vistas
                 {
                     if (l.connected == 1)
                     {
-                        m = new MdiMain(this.TxtUser.Text);
-                        m.Show();
                         this.Hide();
+                        m = new MdiMain(l.NombreUsuario);  
+                        m.Show();
+
                     }
                     else
                     {
