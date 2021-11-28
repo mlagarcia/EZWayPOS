@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BusinessLogic.Controller.CommonValidations
+namespace BusinessLogic.Controller.CommonValidator
 {
     public class CboValidator
     {
         public CboValidator()
-        {
+        { //Void constructor
         }
 
         public void CboInit(System.Windows.Forms.ComboBox Cbo)

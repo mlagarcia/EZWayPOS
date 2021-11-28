@@ -14,7 +14,7 @@ namespace EZWayPOS.Vistas.ModeloVehiculo
     public partial class FrmModeloVehiculo : Form
     {
         BusinessLogic.ModeloVehiculo m = new BusinessLogic.ModeloVehiculo();
-        BusinessLogic.Controller.CommonValidations.CboValidator val = new BusinessLogic.Controller.CommonValidations.CboValidator();
+        BusinessLogic.Controller.CommonValidator.CboValidator val = new BusinessLogic.Controller.CommonValidator.CboValidator();
 
         public FrmModeloVehiculo()
         {

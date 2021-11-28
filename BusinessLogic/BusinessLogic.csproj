@@ -51,20 +51,20 @@
     <Compile Include="Catalog\CatalogoPais.cs" />
     <Compile Include="Cliente.cs" />
     <Compile Include="ColorVehiculo.cs" />
-    <Compile Include="Controller\CommonValidations\DataGridValidator.cs" />
-    <Compile Include="Controller\CommonValidations\CboValidator.cs" />
+    <Compile Include="Controller\CommonValidator\DataGridValidator.cs" />
+    <Compile Include="Controller\CommonValidator\CboValidator.cs" />
     <Compile Include="CuerpoVehiculo.cs" />
     <Compile Include="EstadoVehiculo.cs" />
-    <Compile Include="Login\LoginProvider.cs" />
+    <Compile Include="Login\LoginProviderController.cs" />
     <Compile Include="MarcaVehiculo.cs" />
     <Compile Include="ModeloVehiculo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TipoCliente.cs" />
-    <Compile Include="CatalogoTipoMoneda.cs" />
+    <Compile Include="Catalog\CatalogoTipoMoneda.cs" />
     <Compile Include="TipoMotor.cs" />
     <Compile Include="TipoTransmision.cs" />
     <Compile Include="TipoVehiculo.cs" />
-    <Compile Include="CatalogoUnidadLongitud.cs" />
+    <Compile Include="Catalog\CatalogoUnidadLongitud.cs" />
     <Compile Include="Vehiculo.cs" />
   </ItemGroup>
   <ItemGroup>

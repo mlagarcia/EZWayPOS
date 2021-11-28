@@ -15,7 +15,7 @@ namespace EZWayPOS.Vistas.MarcaVehiculo
     public partial class FrmActualizarMarcaVehiculo : Form
     {
         BusinessLogic.MarcaVehiculo mv = new BusinessLogic.MarcaVehiculo();
-        BusinessLogic.Controller.CommonValidations.CboValidator val = new BusinessLogic.Controller.CommonValidations.CboValidator();
+        BusinessLogic.Controller.CommonValidator.CboValidator val = new BusinessLogic.Controller.CommonValidator.CboValidator();
         FrmMarcaVehiculoViewModel v;
         DialogResult d;
         public FrmActualizarMarcaVehiculo(string[] Valor)
@@ -38,12 +38,10 @@ namespace EZWayPOS.Vistas.MarcaVehiculo
             CboFundacion.Text = Valor[3]; //Seleccionar por defecto año fundacion de la marca
 
         }
-
         private void FrmActualizarMarcaVehiculo_Load(object sender, EventArgs e)
         {
 
         }
-
         private void btnActualizar_Click(object sender, EventArgs e)
         {
             if (CboPais.SelectedIndex == -1 || CboFundacion.SelectedIndex == -1)
@@ -78,7 +76,6 @@ namespace EZWayPOS.Vistas.MarcaVehiculo
                 }
             }
         }
-
         private void button2_Click(object sender, EventArgs e)
         {
             d = MessageBox.Show("Esta seguro que desea eliminar esta marca", "Eliminar marca", MessageBoxButtons.YesNo, MessageBoxIcon.Question);

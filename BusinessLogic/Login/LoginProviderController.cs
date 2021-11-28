@@ -7,25 +7,24 @@ using DataAccess;
 
 namespace BusinessLogic.Login
 {
-    public class LoginProvider
+    public class LoginProviderController
     {
         public int PK_Usuario { get; set; }
         public string NombreUsuario { get; set; }
         public string PWD { get; set; }
         public bool Active { get; set; }
-       
-        BDAutoloteEntities conn;
-        public int flag = 0;
 
-        public LoginProvider()
+        BDAutoloteEntities conn;
+        public int connected = 0;
+
+        public LoginProviderController()
         {
             conn = new BDAutoloteEntities();
-
         }
 
         public bool InicioSesion()
         {
-            
+            String ExMessage;
 
             using (conn = new BDAutoloteEntities())
             {
@@ -42,24 +41,30 @@ namespace BusinessLogic.Login
                                  ).ToList(); //Convetir de var [query] a list
 
                     if (query.Count > 0)
-                    {  
-                            flag = 1; 
+                    {
+                        connected = 1;
                     }
                     return true;
                 }
                 catch (Exception Ex)
                 {
+                    ExMessage = Ex.Message;
                     return false;
 
                 }
-
             }
-
         }
 
-
-
-
-
+        public bool PermitirReintento(int nIntento, int MaxIntento)
+        {
+            if (nIntento >= MaxIntento)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
     }
 }

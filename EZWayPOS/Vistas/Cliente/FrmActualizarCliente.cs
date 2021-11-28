@@ -15,7 +15,7 @@ namespace EZWayPOS.Vistas.Cliente
     public partial class FrmActualizarCliente : Form
     {
         BusinessLogic.Cliente mv = new BusinessLogic.Cliente();
-        BusinessLogic.Controller.CommonValidations.CboValidator val = new BusinessLogic.Controller.CommonValidations.CboValidator();
+        BusinessLogic.Controller.CommonValidator.CboValidator val = new BusinessLogic.Controller.CommonValidator.CboValidator();
         BusinessLogic.TipoCliente t = new BusinessLogic.TipoCliente();
         FrmClienteViewModel v;
         DialogResult d;

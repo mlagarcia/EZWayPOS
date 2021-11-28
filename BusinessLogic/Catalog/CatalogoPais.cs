@@ -7,12 +7,10 @@ using DataAccess;
 
 namespace BusinessLogic
 {
-   public class CatalogoPais
+    public class CatalogoPais
     {
-      
         public int PK_Pais { get; set; }
         public string NombrePais { get; set; }
-
         public virtual ICollection<DireccionEmpleado> DireccionEmpleado { get; set; }
         public virtual ICollection<DireccionCliente> DireccionCliente { get; set; }
         public virtual ICollection<DireccionProveedor> DireccionProveedor { get; set; }

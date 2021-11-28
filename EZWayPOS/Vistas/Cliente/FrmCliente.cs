@@ -16,7 +16,7 @@ namespace EZWayPOS.Vistas.Cliente
     {
         BusinessLogic.Cliente mv = new BusinessLogic.Cliente();
         BusinessLogic.TipoCliente t = new BusinessLogic.TipoCliente();
-        BusinessLogic.Controller.CommonValidations.CboValidator val = new BusinessLogic.Controller.CommonValidations.CboValidator();
+        BusinessLogic.Controller.CommonValidator.CboValidator val = new BusinessLogic.Controller.CommonValidator.CboValidator();
         public FrmCliente()
         {
             InitializeComponent();
