@@ -147,7 +147,6 @@ namespace BusinessLogic
         {
             using (BDAutoloteEntities conn = new BDAutoloteEntities())
             {
-
                 try
                 {
                     var query = (from m in conn.Cliente
@@ -156,7 +155,6 @@ namespace BusinessLogic
                                  where m.Active == true //Filtar por registros con Active = 1
                                  && m.PrimerNombre.ToLower().StartsWith(ClienteBuscar.ToLower())
                                  //Convertir parametro y campo a minuscula para poder comparar el contenido
-
                                  select new
                                  {   //Parametros a mostrar del result de la query
                                      PK_Cliente = m.PK_Cliente,
@@ -212,7 +210,6 @@ namespace BusinessLogic
                 }
             }
         }
-
         public void listadoCliente(DataGridView data)
         {
             using (BDAutoloteEntities conn = new BDAutoloteEntities())
@@ -237,7 +234,6 @@ namespace BusinessLogic
                                      sexo = m.Sexo
                                  }
                                  ).ToList(); //Convetir de var [query] a list
-
                     data.DataSource = query; //Pasar list a DataGridView
                 }
                 catch (Exception Ex)
