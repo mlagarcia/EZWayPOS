@@ -43,15 +43,12 @@ namespace EZWayPOS.Vistas.Cliente
             CboSexo.Items.Add("Masculino");
             CboSexo.Items.Add("Femenino");
             CboSexo.Text = Valor[7]; //Seleccionar por defecto año fundacion de la marca
-
         }
 
         private void FrmActualizarCliente_Load(object sender, EventArgs e)
         {
 
         }
-
- 
         private void btnActualizar_Click(object sender, EventArgs e)
         {
             if (String.IsNullOrEmpty(TxtPrimerNombre.Text) || String.IsNullOrEmpty(TxtPrimerApellido.Text))
@@ -83,7 +80,6 @@ namespace EZWayPOS.Vistas.Cliente
             }
 
         }
-
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             d = MessageBox.Show("Esta seguro que desea eliminar este cliente", "Eliminar Cliente", MessageBoxButtons.YesNo, MessageBoxIcon.Question);

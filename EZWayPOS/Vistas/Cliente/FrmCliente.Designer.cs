@@ -42,12 +42,12 @@ namespace EZWayPOS.Vistas.Cliente
             this.CboSexo = new System.Windows.Forms.ComboBox();
             this.CboTipoCliente = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
+            this.btnAgregar = new System.Windows.Forms.Button();
             this.TxtPrimerNombre = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tt = new System.Windows.Forms.ToolTip(this.components);
-            this.button2 = new System.Windows.Forms.Button();
-            this.btnAgregar = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -71,14 +71,14 @@ namespace EZWayPOS.Vistas.Cliente
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(383, 391);
+            this.panel1.Size = new System.Drawing.Size(383, 370);
             this.panel1.TabIndex = 1;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Arial", 11F);
-            this.label7.Location = new System.Drawing.Point(15, 271);
+            this.label7.Location = new System.Drawing.Point(15, 262);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(146, 17);
             this.label7.TabIndex = 16;
@@ -88,7 +88,7 @@ namespace EZWayPOS.Vistas.Cliente
             // 
             this.FechaNacPicker.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FechaNacPicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.FechaNacPicker.Location = new System.Drawing.Point(167, 265);
+            this.FechaNacPicker.Location = new System.Drawing.Point(167, 256);
             this.FechaNacPicker.MaxDate = new System.DateTime(2021, 9, 4, 0, 0, 0, 0);
             this.FechaNacPicker.Name = "FechaNacPicker";
             this.FechaNacPicker.Size = new System.Drawing.Size(195, 25);
@@ -98,7 +98,7 @@ namespace EZWayPOS.Vistas.Cliente
             // TxtSegundoApellido
             // 
             this.TxtSegundoApellido.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtSegundoApellido.Location = new System.Drawing.Point(167, 148);
+            this.TxtSegundoApellido.Location = new System.Drawing.Point(167, 139);
             this.TxtSegundoApellido.Multiline = true;
             this.TxtSegundoApellido.Name = "TxtSegundoApellido";
             this.TxtSegundoApellido.Size = new System.Drawing.Size(195, 26);
@@ -108,7 +108,7 @@ namespace EZWayPOS.Vistas.Cliente
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Arial", 11F);
-            this.label6.Location = new System.Drawing.Point(15, 153);
+            this.label6.Location = new System.Drawing.Point(15, 144);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(119, 17);
             this.label6.TabIndex = 13;
@@ -117,7 +117,7 @@ namespace EZWayPOS.Vistas.Cliente
             // TxtSegundoNombre
             // 
             this.TxtSegundoNombre.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtSegundoNombre.Location = new System.Drawing.Point(167, 80);
+            this.TxtSegundoNombre.Location = new System.Drawing.Point(167, 71);
             this.TxtSegundoNombre.Multiline = true;
             this.TxtSegundoNombre.Name = "TxtSegundoNombre";
             this.TxtSegundoNombre.Size = new System.Drawing.Size(195, 26);
@@ -127,7 +127,7 @@ namespace EZWayPOS.Vistas.Cliente
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Arial", 11F);
-            this.label5.Location = new System.Drawing.Point(15, 80);
+            this.label5.Location = new System.Drawing.Point(15, 71);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(120, 17);
             this.label5.TabIndex = 11;
@@ -136,7 +136,7 @@ namespace EZWayPOS.Vistas.Cliente
             // TxtPrimerApellido
             // 
             this.TxtPrimerApellido.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtPrimerApellido.Location = new System.Drawing.Point(167, 114);
+            this.TxtPrimerApellido.Location = new System.Drawing.Point(167, 105);
             this.TxtPrimerApellido.Multiline = true;
             this.TxtPrimerApellido.Name = "TxtPrimerApellido";
             this.TxtPrimerApellido.Size = new System.Drawing.Size(195, 26);
@@ -146,7 +146,7 @@ namespace EZWayPOS.Vistas.Cliente
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Arial", 11F);
-            this.label4.Location = new System.Drawing.Point(15, 119);
+            this.label4.Location = new System.Drawing.Point(15, 110);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(125, 17);
             this.label4.TabIndex = 9;
@@ -157,7 +157,7 @@ namespace EZWayPOS.Vistas.Cliente
             this.CboSexo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CboSexo.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CboSexo.FormattingEnabled = true;
-            this.CboSexo.Location = new System.Drawing.Point(167, 185);
+            this.CboSexo.Location = new System.Drawing.Point(167, 176);
             this.CboSexo.Name = "CboSexo";
             this.CboSexo.Size = new System.Drawing.Size(195, 28);
             this.CboSexo.TabIndex = 8;
@@ -167,7 +167,7 @@ namespace EZWayPOS.Vistas.Cliente
             this.CboTipoCliente.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CboTipoCliente.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CboTipoCliente.FormattingEnabled = true;
-            this.CboTipoCliente.Location = new System.Drawing.Point(167, 222);
+            this.CboTipoCliente.Location = new System.Drawing.Point(167, 213);
             this.CboTipoCliente.Name = "CboTipoCliente";
             this.CboTipoCliente.Size = new System.Drawing.Size(195, 28);
             this.CboTipoCliente.TabIndex = 7;
@@ -176,17 +176,45 @@ namespace EZWayPOS.Vistas.Cliente
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Arial", 11F);
-            this.label3.Location = new System.Drawing.Point(15, 227);
+            this.label3.Location = new System.Drawing.Point(15, 218);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(101, 17);
             this.label3.TabIndex = 6;
             this.label3.Text = "Tipo de cliente";
             // 
+            // button2
+            // 
+            this.button2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Image = global::EZWayPOS.Properties.Resources.cancel;
+            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button2.Location = new System.Drawing.Point(280, 296);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(82, 49);
+            this.button2.TabIndex = 5;
+            this.button2.Text = "Salir";
+            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // btnAgregar
+            // 
+            this.btnAgregar.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAgregar.Image = global::EZWayPOS.Properties.Resources.diskette;
+            this.btnAgregar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAgregar.Location = new System.Drawing.Point(167, 296);
+            this.btnAgregar.Name = "btnAgregar";
+            this.btnAgregar.Size = new System.Drawing.Size(107, 49);
+            this.btnAgregar.TabIndex = 4;
+            this.btnAgregar.Text = "Agregar";
+            this.btnAgregar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
+            // 
             // TxtPrimerNombre
             // 
             this.TxtPrimerNombre.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TxtPrimerNombre.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.TxtPrimerNombre.Location = new System.Drawing.Point(167, 40);
+            this.TxtPrimerNombre.Location = new System.Drawing.Point(167, 31);
             this.TxtPrimerNombre.Multiline = true;
             this.TxtPrimerNombre.Name = "TxtPrimerNombre";
             this.TxtPrimerNombre.Size = new System.Drawing.Size(195, 26);
@@ -196,7 +224,7 @@ namespace EZWayPOS.Vistas.Cliente
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Arial", 11F);
-            this.label2.Location = new System.Drawing.Point(15, 190);
+            this.label2.Location = new System.Drawing.Point(15, 181);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(41, 17);
             this.label2.TabIndex = 1;
@@ -206,7 +234,7 @@ namespace EZWayPOS.Vistas.Cliente
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Arial", 11F);
-            this.label1.Location = new System.Drawing.Point(15, 45);
+            this.label1.Location = new System.Drawing.Point(15, 36);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(126, 17);
             this.label1.TabIndex = 0;
@@ -222,42 +250,14 @@ namespace EZWayPOS.Vistas.Cliente
             this.tt.ReshowDelay = 500;
             this.tt.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             // 
-            // button2
-            // 
-            this.button2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Image = global::EZWayPOS.Properties.Resources.cancel;
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(280, 305);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(82, 49);
-            this.button2.TabIndex = 5;
-            this.button2.Text = "Salir";
-            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // btnAgregar
-            // 
-            this.btnAgregar.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAgregar.Image = global::EZWayPOS.Properties.Resources.diskette;
-            this.btnAgregar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAgregar.Location = new System.Drawing.Point(167, 305);
-            this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(107, 49);
-            this.btnAgregar.TabIndex = 4;
-            this.btnAgregar.Text = "Agregar";
-            this.btnAgregar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnAgregar.UseVisualStyleBackColor = true;
-            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
-            // 
             // FrmCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(411, 415);
+            this.ClientSize = new System.Drawing.Size(411, 391);
             this.Controls.Add(this.panel1);
             this.Name = "FrmCliente";
-            this.Text = "FrmCliente";
+            this.Text = "Agregar Cliente";
             this.Load += new System.EventHandler(this.FrmCliente_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

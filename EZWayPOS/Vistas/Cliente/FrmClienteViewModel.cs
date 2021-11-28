@@ -30,7 +30,6 @@ namespace EZWayPOS.Vistas.Cliente
             CboTipoBusqueda.SelectedIndex = 0;
         }
 
-
         public void FrmClienteViewModel_Load(object sender, EventArgs e)
         {
             d = new BusinessLogic.Controller.DataGridValidator(gridCliente); //Instancia a validador de Grid
@@ -44,7 +43,6 @@ namespace EZWayPOS.Vistas.Cliente
             d.GridMarcasInit(6, "Fecha Nacimiento", 100);
             d.GridMarcasInit(7, "Sexo", 82);
         }
-
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             //Si campo de busqueda vacio y presionan el boton entonces mostrar todos
@@ -67,7 +65,6 @@ namespace EZWayPOS.Vistas.Cliente
             }
 
         }
-
         private void gridCliente_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             string[] valor = new string[8]; //Arreglo que almacena la fila seleccionada
@@ -82,8 +79,6 @@ namespace EZWayPOS.Vistas.Cliente
             valor[7] = gridCliente.CurrentRow.Cells[7].Value != null ? gridCliente.CurrentRow.Cells[7].Value.ToString() : string.Empty;
             act = new FrmActualizarCliente(valor); //Fila seleccionada se pasa al constructor de la vista de actualizacion
             act.ShowDialog();
-
-
         }
 
         private void txtCliente_KeyDown(object sender, KeyEventArgs e)
