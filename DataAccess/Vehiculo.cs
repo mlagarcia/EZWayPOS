@@ -10,8 +10,7 @@
 namespace DataAccess
 {
     using System;
-    using System.Collections.Generic;
-    
+    using System.Collections.Generic;  
     public partial class Vehiculo
     {
         public Vehiculo()
