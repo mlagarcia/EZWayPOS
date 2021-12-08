@@ -53,10 +53,10 @@ namespace EZWayPOS.Vistas
                 if (l.InicioSesion() == true)
                 {
                     if (l.connected == 1)
-                    {
-                        this.Hide();
+                    {                   
                         m = new MdiMain(l.NombreUsuario);  
                         m.Show();
+                        this.Hide();
 
                     }
                     else

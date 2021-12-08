@@ -210,7 +210,6 @@ namespace EZWayPOS.Vistas.Main
             this.newToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
             this.newToolStripMenuItem.Size = new System.Drawing.Size(196, 30);
             this.newToolStripMenuItem.Text = "Vehículos";
-            this.newToolStripMenuItem.Click += new System.EventHandler(this.ShowNewForm);
             // 
             // tiposDeVehiculoToolStripMenuItem
             // 
@@ -296,7 +295,6 @@ namespace EZWayPOS.Vistas.Main
             this.statusStrip.Size = new System.Drawing.Size(781, 22);
             this.statusStrip.TabIndex = 2;
             this.statusStrip.Text = "StatusStrip";
-            this.statusStrip.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.statusStrip_ItemClicked);
             // 
             // toolStripStatusLabel
             // 

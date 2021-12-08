@@ -33,7 +33,6 @@ namespace EZWayPOS.Vistas.Main
         private FrmClienteViewModel Cl1;
         private FrmVehiculo vh;
         private FrmTipoVehiculo tv;
-        private FrmInicioSesion s;
 
         public MdiMain(String username)
         {
@@ -43,10 +42,6 @@ namespace EZWayPOS.Vistas.Main
             this.usuarioToolStripMenuItem.Text = username;
         }
 
-        private void ShowNewForm(object sender, EventArgs e)
-        {
-
-        }
         private void MdiMain_Load(object sender, EventArgs e)
         {
             foreach (Control control in this.Controls)
@@ -100,9 +95,6 @@ namespace EZWayPOS.Vistas.Main
         private void Cpv_FormClosed(object sender, FormClosedEventArgs e)
         {
             cpv = null;
-        }
-        private void statusStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
         }
         private void tipoMotorToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -194,7 +186,6 @@ namespace EZWayPOS.Vistas.Main
                 marcaViewModel.WindowState = FormWindowState.Normal; //Si hay instancia de formulario mostrarlo en estado normal
             }
         }
-
         private void MarcaViewModel_FormClosed(object sender, FormClosedEventArgs e)
         {
             marcaViewModel = null;
@@ -215,12 +206,10 @@ namespace EZWayPOS.Vistas.Main
                 mod.WindowState = FormWindowState.Normal; //Si hay instancia de formulario mostrarlo en estado normal
             }
         }
-
         private void Mod_FormClosed(object sender, FormClosedEventArgs e)
         {
             mod = null;
         }
-
         private void buscarModeloToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (modv == null)
@@ -235,12 +224,10 @@ namespace EZWayPOS.Vistas.Main
                 modv.WindowState = FormWindowState.Normal;
             }
         }
-
         private void Modv_FormClosed(object sender, FormClosedEventArgs e)
         {
             modv = null;
         }
-
         private void agregarToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             if (cl == null)
@@ -256,12 +243,10 @@ namespace EZWayPOS.Vistas.Main
 
             }
         }
-
         private void Cl_FormClosed(object sender, FormClosedEventArgs e)
         {
             cl = null;
         }
-
 
         private void buscarToolStripMenuItem1_Click(object sender, EventArgs e)
         {
@@ -278,12 +263,10 @@ namespace EZWayPOS.Vistas.Main
                 Cl1.WindowState = FormWindowState.Normal;
             }
         }
-
         private void Cl1_FormClosed(object sender, FormClosedEventArgs e)
         {
             Cl1 = null;
         }
-
         private void agregarVehiculoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (vh == null)
@@ -298,13 +281,11 @@ namespace EZWayPOS.Vistas.Main
                 vh.WindowState = FormWindowState.Normal;
             }
         }
-
         private void Vh_FormClosed(object sender, FormClosedEventArgs e)
         {
             vh = null;
 
         }
-
         private void tiposDeVehiculoToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             if (tv == null)
@@ -326,9 +307,7 @@ namespace EZWayPOS.Vistas.Main
         }
         private void salirToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Close();
-            s = new FrmInicioSesion();
-            s.Show();
+            Dispose();
         }
     }
 }
